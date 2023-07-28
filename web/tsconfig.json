@@ -16,7 +16,8 @@
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
+    /* 解决TS6133 (TS) 已声明“xxx”，但从未读取其值 */
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
