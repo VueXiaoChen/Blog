@@ -1,0 +1,34 @@
+###
+GET http://localhost:8080/blogtype/list
+
+###
+###
+GET http://localhost:8080/blogtype/find/2
+
+###
+
+###
+GET http://localhost:8080/blogtype/delete/15
+
+###
+
+###
+POST http://localhost:8080/blogtype/save
+Content-Type: application/json
+
+{
+  "typeName": "23232311133345"
+}
+
+###
+###
+GET http://localhost:8080/user/delete/294756074479816704
+
+###
+
+
+###
+
+GET http://localhost:8080/user/deleteByIds/
+
+###

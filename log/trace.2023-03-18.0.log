@@ -1,0 +1,875 @@
+2023-03-18 02:12:45.714 INFO  org.hibernate.validator.internal.util.Version     :21   [32m                  [0;39m HV000001: Hibernate Validator 6.1.6.Final
+2023-03-18 02:12:45.725 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 20024 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-03-18 02:12:45.725 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-03-18 02:12:45.750 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :225  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-03-18 02:12:45.751 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :225  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-03-18 02:12:46.304 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-03-18 02:12:46.305 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-18 02:12:46.318 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 5ms. Found 0 Redis repository interfaces.
+2023-03-18 02:12:46.729 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-03-18 02:12:46.734 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:12:46.735 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-03-18 02:12:46.735 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-03-18 02:12:46.823 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-03-18 02:12:46.823 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 1072 ms
+2023-03-18 02:12:47.506 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-03-18 02:12:47.520 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:12:47.532 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-18 02:12:47.538 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 2.044 seconds (JVM running for 2.643)
+2023-03-18 02:12:53.990 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-18 02:12:53.990 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2023-03-18 02:12:53.995 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 4 ms
+2023-03-18 02:12:54.002 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for DELETE /user/delete
+2023-03-18 02:13:29.036 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 20024 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-03-18 02:13:29.036 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-03-18 02:13:29.139 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-03-18 02:13:29.139 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-18 02:13:29.142 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 3ms. Found 0 Redis repository interfaces.
+2023-03-18 02:13:29.228 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-03-18 02:13:29.228 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:13:29.228 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-03-18 02:13:29.228 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-03-18 02:13:29.243 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-03-18 02:13:29.243 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 206 ms
+2023-03-18 02:13:29.489 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-03-18 02:13:29.495 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:13:29.497 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-18 02:13:29.499 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 0.483 seconds (JVM running for 44.604)
+2023-03-18 02:13:29.500 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener :63   [32m                  [0;39m Condition evaluation unchanged
+2023-03-18 02:13:38.872 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 20024 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-03-18 02:13:38.872 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-03-18 02:13:38.950 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-03-18 02:13:38.950 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-18 02:13:38.954 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 3ms. Found 0 Redis repository interfaces.
+2023-03-18 02:13:39.009 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-03-18 02:13:39.010 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:13:39.010 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-03-18 02:13:39.010 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-03-18 02:13:39.023 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-03-18 02:13:39.023 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 150 ms
+2023-03-18 02:13:39.244 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-03-18 02:13:39.249 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:13:39.251 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-18 02:13:39.253 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 0.399 seconds (JVM running for 54.359)
+2023-03-18 02:13:39.254 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener :63   [32m                  [0;39m Condition evaluation unchanged
+2023-03-18 02:14:04.571 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 20024 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-03-18 02:14:04.572 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-03-18 02:14:04.660 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-03-18 02:14:04.660 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-18 02:14:04.663 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 2ms. Found 0 Redis repository interfaces.
+2023-03-18 02:14:04.753 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-03-18 02:14:04.754 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:14:04.754 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-03-18 02:14:04.754 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-03-18 02:14:04.767 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-03-18 02:14:04.767 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 194 ms
+2023-03-18 02:14:05.013 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-03-18 02:14:05.019 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:14:05.022 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-18 02:14:05.024 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 0.47 seconds (JVM running for 80.129)
+2023-03-18 02:14:05.025 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener :63   [32m                  [0;39m Condition evaluation unchanged
+2023-03-18 02:14:13.615 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-18 02:14:13.616 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2023-03-18 02:14:13.622 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 6 ms
+2023-03-18 02:14:13.622 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for DELETE /user/delete
+2023-03-18 02:14:16.177 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for DELETE /user/delete
+2023-03-18 02:15:34.817 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 20024 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-03-18 02:15:34.817 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-03-18 02:15:34.907 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-03-18 02:15:34.908 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-18 02:15:34.912 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 2ms. Found 0 Redis repository interfaces.
+2023-03-18 02:15:34.987 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-03-18 02:15:34.987 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:15:34.988 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-03-18 02:15:34.988 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-03-18 02:15:35.006 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-03-18 02:15:35.006 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 187 ms
+2023-03-18 02:15:35.205 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-03-18 02:15:35.211 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:15:35.213 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-18 02:15:35.215 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 0.412 seconds (JVM running for 170.32)
+2023-03-18 02:15:35.215 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener :63   [32m                  [0;39m Condition evaluation unchanged
+2023-03-18 02:15:47.140 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 20024 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-03-18 02:15:47.140 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-03-18 02:15:47.212 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-03-18 02:15:47.212 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-18 02:15:47.215 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 2ms. Found 0 Redis repository interfaces.
+2023-03-18 02:15:47.267 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-03-18 02:15:47.268 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:15:47.268 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-03-18 02:15:47.268 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-03-18 02:15:47.280 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-03-18 02:15:47.280 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 139 ms
+2023-03-18 02:15:47.483 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-03-18 02:15:47.488 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:15:47.490 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-18 02:15:47.492 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 0.368 seconds (JVM running for 182.597)
+2023-03-18 02:15:47.493 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener :63   [32m                  [0;39m Condition evaluation unchanged
+2023-03-18 02:16:04.252 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-18 02:16:04.253 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2023-03-18 02:16:04.258 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 5 ms
+2023-03-18 02:16:04.259 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for DELETE /user/delete
+2023-03-18 02:16:05.195 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for DELETE /user/delete
+2023-03-18 02:17:18.475 INFO  com.example.blog.aspect.LogAspect                 :54   [32m291998378387181568[0;39m ------------- 开始 -------------
+2023-03-18 02:17:18.476 INFO  com.example.blog.aspect.LogAspect                 :55   [32m291998378387181568[0;39m 请求地址: http://localhost:8080/user/list GET
+2023-03-18 02:17:18.477 INFO  com.example.blog.aspect.LogAspect                 :56   [32m291998378387181568[0;39m 类名方法: com.example.blog.controller.UserController.list
+2023-03-18 02:17:18.477 INFO  com.example.blog.aspect.LogAspect                 :57   [32m291998378387181568[0;39m 远程地址: 127.0.0.1
+2023-03-18 02:17:18.517 INFO  com.example.blog.aspect.LogAspect                 :79   [32m291998378387181568[0;39m 请求参数: [{"page":0,"size":0}]
+2023-03-18 02:17:18.544 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m291998378387181568[0;39m HikariPool-1 - Starting...
+2023-03-18 02:17:18.953 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m291998378387181568[0;39m HikariPool-1 - Start completed.
+2023-03-18 02:17:18.973 DEBUG c.e.blog.mapper.UserMapper.selectByExample_COUNT  :137  [32m291998378387181568[0;39m ==>  Preparing: SELECT count(0) FROM t_users
+2023-03-18 02:17:18.984 DEBUG c.e.blog.mapper.UserMapper.selectByExample_COUNT  :137  [32m291998378387181568[0;39m ==> Parameters: 
+2023-03-18 02:17:18.994 TRACE c.e.blog.mapper.UserMapper.selectByExample_COUNT  :143  [32m291998378387181568[0;39m <==    Columns: count(0)
+2023-03-18 02:17:18.994 TRACE c.e.blog.mapper.UserMapper.selectByExample_COUNT  :143  [32m291998378387181568[0;39m <==        Row: 3
+2023-03-18 02:17:18.995 DEBUG c.e.blog.mapper.UserMapper.selectByExample_COUNT  :137  [32m291998378387181568[0;39m <==      Total: 1
+2023-03-18 02:17:18.996 DEBUG com.example.blog.mapper.UserMapper.selectByExample:137  [32m291998378387181568[0;39m ==>  Preparing: select userid, username, `password`, user_sex, email, phone, firstname, lastname, avatar, is_superuser, last_login, user_register_time from t_users
+2023-03-18 02:17:18.996 DEBUG com.example.blog.mapper.UserMapper.selectByExample:137  [32m291998378387181568[0;39m ==> Parameters: 
+2023-03-18 02:17:18.997 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m291998378387181568[0;39m <==    Columns: userid, username, password, user_sex, email, phone, firstname, lastname, avatar, is_superuser, last_login, user_register_time
+2023-03-18 02:17:18.998 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m291998378387181568[0;39m <==        Row: 1, 23, 3, 1, 333, 222, 123, 4324, 123, 777, 2023-03-14 20:06:30, 2023-03-16 20:06:25
+2023-03-18 02:17:18.998 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m291998378387181568[0;39m <==        Row: 2, 34535, 3, 0, 333, 222, 123, 4324, 123, 777, 2023-03-14 20:06:30, 2023-03-16 20:06:25
+2023-03-18 02:17:18.999 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m291998378387181568[0;39m <==        Row: 3, 123131, 3, 0, 333, 222, 123, 4324, 123, 777, 2023-03-14 20:06:30, 2023-03-16 20:06:25
+2023-03-18 02:17:18.999 DEBUG com.example.blog.mapper.UserMapper.selectByExample:137  [32m291998378387181568[0;39m <==      Total: 3
+2023-03-18 02:17:19.008 INFO  com.example.blog.aspect.LogAspect                 :91   [32m291998378387181568[0;39m 返回结果: {"data":{"list":[{"avatar":"123","email":"333","isSuperuser":777,"lastLogin":1678795590000,"phone":"222","userRegisterTime":1678968385000,"userSex":"1","userid":1,"username":"23"},{"avatar":"123","email":"333","isSuperuser":777,"lastLogin":1678795590000,"phone":"222","userRegisterTime":1678968385000,"userSex":"0","userid":2,"username":"34535"},{"avatar":"123","email":"333","isSuperuser":777,"lastLogin":1678795590000,"phone":"222","userRegisterTime":1678968385000,"userSex":"0","userid":3,"username":"123131"}],"total":3},"message":"获取成功","success":true}
+2023-03-18 02:17:19.008 INFO  com.example.blog.aspect.LogAspect                 :92   [32m291998378387181568[0;39m ------------- 结束 耗时：534 ms -------------
+2023-03-18 02:18:14.816 ERROR c.e.blog.controller.ControllerExceptionHandler    :62   [32m                  [0;39m 系统异常：
+org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized field "id" (class com.example.blog.req.UserSaveReq), not marked as ignorable; nested exception is com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "id" (class com.example.blog.req.UserSaveReq), not marked as ignorable (12 known properties: "lastname", "lastLogin", "userid", "avatar", "password", "email", "phone", "username", "userSex", "isSuperuser", "firstname", "userRegisterTime"])
+ at [Source: (PushbackInputStream); line: 2, column: 10] (through reference chain: com.example.blog.req.UserSaveReq["id"])
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:285)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.read(AbstractJackson2HttpMessageConverter.java:243)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:205)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:158)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:131)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:167)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:134)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "id" (class com.example.blog.req.UserSaveReq), not marked as ignorable (12 known properties: "lastname", "lastLogin", "userid", "avatar", "password", "email", "phone", "username", "userSex", "isSuperuser", "firstname", "userRegisterTime"])
+ at [Source: (PushbackInputStream); line: 2, column: 10] (through reference chain: com.example.blog.req.UserSaveReq["id"])
+	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownProperty(BeanDeserializerBase.java:1604)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1582)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:299)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:156)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4526)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3521)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:274)
+	... 43 common frames omitted
+2023-03-18 02:18:20.388 ERROR c.e.blog.controller.ControllerExceptionHandler    :62   [32m                  [0;39m 系统异常：
+org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized field "id" (class com.example.blog.req.UserSaveReq), not marked as ignorable; nested exception is com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "id" (class com.example.blog.req.UserSaveReq), not marked as ignorable (12 known properties: "lastname", "lastLogin", "userid", "avatar", "password", "email", "phone", "username", "userSex", "isSuperuser", "firstname", "userRegisterTime"])
+ at [Source: (PushbackInputStream); line: 2, column: 10] (through reference chain: com.example.blog.req.UserSaveReq["id"])
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:285)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.read(AbstractJackson2HttpMessageConverter.java:243)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:205)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:158)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:131)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:167)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:134)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "id" (class com.example.blog.req.UserSaveReq), not marked as ignorable (12 known properties: "lastname", "lastLogin", "userid", "avatar", "password", "email", "phone", "username", "userSex", "isSuperuser", "firstname", "userRegisterTime"])
+ at [Source: (PushbackInputStream); line: 2, column: 10] (through reference chain: com.example.blog.req.UserSaveReq["id"])
+	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownProperty(BeanDeserializerBase.java:1604)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1582)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:299)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:156)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4526)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3521)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:274)
+	... 43 common frames omitted
+2023-03-18 02:18:23.009 ERROR c.e.blog.controller.ControllerExceptionHandler    :62   [32m                  [0;39m 系统异常：
+org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized field "id" (class com.example.blog.req.UserSaveReq), not marked as ignorable; nested exception is com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "id" (class com.example.blog.req.UserSaveReq), not marked as ignorable (12 known properties: "lastname", "lastLogin", "userid", "avatar", "password", "email", "phone", "username", "userSex", "isSuperuser", "firstname", "userRegisterTime"])
+ at [Source: (PushbackInputStream); line: 2, column: 10] (through reference chain: com.example.blog.req.UserSaveReq["id"])
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:285)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.read(AbstractJackson2HttpMessageConverter.java:243)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:205)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:158)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:131)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:167)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:134)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "id" (class com.example.blog.req.UserSaveReq), not marked as ignorable (12 known properties: "lastname", "lastLogin", "userid", "avatar", "password", "email", "phone", "username", "userSex", "isSuperuser", "firstname", "userRegisterTime"])
+ at [Source: (PushbackInputStream); line: 2, column: 10] (through reference chain: com.example.blog.req.UserSaveReq["id"])
+	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownProperty(BeanDeserializerBase.java:1604)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1582)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:299)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:156)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4526)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3521)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:274)
+	... 43 common frames omitted
+2023-03-18 02:18:44.156 INFO  com.example.blog.aspect.LogAspect                 :54   [32m291998737759342592[0;39m ------------- 开始 -------------
+2023-03-18 02:18:44.156 INFO  com.example.blog.aspect.LogAspect                 :55   [32m291998737759342592[0;39m 请求地址: http://localhost:8080/user/save POST
+2023-03-18 02:18:44.156 INFO  com.example.blog.aspect.LogAspect                 :56   [32m291998737759342592[0;39m 类名方法: com.example.blog.controller.UserController.save
+2023-03-18 02:18:44.157 INFO  com.example.blog.aspect.LogAspect                 :57   [32m291998737759342592[0;39m 远程地址: 127.0.0.1
+2023-03-18 02:18:44.159 INFO  com.example.blog.aspect.LogAspect                 :79   [32m291998737759342592[0;39m 请求参数: [{"userid":2,"username":"xiaochen22222222222222"}]
+2023-03-18 02:18:44.165 DEBUG c.e.blog.mapper.UserMapper.updateByPrimaryKey     :137  [32m291998737759342592[0;39m ==>  Preparing: update t_users set username = ?, `password` = ?, user_sex = ?, email = ?, phone = ?, firstname = ?, lastname = ?, avatar = ?, is_superuser = ?, last_login = ?, user_register_time = ? where userid = ?
+2023-03-18 02:18:44.166 DEBUG c.e.blog.mapper.UserMapper.updateByPrimaryKey     :137  [32m291998737759342592[0;39m ==> Parameters: xiaochen22222222222222(String), null, null, null, null, null, null, null, null, null, null, 2(Long)
+2023-03-18 02:18:44.208 ERROR c.e.blog.controller.ControllerExceptionHandler    :62   [32m291998737759342592[0;39m 系统异常：
+org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'password' cannot be null
+### The error may exist in file [D:\IDEA\demo\blog\target\classes\mapper\UserMapper.xml]
+### The error may involve com.example.blog.mapper.UserMapper.updateByPrimaryKey-Inline
+### The error occurred while setting parameters
+### SQL: update t_users     set username = ?,       `password` = ?,       user_sex = ?,       email = ?,       phone = ?,       firstname = ?,       lastname = ?,       avatar = ?,       is_superuser = ?,       last_login = ?,       user_register_time = ?     where userid = ?
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'password' cannot be null
+; Column 'password' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column 'password' cannot be null
+	at org.springframework.jdbc.support.SQLExceptionSubclassTranslator.doTranslate(SQLExceptionSubclassTranslator.java:87)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:88)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:440)
+	at com.sun.proxy.$Proxy85.update(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.update(SqlSessionTemplate.java:287)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:67)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:152)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:85)
+	at com.sun.proxy.$Proxy120.updateByPrimaryKey(Unknown Source)
+	at com.example.blog.service.UserService.save(UserService.java:61)
+	at com.example.blog.controller.UserController.save(UserController.java:50)
+	at com.example.blog.controller.UserController$$FastClassBySpringCGLIB$$c781e13e.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:56)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:88)
+	at com.example.blog.aspect.LogAspect.doAround(LogAspect.java:85)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:644)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:633)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691)
+	at com.example.blog.controller.UserController$$EnhancerBySpringCGLIB$$24aaa963.save(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Column 'password' cannot be null
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
+	at com.sun.proxy.$Proxy129.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:63)
+	at com.sun.proxy.$Proxy127.update(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
+	... 74 common frames omitted
+2023-03-18 02:19:42.964 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for DELETE /user/delete
+2023-03-18 02:19:45.444 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for DELETE /user/delete
+2023-03-18 02:19:58.407 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for GET /favicon.ico
+2023-03-18 02:21:37.337 INFO  com.zaxxer.hikari.HikariDataSource                :350  [32m                  [0;39m HikariPool-1 - Shutdown initiated...
+2023-03-18 02:21:37.344 INFO  com.zaxxer.hikari.HikariDataSource                :352  [32m                  [0;39m HikariPool-1 - Shutdown completed.
+2023-03-18 02:21:37.470 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 20024 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-03-18 02:21:37.470 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-03-18 02:21:37.568 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-03-18 02:21:37.568 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-18 02:21:37.570 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 2ms. Found 0 Redis repository interfaces.
+2023-03-18 02:21:37.647 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-03-18 02:21:37.647 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:21:37.647 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-03-18 02:21:37.647 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-03-18 02:21:37.660 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-03-18 02:21:37.661 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 190 ms
+2023-03-18 02:21:37.881 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-03-18 02:21:37.886 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:21:37.888 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-18 02:21:37.890 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 0.434 seconds (JVM running for 532.995)
+2023-03-18 02:21:37.891 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener :63   [32m                  [0;39m Condition evaluation unchanged
+2023-03-18 02:22:25.945 INFO  org.hibernate.validator.internal.util.Version     :21   [32m                  [0;39m HV000001: Hibernate Validator 6.1.6.Final
+2023-03-18 02:22:25.957 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 19840 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-03-18 02:22:25.957 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-03-18 02:22:25.990 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :225  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-03-18 02:22:25.990 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :225  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-03-18 02:22:26.379 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-03-18 02:22:26.381 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-18 02:22:26.396 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 6ms. Found 0 Redis repository interfaces.
+2023-03-18 02:22:26.815 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-03-18 02:22:26.821 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:22:26.822 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-03-18 02:22:26.823 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-03-18 02:22:26.875 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-03-18 02:22:26.875 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 885 ms
+2023-03-18 02:22:27.708 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-03-18 02:22:27.725 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:22:27.741 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-18 02:22:27.748 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 2.045 seconds (JVM running for 2.822)
+2023-03-18 02:22:30.755 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-18 02:22:30.756 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2023-03-18 02:22:30.762 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 6 ms
+2023-03-18 02:22:30.772 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for DELETE /user/delete
+2023-03-18 02:22:33.443 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for DELETE /user/delete
+2023-03-18 02:23:08.162 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for DELETE /user/delete
+2023-03-18 02:24:58.849 INFO  org.hibernate.validator.internal.util.Version     :21   [32m                  [0;39m HV000001: Hibernate Validator 6.1.6.Final
+2023-03-18 02:24:58.862 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 7620 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-03-18 02:24:58.862 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-03-18 02:24:58.893 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :225  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-03-18 02:24:58.893 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :225  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-03-18 02:24:59.284 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-03-18 02:24:59.286 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-18 02:24:59.301 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 6ms. Found 0 Redis repository interfaces.
+2023-03-18 02:24:59.709 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-03-18 02:24:59.716 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:24:59.717 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-03-18 02:24:59.717 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-03-18 02:24:59.776 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-03-18 02:24:59.776 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 882 ms
+2023-03-18 02:25:00.577 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-03-18 02:25:00.591 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:25:00.604 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-18 02:25:00.611 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 1.998 seconds (JVM running for 2.583)
+2023-03-18 02:25:04.001 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-18 02:25:04.001 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2023-03-18 02:25:04.007 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 5 ms
+2023-03-18 02:25:04.016 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for DELETE /user/delete
+2023-03-18 02:25:51.508 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for DELETE /user/delete
+2023-03-18 02:26:08.678 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 7620 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-03-18 02:26:08.679 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-03-18 02:26:08.796 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-03-18 02:26:08.797 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-18 02:26:08.800 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 3ms. Found 0 Redis repository interfaces.
+2023-03-18 02:26:08.895 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-03-18 02:26:08.895 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:26:08.895 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-03-18 02:26:08.896 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-03-18 02:26:08.919 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-03-18 02:26:08.919 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 238 ms
+2023-03-18 02:26:09.202 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-03-18 02:26:09.207 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:26:09.209 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-18 02:26:09.212 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 0.554 seconds (JVM running for 71.185)
+2023-03-18 02:26:09.213 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener :63   [32m                  [0;39m Condition evaluation unchanged
+2023-03-18 02:26:12.947 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-18 02:26:12.948 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2023-03-18 02:26:12.960 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 12 ms
+2023-03-18 02:26:12.961 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for DELETE /user/delete
+2023-03-18 02:26:14.007 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for DELETE /user/delete
+2023-03-18 02:26:35.393 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 7620 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-03-18 02:26:35.393 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-03-18 02:26:35.492 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-03-18 02:26:35.492 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-18 02:26:35.495 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 3ms. Found 0 Redis repository interfaces.
+2023-03-18 02:26:35.588 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-03-18 02:26:35.588 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:26:35.588 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-03-18 02:26:35.588 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-03-18 02:26:35.602 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-03-18 02:26:35.602 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 206 ms
+2023-03-18 02:26:35.862 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-03-18 02:26:35.868 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:26:35.870 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-18 02:26:35.872 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 0.504 seconds (JVM running for 97.846)
+2023-03-18 02:26:35.873 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener :63   [32m                  [0;39m Condition evaluation unchanged
+2023-03-18 02:28:14.671 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 7620 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-03-18 02:28:14.672 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-03-18 02:28:14.766 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-03-18 02:28:14.767 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-18 02:28:14.770 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 2ms. Found 0 Redis repository interfaces.
+2023-03-18 02:28:14.865 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-03-18 02:28:14.866 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:28:14.866 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-03-18 02:28:14.866 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-03-18 02:28:14.878 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-03-18 02:28:14.878 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 204 ms
+2023-03-18 02:28:15.126 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-03-18 02:28:15.133 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:28:15.135 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-18 02:28:15.137 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 0.487 seconds (JVM running for 197.11)
+2023-03-18 02:28:15.138 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener :63   [32m                  [0;39m Condition evaluation unchanged
+2023-03-18 02:28:21.438 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-18 02:28:21.439 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2023-03-18 02:28:21.449 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 10 ms
+2023-03-18 02:28:21.449 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for GET /user/delete
+2023-03-18 02:28:22.919 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for GET /user/delete
+2023-03-18 02:28:23.995 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for GET /user/delete
+2023-03-18 02:30:23.467 INFO  com.example.blog.aspect.LogAspect                 :54   [32m292001670882267136[0;39m ------------- 开始 -------------
+2023-03-18 02:30:23.469 INFO  com.example.blog.aspect.LogAspect                 :55   [32m292001670882267136[0;39m 请求地址: http://localhost:8080/user/list GET
+2023-03-18 02:30:23.470 INFO  com.example.blog.aspect.LogAspect                 :56   [32m292001670882267136[0;39m 类名方法: com.example.blog.controller.UserController.list
+2023-03-18 02:30:23.470 INFO  com.example.blog.aspect.LogAspect                 :57   [32m292001670882267136[0;39m 远程地址: 127.0.0.1
+2023-03-18 02:30:23.517 INFO  com.example.blog.aspect.LogAspect                 :79   [32m292001670882267136[0;39m 请求参数: [{"page":1,"size":1}]
+2023-03-18 02:30:23.550 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m292001670882267136[0;39m HikariPool-1 - Starting...
+2023-03-18 02:30:23.910 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m292001670882267136[0;39m HikariPool-1 - Start completed.
+2023-03-18 02:30:23.933 DEBUG c.e.blog.mapper.UserMapper.selectByExample_COUNT  :137  [32m292001670882267136[0;39m ==>  Preparing: SELECT count(0) FROM t_users
+2023-03-18 02:30:23.946 DEBUG c.e.blog.mapper.UserMapper.selectByExample_COUNT  :137  [32m292001670882267136[0;39m ==> Parameters: 
+2023-03-18 02:30:23.957 TRACE c.e.blog.mapper.UserMapper.selectByExample_COUNT  :143  [32m292001670882267136[0;39m <==    Columns: count(0)
+2023-03-18 02:30:23.958 TRACE c.e.blog.mapper.UserMapper.selectByExample_COUNT  :143  [32m292001670882267136[0;39m <==        Row: 3
+2023-03-18 02:30:23.958 DEBUG c.e.blog.mapper.UserMapper.selectByExample_COUNT  :137  [32m292001670882267136[0;39m <==      Total: 1
+2023-03-18 02:30:23.960 DEBUG com.example.blog.mapper.UserMapper.selectByExample:137  [32m292001670882267136[0;39m ==>  Preparing: select userid, username, `password`, user_sex, email, phone, firstname, lastname, avatar, is_superuser, last_login, user_register_time from t_users LIMIT ?
+2023-03-18 02:30:23.960 DEBUG com.example.blog.mapper.UserMapper.selectByExample:137  [32m292001670882267136[0;39m ==> Parameters: 1(Integer)
+2023-03-18 02:30:23.962 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m292001670882267136[0;39m <==    Columns: userid, username, password, user_sex, email, phone, firstname, lastname, avatar, is_superuser, last_login, user_register_time
+2023-03-18 02:30:23.963 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m292001670882267136[0;39m <==        Row: 1, 23, 3, 1, 333, 222, 123, 4324, 123, 777, 2023-03-14 20:06:30, 2023-03-16 20:06:25
+2023-03-18 02:30:23.963 DEBUG com.example.blog.mapper.UserMapper.selectByExample:137  [32m292001670882267136[0;39m <==      Total: 1
+2023-03-18 02:30:23.973 INFO  com.example.blog.aspect.LogAspect                 :91   [32m292001670882267136[0;39m 返回结果: {"data":{"list":[{"avatar":"123","email":"333","isSuperuser":777,"lastLogin":1678795590000,"phone":"222","userRegisterTime":1678968385000,"userSex":"1","userid":1,"username":"23"}],"total":3},"message":"获取成功","success":true}
+2023-03-18 02:30:23.974 INFO  com.example.blog.aspect.LogAspect                 :92   [32m292001670882267136[0;39m ------------- 结束 耗时：507 ms -------------
+2023-03-18 02:30:39.497 INFO  com.example.blog.aspect.LogAspect                 :54   [32m292001738116960256[0;39m ------------- 开始 -------------
+2023-03-18 02:30:39.497 INFO  com.example.blog.aspect.LogAspect                 :55   [32m292001738116960256[0;39m 请求地址: http://localhost:8080/user/list GET
+2023-03-18 02:30:39.498 INFO  com.example.blog.aspect.LogAspect                 :56   [32m292001738116960256[0;39m 类名方法: com.example.blog.controller.UserController.list
+2023-03-18 02:30:39.498 INFO  com.example.blog.aspect.LogAspect                 :57   [32m292001738116960256[0;39m 远程地址: 127.0.0.1
+2023-03-18 02:30:39.498 INFO  com.example.blog.aspect.LogAspect                 :79   [32m292001738116960256[0;39m 请求参数: [{"page":1,"size":2}]
+2023-03-18 02:30:39.501 DEBUG c.e.blog.mapper.UserMapper.selectByExample_COUNT  :137  [32m292001738116960256[0;39m ==>  Preparing: SELECT count(0) FROM t_users
+2023-03-18 02:30:39.501 DEBUG c.e.blog.mapper.UserMapper.selectByExample_COUNT  :137  [32m292001738116960256[0;39m ==> Parameters: 
+2023-03-18 02:30:39.504 TRACE c.e.blog.mapper.UserMapper.selectByExample_COUNT  :143  [32m292001738116960256[0;39m <==    Columns: count(0)
+2023-03-18 02:30:39.504 TRACE c.e.blog.mapper.UserMapper.selectByExample_COUNT  :143  [32m292001738116960256[0;39m <==        Row: 3
+2023-03-18 02:30:39.504 DEBUG c.e.blog.mapper.UserMapper.selectByExample_COUNT  :137  [32m292001738116960256[0;39m <==      Total: 1
+2023-03-18 02:30:39.505 DEBUG com.example.blog.mapper.UserMapper.selectByExample:137  [32m292001738116960256[0;39m ==>  Preparing: select userid, username, `password`, user_sex, email, phone, firstname, lastname, avatar, is_superuser, last_login, user_register_time from t_users LIMIT ?
+2023-03-18 02:30:39.505 DEBUG com.example.blog.mapper.UserMapper.selectByExample:137  [32m292001738116960256[0;39m ==> Parameters: 2(Integer)
+2023-03-18 02:30:39.506 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m292001738116960256[0;39m <==    Columns: userid, username, password, user_sex, email, phone, firstname, lastname, avatar, is_superuser, last_login, user_register_time
+2023-03-18 02:30:39.506 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m292001738116960256[0;39m <==        Row: 1, 23, 3, 1, 333, 222, 123, 4324, 123, 777, 2023-03-14 20:06:30, 2023-03-16 20:06:25
+2023-03-18 02:30:39.507 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m292001738116960256[0;39m <==        Row: 2, 34535, 3, 0, 333, 222, 123, 4324, 123, 777, 2023-03-14 20:06:30, 2023-03-16 20:06:25
+2023-03-18 02:30:39.507 DEBUG com.example.blog.mapper.UserMapper.selectByExample:137  [32m292001738116960256[0;39m <==      Total: 2
+2023-03-18 02:30:39.507 INFO  com.example.blog.aspect.LogAspect                 :91   [32m292001738116960256[0;39m 返回结果: {"data":{"list":[{"avatar":"123","email":"333","isSuperuser":777,"lastLogin":1678795590000,"phone":"222","userRegisterTime":1678968385000,"userSex":"1","userid":1,"username":"23"},{"avatar":"123","email":"333","isSuperuser":777,"lastLogin":1678795590000,"phone":"222","userRegisterTime":1678968385000,"userSex":"0","userid":2,"username":"34535"}],"total":3},"message":"获取成功","success":true}
+2023-03-18 02:30:39.508 INFO  com.example.blog.aspect.LogAspect                 :92   [32m292001738116960256[0;39m ------------- 结束 耗时：11 ms -------------
+2023-03-18 02:30:41.362 INFO  com.example.blog.aspect.LogAspect                 :54   [32m292001745939337216[0;39m ------------- 开始 -------------
+2023-03-18 02:30:41.362 INFO  com.example.blog.aspect.LogAspect                 :55   [32m292001745939337216[0;39m 请求地址: http://localhost:8080/user/list GET
+2023-03-18 02:30:41.362 INFO  com.example.blog.aspect.LogAspect                 :56   [32m292001745939337216[0;39m 类名方法: com.example.blog.controller.UserController.list
+2023-03-18 02:30:41.362 INFO  com.example.blog.aspect.LogAspect                 :57   [32m292001745939337216[0;39m 远程地址: 127.0.0.1
+2023-03-18 02:30:41.362 INFO  com.example.blog.aspect.LogAspect                 :79   [32m292001745939337216[0;39m 请求参数: [{"page":1,"size":2}]
+2023-03-18 02:30:41.363 DEBUG c.e.blog.mapper.UserMapper.selectByExample_COUNT  :137  [32m292001745939337216[0;39m ==>  Preparing: SELECT count(0) FROM t_users
+2023-03-18 02:30:41.364 DEBUG c.e.blog.mapper.UserMapper.selectByExample_COUNT  :137  [32m292001745939337216[0;39m ==> Parameters: 
+2023-03-18 02:30:41.366 TRACE c.e.blog.mapper.UserMapper.selectByExample_COUNT  :143  [32m292001745939337216[0;39m <==    Columns: count(0)
+2023-03-18 02:30:41.366 TRACE c.e.blog.mapper.UserMapper.selectByExample_COUNT  :143  [32m292001745939337216[0;39m <==        Row: 3
+2023-03-18 02:30:41.366 DEBUG c.e.blog.mapper.UserMapper.selectByExample_COUNT  :137  [32m292001745939337216[0;39m <==      Total: 1
+2023-03-18 02:30:41.367 DEBUG com.example.blog.mapper.UserMapper.selectByExample:137  [32m292001745939337216[0;39m ==>  Preparing: select userid, username, `password`, user_sex, email, phone, firstname, lastname, avatar, is_superuser, last_login, user_register_time from t_users LIMIT ?
+2023-03-18 02:30:41.367 DEBUG com.example.blog.mapper.UserMapper.selectByExample:137  [32m292001745939337216[0;39m ==> Parameters: 2(Integer)
+2023-03-18 02:30:41.368 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m292001745939337216[0;39m <==    Columns: userid, username, password, user_sex, email, phone, firstname, lastname, avatar, is_superuser, last_login, user_register_time
+2023-03-18 02:30:41.370 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m292001745939337216[0;39m <==        Row: 1, 23, 3, 1, 333, 222, 123, 4324, 123, 777, 2023-03-14 20:06:30, 2023-03-16 20:06:25
+2023-03-18 02:30:41.370 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m292001745939337216[0;39m <==        Row: 2, 34535, 3, 0, 333, 222, 123, 4324, 123, 777, 2023-03-14 20:06:30, 2023-03-16 20:06:25
+2023-03-18 02:30:41.370 DEBUG com.example.blog.mapper.UserMapper.selectByExample:137  [32m292001745939337216[0;39m <==      Total: 2
+2023-03-18 02:30:41.371 INFO  com.example.blog.aspect.LogAspect                 :91   [32m292001745939337216[0;39m 返回结果: {"data":{"list":[{"avatar":"123","email":"333","isSuperuser":777,"lastLogin":1678795590000,"phone":"222","userRegisterTime":1678968385000,"userSex":"1","userid":1,"username":"23"},{"avatar":"123","email":"333","isSuperuser":777,"lastLogin":1678795590000,"phone":"222","userRegisterTime":1678968385000,"userSex":"0","userid":2,"username":"34535"}],"total":3},"message":"获取成功","success":true}
+2023-03-18 02:30:41.371 INFO  com.example.blog.aspect.LogAspect                 :92   [32m292001745939337216[0;39m ------------- 结束 耗时：9 ms -------------
+2023-03-18 02:32:52.263 INFO  com.zaxxer.hikari.HikariDataSource                :350  [32m                  [0;39m HikariPool-1 - Shutdown initiated...
+2023-03-18 02:32:52.271 INFO  com.zaxxer.hikari.HikariDataSource                :352  [32m                  [0;39m HikariPool-1 - Shutdown completed.
+2023-03-18 02:32:52.427 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 7620 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-03-18 02:32:52.427 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-03-18 02:32:52.521 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-03-18 02:32:52.521 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-18 02:32:52.524 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 2ms. Found 0 Redis repository interfaces.
+2023-03-18 02:32:52.616 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-03-18 02:32:52.616 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:32:52.616 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-03-18 02:32:52.617 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-03-18 02:32:52.630 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-03-18 02:32:52.630 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 201 ms
+2023-03-18 02:32:52.880 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-03-18 02:32:52.886 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:32:52.888 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-18 02:32:52.890 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 0.48 seconds (JVM running for 474.863)
+2023-03-18 02:32:52.891 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener :63   [32m                  [0;39m Condition evaluation unchanged
+2023-03-18 02:32:57.180 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-18 02:32:57.181 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2023-03-18 02:32:57.188 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 7 ms
+2023-03-18 02:32:57.189 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for GET /user/delete
+2023-03-18 02:32:58.271 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for GET /user/delete
+2023-03-18 02:33:17.700 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for DELETE /user/delete
+2023-03-18 02:33:42.947 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for DELETE /user/delete
+2023-03-18 02:34:19.950 INFO  org.hibernate.validator.internal.util.Version     :21   [32m                  [0;39m HV000001: Hibernate Validator 6.1.6.Final
+2023-03-18 02:34:19.963 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 17352 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-03-18 02:34:19.963 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-03-18 02:34:19.991 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :225  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-03-18 02:34:19.991 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :225  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-03-18 02:34:20.397 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-03-18 02:34:20.399 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-18 02:34:20.412 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 6ms. Found 0 Redis repository interfaces.
+2023-03-18 02:34:20.817 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-03-18 02:34:20.822 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:34:20.822 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-03-18 02:34:20.823 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-03-18 02:34:20.875 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-03-18 02:34:20.875 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 883 ms
+2023-03-18 02:35:12.108 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-03-18 02:35:13.923 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:35:14.208 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-18 02:35:14.510 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 54.793 seconds (JVM running for 55.415)
+2023-03-18 02:35:59.282 INFO  org.hibernate.validator.internal.util.Version     :21   [32m                  [0;39m HV000001: Hibernate Validator 6.1.6.Final
+2023-03-18 02:35:59.293 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 23432 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-03-18 02:35:59.293 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-03-18 02:35:59.316 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :225  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-03-18 02:35:59.316 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :225  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-03-18 02:35:59.665 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-03-18 02:35:59.666 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-18 02:35:59.679 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 5ms. Found 0 Redis repository interfaces.
+2023-03-18 02:36:00.061 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-03-18 02:36:00.065 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:36:00.066 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-03-18 02:36:00.066 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-03-18 02:36:00.151 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-03-18 02:36:00.151 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 834 ms
+2023-03-18 02:36:00.794 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-03-18 02:36:00.807 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:36:00.817 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-18 02:36:00.823 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 1.722 seconds (JVM running for 2.292)
+2023-03-18 02:36:02.432 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-18 02:36:02.434 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2023-03-18 02:36:02.441 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 7 ms
+2023-03-18 02:36:02.449 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for DELETE /user/deletes
+2023-03-18 02:37:21.784 INFO  org.hibernate.validator.internal.util.Version     :21   [32m                  [0;39m HV000001: Hibernate Validator 6.1.6.Final
+2023-03-18 02:37:21.797 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 7628 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-03-18 02:37:21.797 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-03-18 02:37:21.826 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :225  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-03-18 02:37:21.827 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :225  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-03-18 02:37:22.223 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-03-18 02:37:22.225 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-18 02:37:22.238 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 6ms. Found 0 Redis repository interfaces.
+2023-03-18 02:37:22.649 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-03-18 02:37:22.654 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:37:22.655 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-03-18 02:37:22.655 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-03-18 02:37:22.714 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-03-18 02:37:22.715 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 888 ms
+2023-03-18 02:37:23.502 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-03-18 02:37:23.517 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:37:23.531 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-18 02:37:23.538 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 1.979 seconds (JVM running for 2.573)
+2023-03-18 02:37:28.494 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-18 02:37:28.494 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2023-03-18 02:37:28.499 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 5 ms
+2023-03-18 02:37:28.562 INFO  com.example.blog.aspect.LogAspect                 :54   [32m292003453855731712[0;39m ------------- 开始 -------------
+2023-03-18 02:37:28.563 INFO  com.example.blog.aspect.LogAspect                 :55   [32m292003453855731712[0;39m 请求地址: http://localhost:8080/user/save POST
+2023-03-18 02:37:28.563 INFO  com.example.blog.aspect.LogAspect                 :56   [32m292003453855731712[0;39m 类名方法: com.example.blog.controller.UserController.save
+2023-03-18 02:37:28.564 INFO  com.example.blog.aspect.LogAspect                 :57   [32m292003453855731712[0;39m 远程地址: 127.0.0.1
+2023-03-18 02:37:28.605 INFO  com.example.blog.aspect.LogAspect                 :79   [32m292003453855731712[0;39m 请求参数: [{"userid":2,"username":"xiaochen22222222222222"}]
+2023-03-18 02:37:49.170 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m292003453855731712[0;39m HikariPool-1 - Starting...
+2023-03-18 02:37:49.590 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m292003453855731712[0;39m HikariPool-1 - Start completed.
+2023-03-18 02:37:49.594 DEBUG c.e.blog.mapper.UserMapper.updateByPrimaryKey     :137  [32m292003453855731712[0;39m ==>  Preparing: update t_users set username = ?, `password` = ?, user_sex = ?, email = ?, phone = ?, firstname = ?, lastname = ?, avatar = ?, is_superuser = ?, last_login = ?, user_register_time = ? where userid = ?
+2023-03-18 02:37:49.610 DEBUG c.e.blog.mapper.UserMapper.updateByPrimaryKey     :137  [32m292003453855731712[0;39m ==> Parameters: xiaochen22222222222222(String), null, null, null, null, null, null, null, null, null, null, 2(Long)
+2023-03-18 02:37:49.642 ERROR c.e.blog.controller.ControllerExceptionHandler    :62   [32m292003453855731712[0;39m 系统异常：
+org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'password' cannot be null
+### The error may exist in file [D:\IDEA\demo\blog\target\classes\mapper\UserMapper.xml]
+### The error may involve com.example.blog.mapper.UserMapper.updateByPrimaryKey-Inline
+### The error occurred while setting parameters
+### SQL: update t_users     set username = ?,       `password` = ?,       user_sex = ?,       email = ?,       phone = ?,       firstname = ?,       lastname = ?,       avatar = ?,       is_superuser = ?,       last_login = ?,       user_register_time = ?     where userid = ?
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'password' cannot be null
+; Column 'password' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column 'password' cannot be null
+	at org.springframework.jdbc.support.SQLExceptionSubclassTranslator.doTranslate(SQLExceptionSubclassTranslator.java:87)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:88)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:440)
+	at com.sun.proxy.$Proxy85.update(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.update(SqlSessionTemplate.java:287)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:67)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:152)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:85)
+	at com.sun.proxy.$Proxy86.updateByPrimaryKey(Unknown Source)
+	at com.example.blog.service.UserService.save(UserService.java:61)
+	at com.example.blog.controller.UserController.save(UserController.java:50)
+	at com.example.blog.controller.UserController$$FastClassBySpringCGLIB$$c781e13e.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:56)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:88)
+	at com.example.blog.aspect.LogAspect.doAround(LogAspect.java:85)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:644)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:633)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691)
+	at com.example.blog.controller.UserController$$EnhancerBySpringCGLIB$$6e139ea7.save(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Column 'password' cannot be null
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
+	at com.sun.proxy.$Proxy111.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:63)
+	at com.sun.proxy.$Proxy109.update(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:426)
+	... 74 common frames omitted
+2023-03-18 02:37:49.730 INFO  com.zaxxer.hikari.HikariDataSource                :350  [32m                  [0;39m HikariPool-1 - Shutdown initiated...
+2023-03-18 02:37:49.735 INFO  com.zaxxer.hikari.HikariDataSource                :352  [32m                  [0;39m HikariPool-1 - Shutdown completed.
+2023-03-18 02:40:09.688 INFO  org.hibernate.validator.internal.util.Version     :21   [32m                  [0;39m HV000001: Hibernate Validator 6.1.6.Final
+2023-03-18 02:40:09.699 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 11716 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-03-18 02:40:09.700 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-03-18 02:40:09.723 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :225  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-03-18 02:40:09.724 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :225  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-03-18 02:40:10.079 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-03-18 02:40:10.080 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-03-18 02:40:10.098 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 9ms. Found 0 Redis repository interfaces.
+2023-03-18 02:40:10.469 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-03-18 02:40:10.474 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:40:10.474 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-03-18 02:40:10.474 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-03-18 02:40:10.564 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-03-18 02:40:10.564 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 840 ms
+2023-03-18 02:40:11.200 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-03-18 02:40:11.233 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-03-18 02:40:11.243 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-03-18 02:40:11.248 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 1.75 seconds (JVM running for 2.292)
+2023-03-18 02:40:15.360 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-03-18 02:40:15.360 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2023-03-18 02:40:15.365 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 5 ms
+2023-03-18 02:40:15.371 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for GET /user/deletes
+2023-03-18 02:41:13.394 INFO  com.example.blog.aspect.LogAspect                 :54   [32m292004396869488640[0;39m ------------- 开始 -------------
+2023-03-18 02:41:13.396 INFO  com.example.blog.aspect.LogAspect                 :55   [32m292004396869488640[0;39m 请求地址: http://localhost:8080/user/delete/2 GET
+2023-03-18 02:41:13.396 INFO  com.example.blog.aspect.LogAspect                 :56   [32m292004396869488640[0;39m 类名方法: com.example.blog.controller.UserController.deletes
+2023-03-18 02:41:13.396 INFO  com.example.blog.aspect.LogAspect                 :57   [32m292004396869488640[0;39m 远程地址: 127.0.0.1
+2023-03-18 02:41:13.432 INFO  com.example.blog.aspect.LogAspect                 :79   [32m292004396869488640[0;39m 请求参数: [2]
+2023-03-18 02:41:13.447 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m292004396869488640[0;39m HikariPool-1 - Starting...
+2023-03-18 02:41:13.783 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m292004396869488640[0;39m HikariPool-1 - Start completed.
+2023-03-18 02:41:13.788 DEBUG c.e.blog.mapper.UserMapper.deleteByPrimaryKey     :137  [32m292004396869488640[0;39m ==>  Preparing: delete from t_users where userid = ?
+2023-03-18 02:41:13.799 DEBUG c.e.blog.mapper.UserMapper.deleteByPrimaryKey     :137  [32m292004396869488640[0;39m ==> Parameters: 2(Long)
+2023-03-18 02:41:13.809 DEBUG c.e.blog.mapper.UserMapper.deleteByPrimaryKey     :137  [32m292004396869488640[0;39m <==    Updates: 1
+2023-03-18 02:41:13.820 INFO  com.example.blog.aspect.LogAspect                 :91   [32m292004396869488640[0;39m 返回结果: {"message":"删除成功","success":true}
+2023-03-18 02:41:13.820 INFO  com.example.blog.aspect.LogAspect                 :92   [32m292004396869488640[0;39m ------------- 结束 耗时：427 ms -------------
+2023-03-18 02:52:04.406 INFO  com.zaxxer.hikari.HikariDataSource                :350  [32m                  [0;39m HikariPool-1 - Shutdown initiated...
+2023-03-18 02:52:04.415 INFO  com.zaxxer.hikari.HikariDataSource                :352  [32m                  [0;39m HikariPool-1 - Shutdown completed.

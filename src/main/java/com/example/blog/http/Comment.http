@@ -1,0 +1,22 @@
+###
+GET http://localhost:8080/comment/list
+
+###
+
+###
+POST http://localhost:8080/comment/save
+Content-Type: application/json
+
+{
+  "commentContent": "11111111111111",
+  "blogId": 1,
+  "createtime": "2001-10-08 07:00:15",
+  "userid": 1,
+  "replyid": 1
+}
+
+###
+###
+GET http://localhost:8080/comment/delete/20
+
+###

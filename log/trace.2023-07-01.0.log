@@ -1,0 +1,136 @@
+2023-07-01 23:40:27.780 INFO  org.hibernate.validator.internal.util.Version     :21   [32m                  [0;39m HV000001: Hibernate Validator 6.1.6.Final
+2023-07-01 23:40:27.796 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 21388 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-07-01 23:40:27.797 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-07-01 23:40:27.824 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :225  [32m                  [0;39m Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-01 23:40:27.824 INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor :225  [32m                  [0;39m For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-01 23:40:28.452 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-07-01 23:40:28.454 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-07-01 23:40:28.469 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 7ms. Found 0 Redis repository interfaces.
+2023-07-01 23:40:28.889 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-07-01 23:40:28.894 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-01 23:40:28.894 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-07-01 23:40:28.894 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-07-01 23:40:28.977 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-07-01 23:40:28.978 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 1153 ms
+2023-07-01 23:40:29.733 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-07-01 23:40:29.748 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-07-01 23:40:29.760 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-01 23:40:29.767 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 2.235 seconds (JVM running for 2.809)
+2023-07-01 23:41:53.016 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-01 23:41:53.017 INFO  org.springframework.web.servlet.DispatcherServlet :525  [32m                  [0;39m Initializing Servlet 'dispatcherServlet'
+2023-07-01 23:41:53.022 INFO  org.springframework.web.servlet.DispatcherServlet :547  [32m                  [0;39m Completed initialization in 5 ms
+2023-07-01 23:41:53.101 INFO  com.example.blog.aspect.LogAspect                 :54   [32m330372378683117568[0;39m ------------- 开始 -------------
+2023-07-01 23:41:53.101 INFO  com.example.blog.aspect.LogAspect                 :55   [32m330372378683117568[0;39m 请求地址: http://localhost:8080/user/list GET
+2023-07-01 23:41:53.101 INFO  com.example.blog.aspect.LogAspect                 :56   [32m330372378683117568[0;39m 类名方法: com.example.blog.controller.UserController.list
+2023-07-01 23:41:53.102 INFO  com.example.blog.aspect.LogAspect                 :57   [32m330372378683117568[0;39m 远程地址: 127.0.0.1
+2023-07-01 23:41:53.143 INFO  com.example.blog.aspect.LogAspect                 :79   [32m330372378683117568[0;39m 请求参数: [{"page":0,"size":0}]
+2023-07-01 23:41:53.181 INFO  com.zaxxer.hikari.HikariDataSource                :110  [32m330372378683117568[0;39m HikariPool-1 - Starting...
+2023-07-01 23:41:53.508 WARN  org.springframework.web.servlet.PageNotFound      :1251 [32m                  [0;39m No mapping for GET /favicon.ico
+2023-07-01 23:41:53.899 INFO  com.zaxxer.hikari.HikariDataSource                :123  [32m330372378683117568[0;39m HikariPool-1 - Start completed.
+2023-07-01 23:41:53.923 DEBUG c.e.blog.mapper.UserMapper.selectByExample_COUNT  :137  [32m330372378683117568[0;39m ==>  Preparing: SELECT count(0) FROM t_users
+2023-07-01 23:41:53.938 DEBUG c.e.blog.mapper.UserMapper.selectByExample_COUNT  :137  [32m330372378683117568[0;39m ==> Parameters: 
+2023-07-01 23:41:53.952 TRACE c.e.blog.mapper.UserMapper.selectByExample_COUNT  :143  [32m330372378683117568[0;39m <==    Columns: count(0)
+2023-07-01 23:41:53.952 TRACE c.e.blog.mapper.UserMapper.selectByExample_COUNT  :143  [32m330372378683117568[0;39m <==        Row: 8
+2023-07-01 23:41:53.953 DEBUG c.e.blog.mapper.UserMapper.selectByExample_COUNT  :137  [32m330372378683117568[0;39m <==      Total: 1
+2023-07-01 23:41:53.954 DEBUG com.example.blog.mapper.UserMapper.selectByExample:137  [32m330372378683117568[0;39m ==>  Preparing: select userid , username, `password`, user_sex, email, phone, firstname, lastname, avatar, is_superuser, last_login, user_register_time from t_users
+2023-07-01 23:41:53.954 DEBUG com.example.blog.mapper.UserMapper.selectByExample:137  [32m330372378683117568[0;39m ==> Parameters: 
+2023-07-01 23:41:53.956 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m330372378683117568[0;39m <==    Columns: userid, username, password, user_sex, email, phone, firstname, lastname, avatar, is_superuser, last_login, user_register_time
+2023-07-01 23:41:53.957 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m330372378683117568[0;39m <==        Row: 1, 4, 3, 1, 1, 222, 去, 4324, 123, 777, 2023-03-14 20:06:30, 2023-03-16 20:06:25
+2023-07-01 23:41:53.958 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m330372378683117568[0;39m <==        Row: 2, 5, ereter, 0, 2, 4432, 我, null, null, 0, 2023-03-25 18:40:06, 2023-03-25 18:40:06
+2023-07-01 23:41:53.958 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m330372378683117568[0;39m <==        Row: 3, 6, 3, 0, 3, 222, 额, 4324, 123, 777, 2023-03-14 20:06:30, 2023-03-16 20:06:25
+2023-07-01 23:41:53.959 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m330372378683117568[0;39m <==        Row: 4, 7, 23424234, 0, 4, 12313, 人, null, null, 0, 2023-03-25 16:48:41, 2023-03-25 16:48:41
+2023-07-01 23:41:53.959 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m330372378683117568[0;39m <==        Row: 5, 4, ereter, 1, 5, 4432, 他, null, null, 0, 2023-03-25 16:51:25, 2023-03-25 16:51:25
+2023-07-01 23:41:53.960 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m330372378683117568[0;39m <==        Row: 6, 9, ereter, 0, 6, 4432, 有, null, null, 0, 2023-03-25 18:37:38, 2023-03-25 18:37:38
+2023-07-01 23:41:53.960 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m330372378683117568[0;39m <==        Row: 7, 999, ereter, 0, 7, 4432, 发, null, null, 0, 2023-03-25 18:37:40, 2023-03-25 18:37:40
+2023-07-01 23:41:53.961 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m330372378683117568[0;39m <==        Row: 329873085274656768, 55, 77, 0, 8, 99, 有, null, null, 0, 2023-06-30 14:37:52, 2023-06-30 14:37:52
+2023-07-01 23:41:53.961 DEBUG com.example.blog.mapper.UserMapper.selectByExample:137  [32m330372378683117568[0;39m <==      Total: 8
+2023-07-01 23:41:53.979 INFO  com.example.blog.aspect.LogAspect                 :91   [32m330372378683117568[0;39m 返回结果: {"data":{"list":[{"avatar":"123","email":"1","firstname":"去","isSuperuser":777,"lastLogin":1678795590000,"phone":"222","userRegisterTime":1678968385000,"userSex":"1","userid":1,"username":"4"},{"email":"2","firstname":"我","isSuperuser":0,"lastLogin":1679740806000,"phone":"4432","userRegisterTime":1679740806000,"userSex":"0","userid":2,"username":"5"},{"avatar":"123","email":"3","firstname":"额","isSuperuser":777,"lastLogin":1678795590000,"phone":"222","userRegisterTime":1678968385000,"userSex":"0","userid":3,"username":"6"},{"email":"4","firstname":"人","isSuperuser":0,"lastLogin":1679734121000,"phone":"12313","userRegisterTime":1679734121000,"userSex":"0","userid":4,"username":"7"},{"email":"5","firstname":"他","isSuperuser":0,"lastLogin":1679734285000,"phone":"4432","userRegisterTime":1679734285000,"userSex":"1","userid":5,"username":"4"},{"email":"6","firstname":"有","isSuperuser":0,"lastLogin":1679740658000,"phone":"4432","userRegisterTime":1679740658000,"userSex":"0","userid":6,"username":"9"},{"email":"7","firstname":"发","isSuperuser":0,"lastLogin":1679740660000,"phone":"4432","userRegisterTime":1679740660000,"userSex":"0","userid":7,"username":"999"},{"email":"8","firstname":"有","isSuperuser":0,"lastLogin":1688107072000,"phone":"99","userRegisterTime":1688107072000,"userSex":"0","userid":329873085274656768,"username":"55"}],"total":8},"message":"获取成功","success":true}
+2023-07-01 23:41:53.979 INFO  com.example.blog.aspect.LogAspect                 :92   [32m330372378683117568[0;39m ------------- 结束 耗时：879 ms -------------
+2023-07-01 23:43:02.486 INFO  com.example.blog.aspect.LogAspect                 :54   [32m330372669709094912[0;39m ------------- 开始 -------------
+2023-07-01 23:43:02.487 INFO  com.example.blog.aspect.LogAspect                 :55   [32m330372669709094912[0;39m 请求地址: http://localhost:8080/user/list GET
+2023-07-01 23:43:02.487 INFO  com.example.blog.aspect.LogAspect                 :56   [32m330372669709094912[0;39m 类名方法: com.example.blog.controller.UserController.list
+2023-07-01 23:43:02.487 INFO  com.example.blog.aspect.LogAspect                 :57   [32m330372669709094912[0;39m 远程地址: 127.0.0.1
+2023-07-01 23:43:02.487 INFO  com.example.blog.aspect.LogAspect                 :79   [32m330372669709094912[0;39m 请求参数: [{"page":0,"size":0}]
+2023-07-01 23:43:02.490 DEBUG c.e.blog.mapper.UserMapper.selectByExample_COUNT  :137  [32m330372669709094912[0;39m ==>  Preparing: SELECT count(0) FROM t_users
+2023-07-01 23:43:02.491 DEBUG c.e.blog.mapper.UserMapper.selectByExample_COUNT  :137  [32m330372669709094912[0;39m ==> Parameters: 
+2023-07-01 23:43:02.494 TRACE c.e.blog.mapper.UserMapper.selectByExample_COUNT  :143  [32m330372669709094912[0;39m <==    Columns: count(0)
+2023-07-01 23:43:02.494 TRACE c.e.blog.mapper.UserMapper.selectByExample_COUNT  :143  [32m330372669709094912[0;39m <==        Row: 8
+2023-07-01 23:43:02.495 DEBUG c.e.blog.mapper.UserMapper.selectByExample_COUNT  :137  [32m330372669709094912[0;39m <==      Total: 1
+2023-07-01 23:43:02.495 DEBUG com.example.blog.mapper.UserMapper.selectByExample:137  [32m330372669709094912[0;39m ==>  Preparing: select userid , username, `password`, user_sex, email, phone, firstname, lastname, avatar, is_superuser, last_login, user_register_time from t_users
+2023-07-01 23:43:02.495 DEBUG com.example.blog.mapper.UserMapper.selectByExample:137  [32m330372669709094912[0;39m ==> Parameters: 
+2023-07-01 23:43:02.496 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m330372669709094912[0;39m <==    Columns: userid, username, password, user_sex, email, phone, firstname, lastname, avatar, is_superuser, last_login, user_register_time
+2023-07-01 23:43:02.497 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m330372669709094912[0;39m <==        Row: 1, 4, 3, 1, 1, 222, 去, 4324, 123, 777, 2023-03-14 20:06:30, 2023-03-16 20:06:25
+2023-07-01 23:43:02.497 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m330372669709094912[0;39m <==        Row: 2, 5, ereter, 0, 2, 4432, 我, null, null, 0, 2023-03-25 18:40:06, 2023-03-25 18:40:06
+2023-07-01 23:43:02.498 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m330372669709094912[0;39m <==        Row: 3, 6, 3, 0, 3, 222, 额, 4324, 123, 777, 2023-03-14 20:06:30, 2023-03-16 20:06:25
+2023-07-01 23:43:02.500 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m330372669709094912[0;39m <==        Row: 4, 7, 23424234, 0, 4, 12313, 人, null, null, 0, 2023-03-25 16:48:41, 2023-03-25 16:48:41
+2023-07-01 23:43:02.500 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m330372669709094912[0;39m <==        Row: 5, 4, ereter, 1, 5, 4432, 他, null, null, 0, 2023-03-25 16:51:25, 2023-03-25 16:51:25
+2023-07-01 23:43:02.501 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m330372669709094912[0;39m <==        Row: 6, 9, ereter, 0, 6, 4432, 有, null, null, 0, 2023-03-25 18:37:38, 2023-03-25 18:37:38
+2023-07-01 23:43:02.501 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m330372669709094912[0;39m <==        Row: 7, 999, ereter, 0, 7, 4432, 发, null, null, 0, 2023-03-25 18:37:40, 2023-03-25 18:37:40
+2023-07-01 23:43:02.502 TRACE com.example.blog.mapper.UserMapper.selectByExample:143  [32m330372669709094912[0;39m <==        Row: 329873085274656768, 55, 77, 0, 8, 99, 有, null, null, 0, 2023-06-30 14:37:52, 2023-06-30 14:37:52
+2023-07-01 23:43:02.503 DEBUG com.example.blog.mapper.UserMapper.selectByExample:137  [32m330372669709094912[0;39m <==      Total: 8
+2023-07-01 23:43:02.505 INFO  com.example.blog.aspect.LogAspect                 :91   [32m330372669709094912[0;39m 返回结果: {"data":{"list":[{"avatar":"123","email":"1","firstname":"去","isSuperuser":777,"lastLogin":1678795590000,"phone":"222","userRegisterTime":1678968385000,"userSex":"1","userid":1,"username":"4"},{"email":"2","firstname":"我","isSuperuser":0,"lastLogin":1679740806000,"phone":"4432","userRegisterTime":1679740806000,"userSex":"0","userid":2,"username":"5"},{"avatar":"123","email":"3","firstname":"额","isSuperuser":777,"lastLogin":1678795590000,"phone":"222","userRegisterTime":1678968385000,"userSex":"0","userid":3,"username":"6"},{"email":"4","firstname":"人","isSuperuser":0,"lastLogin":1679734121000,"phone":"12313","userRegisterTime":1679734121000,"userSex":"0","userid":4,"username":"7"},{"email":"5","firstname":"他","isSuperuser":0,"lastLogin":1679734285000,"phone":"4432","userRegisterTime":1679734285000,"userSex":"1","userid":5,"username":"4"},{"email":"6","firstname":"有","isSuperuser":0,"lastLogin":1679740658000,"phone":"4432","userRegisterTime":1679740658000,"userSex":"0","userid":6,"username":"9"},{"email":"7","firstname":"发","isSuperuser":0,"lastLogin":1679740660000,"phone":"4432","userRegisterTime":1679740660000,"userSex":"0","userid":7,"username":"999"},{"email":"8","firstname":"有","isSuperuser":0,"lastLogin":1688107072000,"phone":"99","userRegisterTime":1688107072000,"userSex":"0","userid":329873085274656768,"username":"55"}],"total":8},"message":"获取成功","success":true}
+2023-07-01 23:43:02.505 INFO  com.example.blog.aspect.LogAspect                 :92   [32m330372669709094912[0;39m ------------- 结束 耗时：19 ms -------------
+2023-07-01 23:43:24.903 INFO  com.example.blog.aspect.LogAspect                 :54   [32m330372763732807680[0;39m ------------- 开始 -------------
+2023-07-01 23:43:24.904 INFO  com.example.blog.aspect.LogAspect                 :55   [32m330372763732807680[0;39m 请求地址: http://localhost:8080/user/getpassword GET
+2023-07-01 23:43:24.904 INFO  com.example.blog.aspect.LogAspect                 :56   [32m330372763732807680[0;39m 类名方法: com.example.blog.controller.UserController.getpassword
+2023-07-01 23:43:24.904 INFO  com.example.blog.aspect.LogAspect                 :57   [32m330372763732807680[0;39m 远程地址: 127.0.0.1
+2023-07-01 23:43:24.904 INFO  com.example.blog.aspect.LogAspect                 :79   [32m330372763732807680[0;39m 请求参数: []
+2023-07-01 23:43:24.904 INFO  com.example.blog.aspect.LogAspect                 :91   [32m330372763732807680[0;39m 返回结果: {"data":"333333333333","success":true}
+2023-07-01 23:43:24.904 INFO  com.example.blog.aspect.LogAspect                 :92   [32m330372763732807680[0;39m ------------- 结束 耗时：1 ms -------------
+2023-07-01 23:43:28.600 INFO  com.example.blog.aspect.LogAspect                 :54   [32m330372779239149568[0;39m ------------- 开始 -------------
+2023-07-01 23:43:28.601 INFO  com.example.blog.aspect.LogAspect                 :55   [32m330372779239149568[0;39m 请求地址: http://localhost:8080/user/getpassword GET
+2023-07-01 23:43:28.602 INFO  com.example.blog.aspect.LogAspect                 :56   [32m330372779239149568[0;39m 类名方法: com.example.blog.controller.UserController.getpassword
+2023-07-01 23:43:28.602 INFO  com.example.blog.aspect.LogAspect                 :57   [32m330372779239149568[0;39m 远程地址: 127.0.0.1
+2023-07-01 23:43:28.602 INFO  com.example.blog.aspect.LogAspect                 :79   [32m330372779239149568[0;39m 请求参数: []
+2023-07-01 23:43:28.602 INFO  com.example.blog.aspect.LogAspect                 :91   [32m330372779239149568[0;39m 返回结果: {"data":"333333333333","success":true}
+2023-07-01 23:43:28.602 INFO  com.example.blog.aspect.LogAspect                 :92   [32m330372779239149568[0;39m ------------- 结束 耗时：2 ms -------------
+2023-07-01 23:45:21.334 INFO  com.zaxxer.hikari.HikariDataSource                :350  [32m                  [0;39m HikariPool-1 - Shutdown initiated...
+2023-07-01 23:45:21.353 INFO  com.zaxxer.hikari.HikariDataSource                :352  [32m                  [0;39m HikariPool-1 - Shutdown completed.
+2023-07-01 23:45:21.530 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 21388 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-07-01 23:45:21.530 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-07-01 23:45:21.852 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-07-01 23:45:21.853 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-07-01 23:45:21.857 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 3ms. Found 0 Redis repository interfaces.
+2023-07-01 23:45:21.966 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-07-01 23:45:21.967 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-01 23:45:21.967 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-07-01 23:45:21.967 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-07-01 23:45:21.985 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-07-01 23:45:21.985 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 453 ms
+2023-07-01 23:45:22.416 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-07-01 23:45:22.422 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-07-01 23:45:22.424 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-01 23:45:22.426 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 0.936 seconds (JVM running for 295.469)
+2023-07-01 23:45:22.427 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener :63   [32m                  [0;39m Condition evaluation unchanged
+2023-07-01 23:45:32.260 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 21388 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-07-01 23:45:32.261 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-07-01 23:45:32.339 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-07-01 23:45:32.339 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-07-01 23:45:32.343 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 3ms. Found 0 Redis repository interfaces.
+2023-07-01 23:45:32.394 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-07-01 23:45:32.394 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-01 23:45:32.394 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-07-01 23:45:32.394 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-07-01 23:45:32.407 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-07-01 23:45:32.408 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 146 ms
+2023-07-01 23:45:32.631 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-07-01 23:45:32.636 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-07-01 23:45:32.638 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-01 23:45:32.642 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 0.401 seconds (JVM running for 305.684)
+2023-07-01 23:45:32.642 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener :63   [32m                  [0;39m Condition evaluation unchanged
+2023-07-01 23:45:39.403 INFO  com.example.blog.BlogApplication                  :55   [32m                  [0;39m Starting BlogApplication on LAPTOP-TR0VVFJE with PID 21388 (D:\IDEA\demo\blog\target\classes started by 陈 in D:\IDEA\demo\blog)
+2023-07-01 23:45:39.404 INFO  com.example.blog.BlogApplication                  :651  [32m                  [0;39m No active profile set, falling back to default profiles: default
+2023-07-01 23:45:39.479 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :249  [32m                  [0;39m Multiple Spring Data modules found, entering strict repository configuration mode!
+2023-07-01 23:45:39.479 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :127  [32m                  [0;39m Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-07-01 23:45:39.482 INFO  o.s.d.r.config.RepositoryConfigurationDelegate    :187  [32m                  [0;39m Finished Spring Data repository scanning in 2ms. Found 0 Redis repository interfaces.
+2023-07-01 23:45:39.536 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :108  [32m                  [0;39m Tomcat initialized with port(s): 8080 (http)
+2023-07-01 23:45:39.536 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Initializing ProtocolHandler ["http-nio-8080"]
+2023-07-01 23:45:39.536 INFO  org.apache.catalina.core.StandardService          :173  [32m                  [0;39m Starting service [Tomcat]
+2023-07-01 23:45:39.536 INFO  org.apache.catalina.core.StandardEngine           :173  [32m                  [0;39m Starting Servlet engine: [Apache Tomcat/9.0.41]
+2023-07-01 23:45:39.549 INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] :173  [32m                  [0;39m Initializing Spring embedded WebApplicationContext
+2023-07-01 23:45:39.549 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext    :285  [32m                  [0;39m Root WebApplicationContext: initialization completed in 144 ms
+2023-07-01 23:45:39.789 INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer    :58   [32m                  [0;39m LiveReload server is running on port 35729
+2023-07-01 23:45:39.795 INFO  org.apache.coyote.http11.Http11NioProtocol        :173  [32m                  [0;39m Starting ProtocolHandler ["http-nio-8080"]
+2023-07-01 23:45:39.797 INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer      :220  [32m                  [0;39m Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-01 23:45:39.801 INFO  com.example.blog.BlogApplication                  :61   [32m                  [0;39m Started BlogApplication in 0.415 seconds (JVM running for 312.843)
+2023-07-01 23:45:39.802 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener :63   [32m                  [0;39m Condition evaluation unchanged

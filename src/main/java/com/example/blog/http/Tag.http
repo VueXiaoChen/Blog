@@ -1,0 +1,26 @@
+###
+GET http://localhost:8080/tag/list
+
+###
+
+###
+GET http://localhost:8080/tag/bloglist?blogId=50
+
+###
+
+###
+GET http://localhost:8080/tag/delete/5
+
+###
+
+
+###
+POST http://localhost:8080/tag/save
+Content-Type: application/json
+
+{
+  "tagId": 3,
+  "tagName": "5555555555555555"
+}
+
+###
