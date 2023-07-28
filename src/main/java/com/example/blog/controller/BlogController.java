@@ -26,7 +26,7 @@ public class BlogController {
 
     @GetMapping("/list")
     //@Valid  开启参数检验
-    public CommonResp list(BlogFindReq blogFindReq) {
+    public CommonResp list(@Validated BlogFindReq blogFindReq) {
         //返回信息里面定义返回的类型
         CommonResp<PageResp<BlogResp>> resp = new CommonResp<>();
         //接收数据库返回的数据

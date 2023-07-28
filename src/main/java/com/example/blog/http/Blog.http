@@ -1,5 +1,5 @@
 ###
-GET http://localhost:8080/blog/list?page=3&size=10
+GET http://localhost:8080/blog/list?userid=1
 
 ###
 ###

@@ -11,6 +11,7 @@ import java.util.List;
 public class BlogFindReq extends PageReq {
     private Long blogId;
     private String blogTitle;
+    @NotNull(message = "【用户id=>userid】不能为空")
     private Long userid;
     private Integer typeId;
     private Integer blogStatus;
