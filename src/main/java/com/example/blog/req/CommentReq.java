@@ -3,18 +3,19 @@ package com.example.blog.req;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class CommentReq extends PageReq {
     private Long commentId;
 
     private String commentContent;
-
+    @NotNull(message = "博客blogId不能为空")
     private Long blogId;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createtime;
-
+    @NotNull(message = "用户userid不能为空")
     private Long userid;
 
     private Integer replyid;

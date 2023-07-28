@@ -23,7 +23,7 @@ public class CommentController {
 
     @GetMapping("/list")
     //@Valid  开启参数检验
-    public CommonResp list(CommentReq commentReq) {
+    public CommonResp list(@Validated CommentReq commentReq) {
         //返回信息里面定义返回的类型
         CommonResp<PageResp<CommentResp>> resp = new CommonResp<>();
         //接收数据库返回的数据
