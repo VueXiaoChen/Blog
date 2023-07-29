@@ -1,11 +1,23 @@
 package com.example.blog.resp;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class UserLoadingResp {
+//序列化，使用redis之后需要序列化
+public class UserLoadingResp implements Serializable {
     private Long userid;
 
     private String username;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    private String token;
 
     public Long getUserid() {
         return userid;
@@ -22,16 +34,12 @@ public class UserLoadingResp {
     public void setUsername(String username) {
         this.username = username;
     }
-    
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", userid=").append(userid);
-        sb.append(", username=").append(username);
-        sb.append("]");
-        return sb.toString();
+        return "UserLoadingResp{" +
+                "userid=" + userid +
+                ", username='" + username + '\'' +
+                ", token='" + token + '\'' +
+                '}';
     }
 }

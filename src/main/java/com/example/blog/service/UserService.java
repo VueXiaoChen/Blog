@@ -2,6 +2,8 @@ package com.example.blog.service;
 
 import com.example.blog.domain.User;
 import com.example.blog.domain.UserExample;
+import com.example.blog.exception.BusinessException;
+import com.example.blog.exception.BusinessExceptionCode;
 import com.example.blog.mapper.UserMapper;
 import com.example.blog.req.UserLoadingReq;
 import com.example.blog.req.UserReq;
@@ -13,7 +15,10 @@ import com.example.blog.util.CopyUtil;
 import com.example.blog.util.SnowFlake;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 
 import javax.annotation.Resource;
@@ -24,7 +29,7 @@ import java.util.List;
 @Service
 public class UserService {
     //打印日志
-    /*private static final Logger LOG = (Logger) LoggerFactory.getLogger(UserService.class);*/
+    private static final Logger LOG = (Logger) LoggerFactory.getLogger(UserService.class);
     @Resource
     public UserMapper userMapper;
     @Resource
@@ -98,11 +103,42 @@ public class UserService {
         //删除数据
         userMapper.deleteByIds(userid);
     }
+    //查询是否有相同的用户名
+    public User selectByLoginName(String LoadingName){
+        //固定写法
+        UserExample example = new UserExample();
+        //固定写法
+        UserExample.Criteria criteria = example.createCriteria();
+        //查询用户名
+        criteria.andUsernameEqualTo(LoadingName);
+        //返回查询的实体类
+        List<User> userList = userMapper.selectByExample(example);
+        //判断是否有数据
+        if(CollectionUtils.isEmpty(userList)){
+            return null;
+        }else{
+            return userList.get(0);
+        }
+    }
+
 
     public UserLoadingResp loading(UserLoadingReq userLoadingReq) {
-    
-
-        return null;
+        User user = selectByLoginName(userLoadingReq.getUsername());
+        LOG.info("用户名不存在",userLoadingReq.getUsername());
+        if(ObjectUtils.isEmpty(user)){
+            //判断用户名是否一样
+            throw new BusinessException(BusinessExceptionCode.USER_LOGIN_NAME_EXIST);
+        }else{
+            if(user.getPassword().equals(userLoadingReq.getPassword())){
+                //登录成功
+                UserLoadingResp userLoadingResp = CopyUtil.copy(user,UserLoadingResp.class);
+                LOG.info("登录成功");
+                return userLoadingResp;
+            }else{
+                //账号或者密码错误
+                throw new BusinessException(BusinessExceptionCode.LOGIN_USER_ERROR);
+            }
+        }
     }
 
 }

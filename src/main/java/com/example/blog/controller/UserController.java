@@ -6,8 +6,12 @@ import com.example.blog.req.UserReq;
 import com.example.blog.req.UserSaveReq;
 import com.example.blog.resp.*;
 import com.example.blog.service.UserService;
+import com.example.blog.util.SnowFlake;
 import com.github.pagehelper.PageHelper;
 import org.apache.ibatis.annotations.Param;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,14 +24,21 @@ import javax.crypto.Cipher;
 import java.security.KeyFactory;
 import java.security.PublicKey;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
+    private static final Logger LOG = (Logger) LoggerFactory.getLogger(UserService.class);
     @Resource
     private UserService userService;
 
+    @Resource
+    private RedisTemplate redisTemplate;
 
+    @Resource
+    private SnowFlake snowFlake;
 
     /*@GetMapping("/list")
     public List<User> list(){
@@ -72,8 +83,16 @@ public class UserController {
         CommonResp<UserLoadingResp> resp = new CommonResp<>();
         //保存数据
         UserLoadingResp userLoadingResp = userService.loading(userLoadingReq);
+        //雪花算法生成token
+        Long token = snowFlake.nextId();
+        LOG.info("生成单点登录的token:{},并放入redis中",token);
+        //token设置
+        userLoadingResp.setToken(token.toString());
 
-
+        redisTemplate.opsForValue().set(token,userLoadingResp,3600*24*30, TimeUnit.SECONDS);
+        //储存信息
+        resp.setMessage("登录成功");
+        resp.setData(userLoadingResp);
         return resp;
     }
 
