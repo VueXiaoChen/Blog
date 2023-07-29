@@ -1,15 +1,13 @@
 package com.example.blog.service;
 
-import com.example.blog.domain.Blog;
-import com.example.blog.domain.BlogExample;
-import com.example.blog.domain.Tag;
-import com.example.blog.domain.TagExample;
+import com.example.blog.domain.*;
 import com.example.blog.mapper.BlogMapper;
 import com.example.blog.mapper.TagMapper;
 import com.example.blog.req.BlogFindReq;
 import com.example.blog.req.BlogReq;
 import com.example.blog.req.TagReq;
 import com.example.blog.resp.BlogResp;
+import com.example.blog.resp.BlogTypeResp;
 import com.example.blog.resp.PageResp;
 import com.example.blog.resp.TagResp;
 import com.example.blog.util.CopyUtil;
@@ -64,6 +62,22 @@ public class TagService {
         //将分页的数据加入类
         pageResp.setList(data);
         return pageResp;
+    }
+
+    //检查标签是否有重复的
+    public List<TagResp> FingByTagName(String tagName) {
+        //固定写法
+        TagExample example = new TagExample();
+        //固定写法
+        TagExample.Criteria criteria = example.createCriteria();
+        if (!ObjectUtils.isEmpty(tagName)) {
+            criteria.andTagNameEqualTo(tagName);
+        }
+        //类接收返回的数据
+        List<Tag> tagList = tagMapper.selectByExample(example);
+        //将返回的数据进行封装,某些信息是不需要返回的
+        List<TagResp> data = CopyUtil.copyList(tagList, TagResp.class);
+        return data;
     }
 
     //保存数据

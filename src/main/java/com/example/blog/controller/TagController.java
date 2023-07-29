@@ -3,10 +3,7 @@ package com.example.blog.controller;
 import com.example.blog.req.BlogFindReq;
 import com.example.blog.req.BlogReq;
 import com.example.blog.req.TagReq;
-import com.example.blog.resp.BlogResp;
-import com.example.blog.resp.CommonResp;
-import com.example.blog.resp.PageResp;
-import com.example.blog.resp.TagResp;
+import com.example.blog.resp.*;
 import com.example.blog.service.BlogService;
 import com.example.blog.service.TagService;
 import org.springframework.util.ObjectUtils;
@@ -56,13 +53,21 @@ public class TagController {
     public CommonResp save(@Validated @RequestBody TagReq tagReq) {
         //返回信息里面定义返回的类型
         CommonResp resp = new CommonResp<>();
-        //保存数据
-        tagService.save(tagReq);
-        //将信息添加到返回信息里
-        if (ObjectUtils.isEmpty(tagReq.getTagId())) {
-            resp.setMessage("保存成功");
-        } else {
-            resp.setMessage("修改成功");
+        if (!ObjectUtils.isEmpty(tagReq.getTagName())) {
+            List<TagResp> tagResp = tagService.FingByTagName(tagReq.getTagName());
+            if (tagResp.size() >= 1) {
+                resp.setMessage("博客标签已经存在");
+                return resp;
+            } else {
+                //保存数据
+                tagService.save(tagReq);
+                //将信息添加到返回信息里
+                if (ObjectUtils.isEmpty(tagReq.getTagId())) {
+                    resp.setMessage("保存成功");
+                } else {
+                    resp.setMessage("修改成功");
+                }
+            }
         }
         //将信息添加到返回信息里
         return resp;

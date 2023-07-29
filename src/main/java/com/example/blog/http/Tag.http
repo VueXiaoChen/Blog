@@ -19,8 +19,7 @@ POST http://localhost:8080/tag/save
 Content-Type: application/json
 
 {
-  "tagId": 3,
-  "tagName": "5555555555555555"
+  "tagName": "我是谁啊啊啊啊啊啊"
 }
 
 ###
