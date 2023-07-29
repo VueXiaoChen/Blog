@@ -1,9 +1,19 @@
 <script setup lang="ts">
 import { ref,onMounted } from 'vue'
-import request from '../service'
+import axios from "axios";
 const count = ref(0)
+// async function ceshi(){
+//     axios.post("encode/HotComments",{
+//         format : 'json',
+//     }).then((res)=>{
+//         console.log(res);   
+//     })
+// }
+
 onMounted(async () => {
+    
 })
+
 
 </script>
 
