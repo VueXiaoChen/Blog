@@ -3,9 +3,11 @@ package com.example.blog.service;
 import com.example.blog.domain.User;
 import com.example.blog.domain.UserExample;
 import com.example.blog.mapper.UserMapper;
+import com.example.blog.req.UserLoadingReq;
 import com.example.blog.req.UserReq;
 import com.example.blog.req.UserSaveReq;
 import com.example.blog.resp.PageResp;
+import com.example.blog.resp.UserLoadingResp;
 import com.example.blog.resp.UserResp;
 import com.example.blog.util.CopyUtil;
 import com.example.blog.util.SnowFlake;
@@ -96,4 +98,11 @@ public class UserService {
         //删除数据
         userMapper.deleteByIds(userid);
     }
+
+    public UserLoadingResp loading(UserLoadingReq userLoadingReq) {
+    
+
+        return null;
+    }
+
 }
