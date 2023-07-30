@@ -2,7 +2,7 @@
 import { onBeforeUnmount, ref, shallowRef, onMounted } from 'vue'
 import axios from "axios";
 import { Tool } from "../util/tool"
-
+import { ElMessage } from 'element-plus'
 let websocket: any;
 let token: any;
 
@@ -11,10 +11,10 @@ const onOpen = () => {
 };
 const onMessage = (event: any) => {
     console.log('WebSocket收到消息：', event.data);
-    Notification['info']({
-        message: '收到消息',
-        description: event.data,
-    });
+    ElMessage({
+        message:event.data,
+        type: 'success',
+    })
 };
 const onError = () => {
     console.log('WebSocket连接错误，状态码：', websocket.readyState)
@@ -37,9 +37,9 @@ onMounted(async() => {
     if ('WebSocket' in window) {
         token = Tool.uuid(10);
         // 连接地址：ws://127.0.0.1:8880/ws/xxx
-        const url = "ws://127.0.0.1:5173/ws/" + token
+        const url = "ws://127.0.0.1:8080/ws/" + token
         websocket = new WebSocket(url);
-        initWebSocket()
+        await initWebSocket()
         // 关闭
         // websocket.close();s
     } else {

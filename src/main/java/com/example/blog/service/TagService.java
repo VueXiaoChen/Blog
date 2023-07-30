@@ -12,6 +12,7 @@ import com.example.blog.resp.PageResp;
 import com.example.blog.resp.TagResp;
 import com.example.blog.util.CopyUtil;
 import com.example.blog.util.SnowFlake;
+import com.example.blog.websocket.WebSocketServer;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,8 @@ public class TagService {
     @Resource
     public TagMapper tagMapper;
 
+    @Resource
+    public WebSocketServer webSocketServer;
     @Resource
     private SnowFlake snowFlake;
 
@@ -61,6 +64,7 @@ public class TagService {
         pageResp.setTotal(pageInfo.getTotal());
         //将分页的数据加入类
         pageResp.setList(data);
+        webSocketServer.sendInfo("我是测试webSocket的");
         return pageResp;
     }
 
