@@ -31,7 +31,7 @@ public class TagService {
     public TagMapper tagMapper;
 
     @Resource
-    public WebSocketServer webSocketServer;
+    public WebSocsService webSocsService;
     @Resource
     private SnowFlake snowFlake;
 
@@ -64,7 +64,7 @@ public class TagService {
         pageResp.setTotal(pageInfo.getTotal());
         //将分页的数据加入类
         pageResp.setList(data);
-        webSocketServer.sendInfo("我是测试webSocket的");
+        webSocsService.sendInfo("我是测试webSocket的");
         return pageResp;
     }
 
