@@ -89,10 +89,23 @@ public class UserController {
         //token设置
         userLoadingResp.setToken(token.toString());
 
-        redisTemplate.opsForValue().set(token,userLoadingResp,3600*24*30, TimeUnit.SECONDS);
+        redisTemplate.opsForValue().set(token.toString(),userLoadingResp,3600*24*30, TimeUnit.SECONDS);
         //储存信息
         resp.setMessage("登录成功");
         resp.setData(userLoadingResp);
+        return resp;
+    }
+
+
+    @GetMapping("/logout/{token}")
+    public CommonResp deletearrs(@PathVariable String token) {
+        //返回信息里面定义返回的类型
+        CommonResp resp = new CommonResp<>();
+        //删除token
+        redisTemplate.delete(token);
+        LOG.info("删除token:{}",token);
+        //将信息添加到返回信息里
+        resp.setMessage("退出成功");
         return resp;
     }
 
