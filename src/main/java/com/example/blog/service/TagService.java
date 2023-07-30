@@ -15,6 +15,7 @@ import com.example.blog.util.SnowFlake;
 import com.example.blog.websocket.WebSocketServer;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.slf4j.MDC;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -64,7 +65,9 @@ public class TagService {
         pageResp.setTotal(pageInfo.getTotal());
         //将分页的数据加入类
         pageResp.setList(data);
-        webSocsService.sendInfo("我是测试webSocket的");
+        //获取日志流水号ID
+        String logId = MDC.get("LOG_ID");
+        webSocsService.sendInfo("我是测试webSocket的",logId);
         return pageResp;
     }
 

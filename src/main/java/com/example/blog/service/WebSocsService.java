@@ -11,6 +11,7 @@ import com.example.blog.util.SnowFlake;
 import com.example.blog.websocket.WebSocketServer;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.slf4j.MDC;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
@@ -27,7 +28,8 @@ public class WebSocsService {
     public WebSocketServer webSocketServer;
 
     @Async
-    public void sendInfo(String message){
+    public void sendInfo(String message,String logId){
+        MDC.put("LOG_ID",logId);
         webSocketServer.sendInfo(message);
     }
 }
