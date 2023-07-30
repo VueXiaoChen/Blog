@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/user")
 public class UserController {
 
-    private static final Logger LOG = (Logger) LoggerFactory.getLogger(UserService.class);
+    private static final Logger LOG = (Logger) LoggerFactory.getLogger(UserController.class);
     @Resource
     private UserService userService;
 
