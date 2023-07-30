@@ -10,8 +10,9 @@ import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.HashMap;
 
-@Component
 @ServerEndpoint("/ws/{token}")
+@Component
+
 public class WebSocketServer {
     private static final Logger LOG = LoggerFactory.getLogger(WebSocketServer.class);
 

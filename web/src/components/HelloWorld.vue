@@ -1,57 +1,54 @@
 <script setup lang="ts">
 import { onBeforeUnmount, ref, shallowRef, onMounted } from 'vue'
 import axios from "axios";
-import '@wangeditor/editor/dist/css/style.css'
-import { Editor,Toolbar } from '@wangeditor/editor-for-vue'
-const count = ref(0)
-// async function ceshi(){
-//     axios.post("encode/HotComments",{
-//         format : 'json',
-//     }).then((res)=>{
-//         console.log(res);   
-//     })
-// }
+import { Tool } from "../util/tool"
 
+let websocket: any;
+let token: any;
 
-const mode = ref('default')
-// 编辑器实例，必须用 shallowRef
-const editorRef = shallowRef()
-const toolbarConfig = {}
-const editorConfig = { placeholder: '请输入内容...' }
-
-// 组件销毁时，也及时销毁编辑器
-onBeforeUnmount(() => {
-    const editor = editorRef.value
-    if (editor == null) return
-    editor.destroy()
+const onOpen = () => {
+    console.log('WebSocket连接成功，状态码：', websocket.readyState)
+};
+const onMessage = (event: any) => {
+    console.log('WebSocket收到消息：', event.data);
+    Notification['info']({
+        message: '收到消息',
+        description: event.data,
+    });
+};
+const onError = () => {
+    console.log('WebSocket连接错误，状态码：', websocket.readyState)
+};
+const onClose = () => {
+    console.log('WebSocket连接关闭，状态码：', websocket.readyState)
+};
+const initWebSocket = () => {
+    // 连接成功
+    websocket.onopen = onOpen;
+    // 收到消息的回调
+    websocket.onmessage = onMessage;
+    // 连接错误
+    websocket.onerror = onError;
+    // 连接关闭的回调
+    websocket.onclose = onClose;
+};
+onMounted(async() => {
+    // WebSocket
+    if ('WebSocket' in window) {
+        token = Tool.uuid(10);
+        // 连接地址：ws://127.0.0.1:8880/ws/xxx
+        const url = "ws://127.0.0.1:5173/ws/" + token
+        websocket = new WebSocket(url);
+        initWebSocket()
+        // 关闭
+        // websocket.close();s
+    } else {
+        alert('当前浏览器 不支持')
+    }
 })
-
-const handleCreated = (editor: any) => {
-    editorRef.value = editor // 记录 editor 实例，重要！
-}
-// 内容 HTML
-const valueHtml = ref('<p style="text-align: left;"><strong>我不是人么</strong></p><p style="text-align: left;"><span style="color: rgb(245, 219, 77);">我就不是人么</span></p><p style="text-align: left;"><span style="color: rgb(0, 0, 0);"><strong>测试一下我的</strong></span></p><p style="text-align: left;"><span style="color: rgb(0, 0, 0);">字体是是吗</span></p><p style="text-align: left;"><span style="color: rgb(0, 0, 0);"><u><em>测电动阿松大</em></u></span></p><p style="text-align: left;"><span style="color: rgb(0, 0, 0);">🤔🤡👀</span></p>')
-
-function ceshi(){
-    console.log(valueHtml.value);
-    
-}
-onMounted(async () => {
-    // setTimeout(() => {
-    //     valueHtml.value = '<p>模拟 Ajax 异步设置内容</p>'
-    // }, 1500)
-})
-
 
 </script>
 
-<template>
-    <div style="border: 1px solid #ccc">
-        <Toolbar style="border-bottom: 1px solid #ccc" :editor="editorRef" :defaultConfig="toolbarConfig" :mode="mode" />
-        <Editor style="height: 700px; overflow-y: hidden;" v-model="valueHtml" :defaultConfig="editorConfig" :mode="mode"
-            @onCreated="handleCreated" />
-    </div>
-    <el-button @click="ceshi">测试</el-button>
-</template>
+<template></template>
 
 <style scoped></style>

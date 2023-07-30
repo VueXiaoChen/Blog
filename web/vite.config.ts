@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     https: false,
+    port: 5173, //端口号
     proxy: {
       '/api': {
         target: 'https://api.bilibili.com/',
