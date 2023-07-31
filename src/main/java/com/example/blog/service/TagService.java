@@ -18,7 +18,9 @@ import com.example.blog.websocket.WebSocketServer;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.MDC;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -40,7 +42,7 @@ public class TagService {
     private SnowFlake snowFlake;
 
     @Resource
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String,Object> redisTemplate;
 
     public PageResp<TagResp> list(TagReq tagReq) {
         //固定写法
@@ -74,9 +76,13 @@ public class TagService {
         String logId = MDC.get("LOG_ID");
         //webSock发送消息
         webSocsService.sendInfo("我是测试webSocket的",logId);
-
-        //redisTemplate.convertAndSend(RedisCode.TOPIC_PRAISE,new MessageCollect("1","2","小陈","你是谁","3"));
-        redisTemplate.convertAndSend(RedisCode.TOPIC_PRAISE,new MessageCollect("1","2","小陈","你是谁","3"));
+        MessageCollect messageCollect = new MessageCollect();
+        messageCollect.setId("1");
+        messageCollect.setTitle("22222222222");
+        messageCollect.setUserId("2");
+        messageCollect.setToUserId("3");
+        messageCollect.setUserName("xiaochen");
+        redisTemplate.convertAndSend(RedisCode.TOPIC_PRAISE,messageCollect);
         return pageResp;
     }
 

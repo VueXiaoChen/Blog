@@ -44,13 +44,13 @@ public class MessagePraise implements Serializable {
      * @param toUserId
      *            收藏目标用户
      */
-    public MessagePraise(String id, String userId, String userName, String title, String toUserId) {
+    /*public MessagePraise(String id, String userId, String userName, String title, String toUserId) {
         super();
         this.id = id;
         this.userId = userId;
         this.userName = userName;
         this.title = title;
         this.toUserId = toUserId;
-    }
+    }*/
 
 }

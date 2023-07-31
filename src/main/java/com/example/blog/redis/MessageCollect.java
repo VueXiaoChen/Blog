@@ -1,10 +1,12 @@
 package com.example.blog.redis;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 public class MessageCollect implements Serializable {
     /**
@@ -44,13 +46,4 @@ public class MessageCollect implements Serializable {
      * @param toUserId
      *            收藏目标用户
      */
-    public MessageCollect(String id, String userId, String userName, String title, String toUserId) {
-        super();
-        this.id = id;
-        this.userId = userId;
-        this.userName = userName;
-        this.title = title;
-        this.toUserId = toUserId;
-    }
-
 }
