@@ -604,6 +604,246 @@ public class BlogExample {
             addCriterion("cover_image not between", value1, value2, "coverImage");
             return (Criteria) this;
         }
+
+        public Criteria andLikeIsNull() {
+            addCriterion("`like` is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeIsNotNull() {
+            addCriterion("`like` is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeEqualTo(Integer value) {
+            addCriterion("`like` =", value, "like");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeNotEqualTo(Integer value) {
+            addCriterion("`like` <>", value, "like");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeGreaterThan(Integer value) {
+            addCriterion("`like` >", value, "like");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("`like` >=", value, "like");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeLessThan(Integer value) {
+            addCriterion("`like` <", value, "like");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeLessThanOrEqualTo(Integer value) {
+            addCriterion("`like` <=", value, "like");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeIn(List<Integer> values) {
+            addCriterion("`like` in", values, "like");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeNotIn(List<Integer> values) {
+            addCriterion("`like` not in", values, "like");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeBetween(Integer value1, Integer value2) {
+            addCriterion("`like` between", value1, value2, "like");
+            return (Criteria) this;
+        }
+
+        public Criteria andLikeNotBetween(Integer value1, Integer value2) {
+            addCriterion("`like` not between", value1, value2, "like");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectIsNull() {
+            addCriterion("`collect` is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectIsNotNull() {
+            addCriterion("`collect` is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectEqualTo(Integer value) {
+            addCriterion("`collect` =", value, "collect");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectNotEqualTo(Integer value) {
+            addCriterion("`collect` <>", value, "collect");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectGreaterThan(Integer value) {
+            addCriterion("`collect` >", value, "collect");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectGreaterThanOrEqualTo(Integer value) {
+            addCriterion("`collect` >=", value, "collect");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectLessThan(Integer value) {
+            addCriterion("`collect` <", value, "collect");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectLessThanOrEqualTo(Integer value) {
+            addCriterion("`collect` <=", value, "collect");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectIn(List<Integer> values) {
+            addCriterion("`collect` in", values, "collect");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectNotIn(List<Integer> values) {
+            addCriterion("`collect` not in", values, "collect");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectBetween(Integer value1, Integer value2) {
+            addCriterion("`collect` between", value1, value2, "collect");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectNotBetween(Integer value1, Integer value2) {
+            addCriterion("`collect` not between", value1, value2, "collect");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubscribeIsNull() {
+            addCriterion("subscribe is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubscribeIsNotNull() {
+            addCriterion("subscribe is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubscribeEqualTo(Integer value) {
+            addCriterion("subscribe =", value, "subscribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubscribeNotEqualTo(Integer value) {
+            addCriterion("subscribe <>", value, "subscribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubscribeGreaterThan(Integer value) {
+            addCriterion("subscribe >", value, "subscribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubscribeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("subscribe >=", value, "subscribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubscribeLessThan(Integer value) {
+            addCriterion("subscribe <", value, "subscribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubscribeLessThanOrEqualTo(Integer value) {
+            addCriterion("subscribe <=", value, "subscribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubscribeIn(List<Integer> values) {
+            addCriterion("subscribe in", values, "subscribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubscribeNotIn(List<Integer> values) {
+            addCriterion("subscribe not in", values, "subscribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubscribeBetween(Integer value1, Integer value2) {
+            addCriterion("subscribe between", value1, value2, "subscribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubscribeNotBetween(Integer value1, Integer value2) {
+            addCriterion("subscribe not between", value1, value2, "subscribe");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentIsNull() {
+            addCriterion("`comment` is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentIsNotNull() {
+            addCriterion("`comment` is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentEqualTo(Integer value) {
+            addCriterion("`comment` =", value, "comment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentNotEqualTo(Integer value) {
+            addCriterion("`comment` <>", value, "comment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentGreaterThan(Integer value) {
+            addCriterion("`comment` >", value, "comment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentGreaterThanOrEqualTo(Integer value) {
+            addCriterion("`comment` >=", value, "comment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentLessThan(Integer value) {
+            addCriterion("`comment` <", value, "comment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentLessThanOrEqualTo(Integer value) {
+            addCriterion("`comment` <=", value, "comment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentIn(List<Integer> values) {
+            addCriterion("`comment` in", values, "comment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentNotIn(List<Integer> values) {
+            addCriterion("`comment` not in", values, "comment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentBetween(Integer value1, Integer value2) {
+            addCriterion("`comment` between", value1, value2, "comment");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentNotBetween(Integer value1, Integer value2) {
+            addCriterion("`comment` not between", value1, value2, "comment");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

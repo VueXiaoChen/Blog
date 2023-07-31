@@ -29,6 +29,66 @@ public class BlogReq extends PageReq {
 
     private String blogContent;
 
+    private Integer like;
+
+    private Integer collect;
+
+    @Override
+    public String toString() {
+        return "BlogReq{" +
+                "blogId=" + blogId +
+                ", blogTitle='" + blogTitle + '\'' +
+                ", userid=" + userid +
+                ", typeId=" + typeId +
+                ", blogStatus=" + blogStatus +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", coverImage='" + coverImage + '\'' +
+                ", blogContent='" + blogContent + '\'' +
+                ", like=" + like +
+                ", collect=" + collect +
+                ", subscribe=" + subscribe +
+                ", comment=" + comment +
+                ", tagBlog=" + tagBlog +
+                '}';
+    }
+
+    public Integer getLike() {
+        return like;
+    }
+
+    public void setLike(Integer like) {
+        this.like = like;
+    }
+
+    public Integer getCollect() {
+        return collect;
+    }
+
+    public void setCollect(Integer collect) {
+        this.collect = collect;
+    }
+
+    public Integer getSubscribe() {
+        return subscribe;
+    }
+
+    public void setSubscribe(Integer subscribe) {
+        this.subscribe = subscribe;
+    }
+
+    public Integer getComment() {
+        return comment;
+    }
+
+    public void setComment(Integer comment) {
+        this.comment = comment;
+    }
+
+    private Integer subscribe;
+
+    private Integer comment;
+
     private List<TagBlog> tagBlog;
 
     public List<TagBlog> getTagBlog() {
@@ -111,19 +171,4 @@ public class BlogReq extends PageReq {
         this.blogContent = blogContent;
     }
 
-    @Override
-    public String toString() {
-        return "BlogReq{" +
-                "blogId=" + blogId +
-                ", blogTitle='" + blogTitle + '\'' +
-                ", userid=" + userid +
-                ", typeId=" + typeId +
-                ", blogStatus=" + blogStatus +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                ", coverImage='" + coverImage + '\'' +
-                ", blogContent='" + blogContent + '\'' +
-                ", tagBlog=" + tagBlog +
-                '}';
-    }
 }

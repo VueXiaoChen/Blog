@@ -40,11 +40,12 @@
                              type="XMLMAPPER"/>
 
         <!--<table tableName="blog_type" domainObjectName="BlogType"/>
-        <table tableName="t_blog" domainObjectName="Blog"/>
+
         <table tableName="t_comment" domainObjectName="Comment"/>
         <table tableName="t_tag" domainObjectName="Tag"/>
-        <table tableName="t_tag_blog" domainObjectName="TagBlog"/>-->
-        <table tableName="t_users" domainObjectName="User"/>
+        <table tableName="t_tag_blog" domainObjectName="TagBlog"/>
+        <table tableName="t_users" domainObjectName="User"/>-->
+        <table tableName="t_blog" domainObjectName="Blog"/>
         <!--<table tableName="t_exam_paper_question_customer_answer" domainObjectName="ExaPaperQuestionCustomerAnswer"/>-->
 
 

@@ -26,6 +26,64 @@ public class BlogFindReq extends PageReq {
 
     private String blogContent;
 
+    @Override
+    public String toString() {
+        return "BlogFindReq{" +
+                "blogId=" + blogId +
+                ", blogTitle='" + blogTitle + '\'' +
+                ", userid=" + userid +
+                ", typeId=" + typeId +
+                ", blogStatus=" + blogStatus +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", coverImage='" + coverImage + '\'' +
+                ", blogContent='" + blogContent + '\'' +
+                ", like=" + like +
+                ", collect=" + collect +
+                ", subscribe=" + subscribe +
+                ", comment=" + comment +
+                '}';
+    }
+
+    public Integer getLike() {
+        return like;
+    }
+
+    public void setLike(Integer like) {
+        this.like = like;
+    }
+
+    public Integer getCollect() {
+        return collect;
+    }
+
+    public void setCollect(Integer collect) {
+        this.collect = collect;
+    }
+
+    public Integer getSubscribe() {
+        return subscribe;
+    }
+
+    public void setSubscribe(Integer subscribe) {
+        this.subscribe = subscribe;
+    }
+
+    public Integer getComment() {
+        return comment;
+    }
+
+    public void setComment(Integer comment) {
+        this.comment = comment;
+    }
+
+    private Integer like;
+
+    private Integer collect;
+
+    private Integer subscribe;
+
+    private Integer comment;
 
     public Long getBlogId() {
         return blogId;
@@ -99,18 +157,4 @@ public class BlogFindReq extends PageReq {
         this.blogContent = blogContent;
     }
 
-    @Override
-    public String toString() {
-        return "BlogFindReq{" +
-                "blogId=" + blogId +
-                ", blogTitle='" + blogTitle + '\'' +
-                ", userid=" + userid +
-                ", typeId=" + typeId +
-                ", blogStatus=" + blogStatus +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                ", coverImage='" + coverImage + '\'' +
-                ", blogContent='" + blogContent + '\'' +
-                '}';
-    }
 }
