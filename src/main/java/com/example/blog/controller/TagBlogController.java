@@ -1,16 +1,13 @@
 package com.example.blog.controller;
 
 import com.example.blog.req.TagBlogReq;
-import com.example.blog.req.TagReq;
 import com.example.blog.resp.CommonResp;
 import com.example.blog.resp.PageResp;
 import com.example.blog.resp.TagBlogResp;
-import com.example.blog.resp.TagResp;
 import com.example.blog.service.TagBlogService;
-import com.example.blog.service.TagService;
-import org.springframework.util.ObjectUtils;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 

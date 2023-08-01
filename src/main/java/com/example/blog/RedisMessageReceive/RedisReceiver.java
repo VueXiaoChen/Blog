@@ -2,10 +2,6 @@ package com.example.blog.RedisMessageReceive;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.example.blog.redis.MessageCollect;
-import com.example.blog.redis.MessageComment;
-import com.example.blog.redis.MessageFocus;
-import com.example.blog.redis.MessagePraise;
 import com.example.blog.resp.BlogResp;
 import com.example.blog.service.WebSocsService;
 import org.slf4j.Logger;
@@ -14,7 +10,6 @@ import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 
 
 @Component

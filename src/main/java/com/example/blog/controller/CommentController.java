@@ -1,19 +1,15 @@
 package com.example.blog.controller;
 
 import com.example.blog.req.CommentReq;
-import com.example.blog.req.TagReq;
 import com.example.blog.resp.CommentResp;
 import com.example.blog.resp.CommonResp;
 import com.example.blog.resp.PageResp;
-import com.example.blog.resp.TagResp;
 import com.example.blog.service.CommentService;
-import com.example.blog.service.TagService;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @RestController
 @RequestMapping("/comment")

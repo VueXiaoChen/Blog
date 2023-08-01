@@ -2,15 +2,10 @@ package com.example.blog.service;
 
 import com.example.blog.domain.Comment;
 import com.example.blog.domain.CommentExample;
-import com.example.blog.domain.Tag;
-import com.example.blog.domain.TagExample;
 import com.example.blog.mapper.CommentMapper;
-import com.example.blog.mapper.TagMapper;
 import com.example.blog.req.CommentReq;
-import com.example.blog.req.TagReq;
 import com.example.blog.resp.CommentResp;
 import com.example.blog.resp.PageResp;
-import com.example.blog.resp.TagResp;
 import com.example.blog.util.CopyUtil;
 import com.example.blog.util.SnowFlake;
 import com.github.pagehelper.PageHelper;

@@ -1,12 +1,10 @@
 package com.example.blog.req;
 
-import com.example.blog.domain.Tag;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
 import java.util.Date;
-import java.util.List;
 
 public class BlogFindReq extends PageReq {
     private Long blogId;

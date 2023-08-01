@@ -5,8 +5,8 @@
     <groupId>com.example</groupId>
     <artifactId>wiki</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>wiki</name>
-    <description>wiki</description>
+    <name>xiaochen</name>
+    <description>xiaochen</description>
 
     <properties>
         <java.version>1.8</java.version>

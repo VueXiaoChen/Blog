@@ -1,7 +1,6 @@
 package com.example.blog.req;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 public class TagReq extends PageReq {
     private Integer tagId;

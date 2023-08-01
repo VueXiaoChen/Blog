@@ -1,7 +1,6 @@
 package com.example.blog.resp;
 
 import com.example.blog.domain.Tag;
-import com.example.blog.domain.TagBlog;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 

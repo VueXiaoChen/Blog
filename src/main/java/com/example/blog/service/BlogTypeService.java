@@ -2,18 +2,10 @@ package com.example.blog.service;
 
 import com.example.blog.domain.BlogType;
 import com.example.blog.domain.BlogTypeExample;
-import com.example.blog.domain.User;
-import com.example.blog.domain.UserExample;
-import com.example.blog.mapper.BlogMapper;
 import com.example.blog.mapper.BlogTypeMapper;
-import com.example.blog.mapper.UserMapper;
 import com.example.blog.req.BlogTypeReq;
-import com.example.blog.req.UserReq;
-import com.example.blog.req.UserSaveReq;
 import com.example.blog.resp.BlogTypeResp;
-import com.example.blog.resp.CommonResp;
 import com.example.blog.resp.PageResp;
-import com.example.blog.resp.UserResp;
 import com.example.blog.util.CopyUtil;
 import com.example.blog.util.SnowFlake;
 import com.github.pagehelper.PageHelper;
@@ -22,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
 
 

@@ -1,7 +1,5 @@
 package com.example.blog.req;
 
-import com.example.blog.resp.PasswordReq;
-
 import java.util.Date;
 
 public class UserReq extends PageReq {

@@ -1,7 +1,6 @@
 package com.example.blog.resp;
 
 import java.io.Serializable;
-import java.util.Date;
 
 //序列化，使用redis之后需要序列化
 public class UserLoadingResp implements Serializable {
