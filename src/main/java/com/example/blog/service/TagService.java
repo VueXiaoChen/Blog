@@ -72,17 +72,7 @@ public class TagService {
         pageResp.setTotal(pageInfo.getTotal());
         //将分页的数据加入类
         pageResp.setList(data);
-        //获取日志流水号ID
-        String logId = MDC.get("LOG_ID");
-        //webSock发送消息
-        webSocsService.sendInfo("我是测试webSocket的",logId);
-        MessageCollect messageCollect = new MessageCollect();
-        messageCollect.setId("1");
-        messageCollect.setTitle("22222222222");
-        messageCollect.setUserId("2");
-        messageCollect.setToUserId("3");
-        messageCollect.setUserName("xiaochen");
-        redisTemplate.convertAndSend(RedisCode.TOPIC_PRAISE,messageCollect);
+
         return pageResp;
     }
 

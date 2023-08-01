@@ -56,6 +56,45 @@ public class BlogController {
         return resp;
     }
 
+    @PostMapping("/like")
+    //@RequestBody  定义传过来的参数是实体类
+    public CommonResp like(@Validated @RequestBody BlogReq blogReq) {
+        //返回信息里面定义返回的类型
+        CommonResp resp = new CommonResp<>();
+        //保存数据
+        blogService.like(blogReq);
+        //将信息添加到返回信息里
+        resp.setMessage("点赞成功");
+        //将信息添加到返回信息里
+        return resp;
+    }
+
+    @PostMapping("/focus")
+    //@RequestBody  定义传过来的参数是实体类
+    public CommonResp focus(@Validated @RequestBody BlogReq blogReq) {
+        //返回信息里面定义返回的类型
+        CommonResp resp = new CommonResp<>();
+        //保存数据
+        blogService.focus(blogReq);
+        //将信息添加到返回信息里
+        resp.setMessage("关注成功");
+        //将信息添加到返回信息里
+        return resp;
+    }
+
+    @PostMapping("/collect")
+    //@RequestBody  定义传过来的参数是实体类
+    public CommonResp collect(@Validated @RequestBody BlogReq blogReq) {
+        //返回信息里面定义返回的类型
+        CommonResp resp = new CommonResp<>();
+        //保存数据
+        blogService.collect(blogReq);
+        //将信息添加到返回信息里
+        resp.setMessage("收藏成功");
+        //将信息添加到返回信息里
+        return resp;
+    }
+
     //单个删除
     @GetMapping("/delete/{blogId}")
     //@PathVariable与{blogId}是绑定的

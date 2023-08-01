@@ -27,6 +27,51 @@ Content-Type: application/json
 
 
 ###
+
+###
+POST http://localhost:8080/blog/like
+Content-Type: application/json
+
+{
+  "blogId": 1,
+  "blogTitle": "11231",
+  "userid": 1,
+  "typeId": 1,
+  "coverImage": "1231231",
+  "blogContent": "2",
+  "tagBlog": []
+}
+###
+
+###
+POST http://localhost:8080/blog/focus
+Content-Type: application/json
+
+{
+  "blogId": 1,
+  "blogTitle": "11231",
+  "userid": 1,
+  "typeId": 1,
+  "coverImage": "1231231",
+  "blogContent": "2",
+  "tagBlog": []
+}
+###
+
+###
+POST http://localhost:8080/blog/collect
+Content-Type: application/json
+
+{
+  "blogId": 1,
+  "blogTitle": "11231",
+  "userid": 1,
+  "typeId": 1,
+  "coverImage": "1231231",
+  "blogContent": "2",
+  "tagBlog": []
+}
+###
 ###
 GET http://localhost:8080/blog/delete/37
 

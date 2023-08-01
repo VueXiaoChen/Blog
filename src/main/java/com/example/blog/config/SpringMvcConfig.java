@@ -24,7 +24,11 @@ public class SpringMvcConfig implements WebMvcConfigurer {
                         "/test/**",
                         "/redis/**",
                         "/user/login",
-                        "/**/list"
+                        "/**/list",
+                        "/**/save",
+                        "/**/like",
+                        "/**/focus",
+                        "/**/collect"
                 );
 
         registry.addInterceptor(actionInterceptor)

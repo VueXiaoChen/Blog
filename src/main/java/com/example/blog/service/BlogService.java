@@ -1,10 +1,14 @@
 package com.example.blog.service;
 
 import com.example.blog.domain.*;
+import com.example.blog.exception.BusinessException;
+import com.example.blog.exception.BusinessExceptionCode;
+import com.example.blog.exception.RedisCode;
 import com.example.blog.mapper.BlogMapper;
 import com.example.blog.mapper.BlogTypeMapper;
 import com.example.blog.mapper.TagBlogMapper;
 import com.example.blog.mapper.TagMapper;
+import com.example.blog.redis.MessageCollect;
 import com.example.blog.req.BlogFindReq;
 import com.example.blog.req.BlogReq;
 import com.example.blog.req.BlogTypeReq;
@@ -13,9 +17,13 @@ import com.example.blog.resp.BlogTypeResp;
 import com.example.blog.resp.PageResp;
 import com.example.blog.resp.TagResp;
 import com.example.blog.util.CopyUtil;
+import com.example.blog.util.RedisUtil;
+import com.example.blog.util.RequestContext;
 import com.example.blog.util.SnowFlake;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.slf4j.MDC;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -37,6 +45,15 @@ public class BlogService {
 
     @Resource
     private SnowFlake snowFlake;
+
+    @Resource
+    public RedisUtil redisUtil;
+
+    @Resource
+    public WebSocsService webSocsService;
+
+    @Resource
+    public RedisTemplate redisTemplate;
 
 
     public PageResp<BlogResp> list(BlogFindReq blogFindReq) {
@@ -93,6 +110,10 @@ public class BlogService {
         if (ObjectUtils.isEmpty(blogReq.getBlogId())) {
             blog.setCreateTime(new Date());
             blog.setUpdateTime(new Date());
+            blog.setCollect(0);
+            blog.setComment(0);
+            blog.setLike(0);
+            blog.setSubscribe(0);
             blog.setBlogStatus(0);
             blogMapper.insertSelective(blog);
             //数组blog标签
@@ -110,6 +131,45 @@ public class BlogService {
             //更新数据
             blog.setUpdateTime(new Date());
             blogMapper.updateByPrimaryKeySelective(blog);
+        }
+    }
+    //点赞
+    public void like(BlogReq blogReq) {
+        Blog blog = CopyUtil.copy(blogReq, Blog.class);
+        String ip = RequestContext.getRemoteAddr();
+        if(redisUtil.validateRepeat("LIKE_VOC"+blogReq.getBlogId() + blogReq.getUserid() + ip,3600*24)){
+            //redis发布消息
+            redisTemplate.convertAndSend(RedisCode.TOPIC_PRAISE,blogReq);
+            //更新点赞
+            blogMapper.updateByPrimaryKeySelective(blog);
+        }else{
+            throw new BusinessException(BusinessExceptionCode.VOTE_PRAISE);
+        }
+    }
+    //关注
+    public void focus(BlogReq blogReq) {
+        Blog blog = CopyUtil.copy(blogReq, Blog.class);
+        String ip = RequestContext.getRemoteAddr();
+        if(redisUtil.validateRepeat("FOCUS_VOC"+blogReq.getBlogId() + blogReq.getUserid() + ip,3600*24)){
+            //redis发布消息
+            redisTemplate.convertAndSend(RedisCode.TOPIC_FOCUS,blogReq);
+            //更新点赞
+            blogMapper.updateByPrimaryKeySelective(blog);
+        }else{
+            throw new BusinessException(BusinessExceptionCode.VOTE_FOCUS);
+        }
+    }
+    //收藏
+    public void collect(BlogReq blogReq) {
+        Blog blog = CopyUtil.copy(blogReq, Blog.class);
+        String ip = RequestContext.getRemoteAddr();
+        if(redisUtil.validateRepeat("COLLECT_VOC"+blogReq.getBlogId() + blogReq.getUserid() + ip,3600*24)){
+            //redis发布消息
+            redisTemplate.convertAndSend(RedisCode.TOPIC_COLLECT,blogReq);
+            //更新收藏
+            blogMapper.updateByPrimaryKeySelective(blog);
+        }else{
+            throw new BusinessException(BusinessExceptionCode.VOTE_COLLECT);
         }
     }
 
