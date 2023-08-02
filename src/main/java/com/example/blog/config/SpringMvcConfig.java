@@ -29,6 +29,7 @@ public class SpringMvcConfig implements WebMvcConfigurer {
                         "/**/like",
                         "/**/focus",
                         "/**/collect"
+
                 );
 
         registry.addInterceptor(actionInterceptor)
