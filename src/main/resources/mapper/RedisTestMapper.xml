@@ -105,7 +105,8 @@
     values (#{redisid,jdbcType=INTEGER}, #{left,jdbcType=INTEGER}, #{rigth,jdbcType=INTEGER}, 
       #{top,jdbcType=INTEGER}, #{bottom,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.blog.domain.RedisTest">
+  <insert id="insertSelective" parameterType="com.example.blog.domain.RedisTest" useGeneratedKeys="true"
+          keyColumn="redisid" keyProperty="redisid">
     insert into t_redis
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="redisid != null">

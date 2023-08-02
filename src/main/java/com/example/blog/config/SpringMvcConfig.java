@@ -31,10 +31,10 @@ public class SpringMvcConfig implements WebMvcConfigurer {
                         "/**/collect"
 
                 );
-
+        //    "/*/save",
         registry.addInterceptor(actionInterceptor)
                 .addPathPatterns(
-                        "/*/save",
+
                         "/*/delete/**",
                         "/*/reset-password");
     }

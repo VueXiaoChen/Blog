@@ -1,7 +1,15 @@
 ###
 GET http://localhost:8080/redis/find/1
-
 ###
 
+###
+POST http://localhost:8080/redis/save
+Content-Type: application/json
 
+{
+  "left": "2",
+  "rigth": "2",
+  "top": "2",
+  "bottom": "2"
+}
 ###
