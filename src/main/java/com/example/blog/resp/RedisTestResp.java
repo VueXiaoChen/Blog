@@ -2,7 +2,7 @@ package com.example.blog.resp;
 
 import java.io.Serializable;
 
-public class RedisTestResp {
+public class RedisTestResp implements Serializable{
     private Integer redisid;
 
     private Integer left;

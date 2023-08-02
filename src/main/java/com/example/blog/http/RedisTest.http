@@ -1,5 +1,5 @@
 ###
-GET http://localhost:8080/redis/find/1
+GET http://localhost:8080/redis/find/4
 ###
 
 ###
@@ -7,13 +7,25 @@ POST http://localhost:8080/redis/save
 Content-Type: application/json
 
 {
-  "left": "3",
-  "rigth": "2",
+  "left": "1111111111",
+  "rigth": "2123",
+  "top": "2",
+  "bottom": "2"
+}
+###
+###
+POST http://localhost:8080/redis/update
+Content-Type: application/json
+
+{
+  "redisid": 4,
+  "left": "465464654",
+  "rigth": "2123",
   "top": "2",
   "bottom": "2"
 }
 ###
 
 ###
-GET http://localhost:8080/redis/delete/3
+GET http://localhost:8080/redis/delete/2
 ###
