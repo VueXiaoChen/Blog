@@ -1,5 +1,7 @@
 package com.example.blog.resp;
 
+import java.io.Serializable;
+
 public class RedisTestResp {
     private Integer redisid;
 
