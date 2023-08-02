@@ -18,7 +18,7 @@ public class RedisTestController {
     @Resource
     private RedisTestService redisTestService;
 
-    //@Cacheable(value = "RedisCache",key = "#redisid",unless = "#result == null")
+    @Cacheable(value = "RedisTestCache",key = "#redisid",unless = "#result == null",condition = "#redisid!=null")
     @GetMapping("/find/{redisid}")
     //@Valid  开启参数检验
     public CommonResp find(Integer redisid) {
@@ -32,7 +32,7 @@ public class RedisTestController {
         resp.setData(data);
         return resp;
     }
-    //@CachePut(value = "RedisCache",key = "#redisTestReq.getRedisid")
+    //@CachePut(value = "RedisTestCache",key = "#redisTestReq.getRedisid")
     @PostMapping("/save")
     //@Valid  开启参数检验
     public CommonResp save(@RequestBody RedisTestReq redisTestReq) {
@@ -45,7 +45,7 @@ public class RedisTestController {
         return resp;
     }
 
-    //@CachePut(value = "RedisCache",key = "#redisTestReq.getRedisid")
+    //@CachePut(value = "RedisTestCache",key = "#redisTestReq.getRedisid")
     @PostMapping("/update")
     //@Valid  开启参数检验
     public CommonResp update(@RequestBody RedisTestReq redisTestReq) {
@@ -58,8 +58,8 @@ public class RedisTestController {
         return resp;
     }
 
-    //@CacheEvict(value = "RedisCache",key="#redisid")
-    @GetMapping("/delete")
+    @CacheEvict(value = "RedisTestCache",key="#redisid" ,condition = "#redisid!=null")
+    @GetMapping("/delete/{redisid}")
     public CommonResp delete(Integer redisid) {
         //返回信息里面定义返回的类型
         CommonResp resp = new CommonResp<>();

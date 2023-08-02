@@ -13,3 +13,7 @@ Content-Type: application/json
   "bottom": "2"
 }
 ###
+
+###
+GET http://localhost:8080/redis/delete/3
+###
