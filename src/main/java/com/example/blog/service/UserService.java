@@ -17,6 +17,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
@@ -35,6 +36,8 @@ public class UserService {
     @Resource
     private SnowFlake snowFlake;
 
+    @Resource
+    public RedisTemplate redisTemplate;
     public PageResp<UserResp> list(UserReq req) {
         //固定写法
         UserExample example = new UserExample();
@@ -59,17 +62,26 @@ public class UserService {
         if (!ObjectUtils.isEmpty(req.getFirstname())) {
             criteria.andFirstnameLike("%" + req.getFirstname() + "%");
         }
-
         //分页(获取从页面传来的数据)
         PageHelper.startPage(req.getPage(), req.getSize());
+        //定义分页
+        PageResp<UserResp> pageResp = new PageResp<>();
+        //List<User> userList = (List<User>) redisTemplate.opsForValue().get("redis:userall:");
+        //LOG.info("获取了redis数据{}",userList);
+        //if(userList == null){
+            //数据库中查
+            //类接收返回的数据
+            //userList = userMapper.selectByExample(example);
+            //写入Redis缓存
+            //redisTemplate.opsForValue().set("redis:userall:", userList);
+            //LOG.info("redis数据{}",userList);
+        //}
         //类接收返回的数据
         List<User> userList = userMapper.selectByExample(example);
         //将返回的数据进行封装,某些信息是不需要返回的
         List<UserResp> data = CopyUtil.copyList(userList, UserResp.class);
         //定义分页获取总数
         PageInfo<User> pageInfo = new PageInfo<>(userList);
-        //定义分页
-        PageResp<UserResp> pageResp = new PageResp<>();
         //将分页的数据进行总和
         pageResp.setTotal(pageInfo.getTotal());
         //将分页的数据加入类

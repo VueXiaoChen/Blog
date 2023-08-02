@@ -14,7 +14,7 @@ public class RedisUtil {
     private static final Logger LOG = LoggerFactory.getLogger(RedisUtil.class);
 
     @Resource
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String,String> redisTemplate;
 
     /**
      * true：不存在，放一个KEY
@@ -32,5 +32,69 @@ public class RedisUtil {
             redisTemplate.opsForValue().set(key, key, second, TimeUnit.SECONDS);
             return true;
         }
+    }
+    /**
+     * 读取缓存
+     *
+     * @param key
+     * @return
+     */
+    public String get(String key) {
+        return redisTemplate.opsForValue().get(key);
+    }
+
+    /**
+     * 写入缓存,有时间限制
+     */
+    public boolean set(final String key, long second) {
+        boolean result = false;
+        try {
+            redisTemplate.opsForValue().set(key, key, second, TimeUnit.SECONDS);
+            result = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    /**
+     * 写入缓存,无时间限制
+     */
+    public boolean set(final String key, String value) {
+        boolean result = false;
+        try {
+            redisTemplate.opsForValue().set(key, value);
+            result = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * 更新缓存
+     */
+    public boolean getAndSet(final String key, String value) {
+        boolean result = false;
+        try {
+            redisTemplate.opsForValue().getAndSet(key, value);
+            result = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * 删除缓存
+     */
+    public boolean delete(final String key) {
+        boolean result = false;
+        try {
+            redisTemplate.delete(key);
+            result = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }
