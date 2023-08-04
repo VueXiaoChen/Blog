@@ -57,6 +57,21 @@ export const constantRoutes: RouteRecordRaw[] = [
     ]
   },
   {
+    path: "/blog",
+    component: Layouts,
+    children: [
+      {
+        path: "/blog/index",
+        component: () => import("@/views/Blog/index.vue"),
+        name: "blog-index",
+        meta: {
+          title: "文章管理",
+          svgIcon: "link"
+        }
+      }
+    ]
+  },
+  {
     path: "/unocss",
     component: Layouts,
     redirect: "/unocss/index",
@@ -68,21 +83,6 @@ export const constantRoutes: RouteRecordRaw[] = [
         meta: {
           title: "unocss",
           svgIcon: "unocss"
-        }
-      }
-    ]
-  },
-  {
-    path: "/link",
-    component: Layouts,
-    children: [
-      {
-        path: "https://juejin.cn/post/7089377403717287972",
-        component: () => {},
-        name: "Link",
-        meta: {
-          title: "外链",
-          svgIcon: "link"
         }
       }
     ]
@@ -191,35 +191,6 @@ export const constantRoutes: RouteRecordRaw[] = [
       }
     ]
   },
-  {
-    path: "/hook-demo",
-    component: Layouts,
-    redirect: "/hook-demo/use-fetch-select",
-    name: "HookDemo",
-    meta: {
-      title: "hook 示例",
-      elIcon: "Menu",
-      alwaysShow: true
-    },
-    children: [
-      {
-        path: "use-fetch-select",
-        component: () => import("@/views/hook-demo/use-fetch-select.vue"),
-        name: "UseFetchSelect",
-        meta: {
-          title: "useFetchSelect"
-        }
-      },
-      {
-        path: "use-fullscreen-loading",
-        component: () => import("@/views/hook-demo/use-fullscreen-loading.vue"),
-        name: "UseFullscreenLoading",
-        meta: {
-          title: "useFullscreenLoading"
-        }
-      }
-    ]
-  }
 ]
 
 /**
