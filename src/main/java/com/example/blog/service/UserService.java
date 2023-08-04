@@ -136,7 +136,6 @@ public class UserService {
 
     public UserLoadingResp loading(UserLoadingReq userLoadingReq) {
         User user = selectByLoginName(userLoadingReq.getUsername());
-        LOG.info("用户名不存在",userLoadingReq.getUsername());
         if(ObjectUtils.isEmpty(user)){
             //判断用户名是否一样
             throw new BusinessException(BusinessExceptionCode.USER_LOGIN_NAME_EXIST);

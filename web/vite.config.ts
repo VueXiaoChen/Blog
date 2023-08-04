@@ -17,7 +17,7 @@ export default defineConfig({
     port: 5173, //端口号
     proxy: {
       '/api': {
-        target: 'http://localhost:5173/',
+        target: 'http://localhost:8080',
         changeOrigin: true,
         secure:false,//解决自签名证书错误
         rewrite: (path) => path.replace(/^\/api/, '')

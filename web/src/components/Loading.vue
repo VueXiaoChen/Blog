@@ -1,26 +1,33 @@
 <script setup lang="ts">
 import { onBeforeUnmount, ref, shallowRef, onMounted } from 'vue'
 import axios from "axios";
-
 import { ElMessage } from 'element-plus'
 import {ILoginRequestData} from "@/api/login/types/login"
 import {loginApi} from "@/api/login"
+import {getToken,setToken,removeToken} from "@/utils/cache/cookies"
+const username = ref("4")
+const password = ref("3")
 
-const username = ref()
-const password = ref()
 
-// function login(loginData:ILoginRequestData){
-//   return new Promise((resolve,reject)=>{
-//    loginApi({
-//       username:username.value,
-//       password:password.value,
-//     }).then((res)=>{
 
-//     }).cathc((error)=>{
+const login = (loginData:ILoginRequestData)=>{
+  return new Promise((resolve,reject)=>{
+   loginApi({
+      username:username.value,
+      password:password.value,
+    }).then((res)=>{
+      setToken(res.data.token) 
+      resolve(true)
+    }).catch((error)=>{
+      reject(error)
+    })
+  })
 
-//     })
-//   })
-// }
+  // axios.post("/api/user/loading",{"username":username.value,"password":password.value}).then((res)=>{
+  //   console.log(res);
+    
+  // })
+}
 
 
 //开启监听
@@ -70,7 +77,7 @@ onMounted(async() => {
               <i class="fas fa-lock"></i>
               <input type="password" placeholder="密码" v-model="password"/>
             </div>
-            <input value="立即登录" class="btn solid" @click="Loading"/>
+            <input value="立即登录" class="btn solid" @click="login"/>
             <p class="social-text">通过其他方式</p>
             <div class="social-media">
               <a href="#" class="social-icon">

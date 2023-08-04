@@ -84,8 +84,7 @@ public class UserController {
         LOG.info("生成单点登录的token:{},并放入redis中",token);
         //token设置
         userLoadingResp.setToken(token.toString());
-
-        redisTemplate.opsForValue().set(token.toString(),userLoadingResp,3600*24*30, TimeUnit.SECONDS);
+        //redisTemplate.opsForValue().set(token.toString(),userLoadingResp,3600*24*30, TimeUnit.SECONDS);
         //储存信息
         resp.setMessage("登录成功");
         resp.setData(userLoadingResp);
