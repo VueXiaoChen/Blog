@@ -7,6 +7,11 @@ const routes=[
         name:"",
         component:()=>import("../components/Loading.vue")
     },
+    {
+        path:"/dashboard",
+        name:"dashboard",
+        component:()=>import("../views/dashboard/index.vue")
+    },
 ]
 
 //添加到创建的路由中

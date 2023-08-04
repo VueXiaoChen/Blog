@@ -5,23 +5,26 @@ import { ElMessage } from 'element-plus'
 import {ILoginRequestData} from "@/api/login/types/login"
 import {loginApi} from "@/api/login"
 import {getToken,setToken,removeToken} from "@/utils/cache/cookies"
+import router from "../router";
 const username = ref("4")
 const password = ref("3")
 
 
-
+//登录
 const login = (loginData:ILoginRequestData)=>{
-  return new Promise((resolve,reject)=>{
-   loginApi({
-      username:username.value,
-      password:password.value,
-    }).then((res)=>{
-      setToken(res.data.token) 
-      resolve(true)
-    }).catch((error)=>{
-      reject(error)
-    })
-  })
+  //router.push({"name":"dashboard"})
+  // return new Promise((resolve,reject)=>{
+  //  loginApi({
+  //     username:username.value,
+  //     password:password.value,
+  //   }).then((res)=>{
+  //     setToken(res.data.token) 
+      
+  //     resolve(true)
+  //   }).catch((error)=>{
+  //     reject(error)
+  //   })
+  // })
 
   // axios.post("/api/user/loading",{"username":username.value,"password":password.value}).then((res)=>{
   //   console.log(res);
