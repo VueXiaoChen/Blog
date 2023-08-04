@@ -1,8 +1,14 @@
 import axios, { type AxiosInstance, type AxiosRequestConfig } from "axios"
+import { useUserStoreHook } from "@/store/modules/user"
 import { ElMessage } from "element-plus"
 import { get, merge } from "lodash-es"
 import { getToken } from "./cache/cookies"
 
+/** 退出登录并强制刷新页面（会重定向到登录页） */
+function logout() {
+  useUserStoreHook().logout()
+  location.reload()
+}
 
 /** 创建请求实例 */
 function createService() {
@@ -23,7 +29,7 @@ function createService() {
       const responseType = response.request?.responseType
       if (responseType === "blob" || responseType === "arraybuffer") return apiData
       // 这个 code 是和后端约定的业务 code
-      const code = apiData.data.code
+      const code = apiData.code
       // 如果没有 code, 代表这不是项目后端开发的 api
       if (code === undefined) {
         ElMessage.error("非本系统的接口")
