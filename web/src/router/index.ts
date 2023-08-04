@@ -5,7 +5,7 @@ const routes=[
     {
         path:"/",
         name:"",
-        component:()=>import("../components/HelloWorld.vue")
+        component:()=>import("../components/Loading.vue")
     },
 ]
 
