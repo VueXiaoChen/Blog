@@ -1,13 +1,26 @@
 <script setup lang="ts">
 import { onBeforeUnmount, ref, shallowRef, onMounted } from 'vue'
 import axios from "axios";
-import { Tool } from "../util/tool"
+
 import { ElMessage } from 'element-plus'
+import {ILoginRequestData} from "@/api/login/types/login"
+import {loginApi} from "@/api/login"
 
 const username = ref()
 const password = ref()
 
+// function login(loginData:ILoginRequestData){
+//   return new Promise((resolve,reject)=>{
+//    loginApi({
+//       username:username.value,
+//       password:password.value,
+//     }).then((res)=>{
 
+//     }).cathc((error)=>{
+
+//     })
+//   })
+// }
 
 
 //开启监听
@@ -23,17 +36,18 @@ function AddEventListeners(){
     // });
 }
 
-//登录
-async function Loading(){
-    if(username.value == null){
-        ElMessage.error('用户名不能为空')
-        return
-    }
-    if(password.value == null){
-        ElMessage.error('密码不能为空')
-        return
-    }
-}
+// //登录
+// async function Loading(){
+//     if(username.value == null){
+//         ElMessage.error('用户名不能为空')
+//         return
+//     }
+//     if(password.value == null){
+//         ElMessage.error('密码不能为空')
+//         return
+//     }
+
+// }
 
 onMounted(async() => {
     AddEventListeners()

@@ -22,6 +22,10 @@
     "noFallthroughCasesInSwitch": true,
     /* 解决TS7016 (TS) 找不到模块””的声明文件.隐式地具有’any’类型 */
     "noImplicitAny": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]
