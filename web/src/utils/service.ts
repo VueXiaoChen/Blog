@@ -29,7 +29,7 @@ function createService() {
       const responseType = response.request?.responseType
       if (responseType === "blob" || responseType === "arraybuffer") return apiData
       // 这个 code 是和后端约定的业务 code
-      const code = apiData.code
+      const code = apiData.data.code
       // 如果没有 code, 代表这不是项目后端开发的 api
       if (code === undefined) {
         ElMessage.error("非本系统的接口")
@@ -107,7 +107,7 @@ function createRequest(service: AxiosInstance) {
         "Content-Type": "application/json"
       },
       timeout: 5000,
-      baseURL: import.meta.env.VITE_BASE_API,
+      // baseURL: import.meta.env.VITE_BASE_API,
       data: {}
     }
     // 将默认配置 defaultConfig 和传入的自定义配置 config 进行合并成为 mergeConfig

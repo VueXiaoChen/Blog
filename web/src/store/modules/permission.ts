@@ -4,9 +4,12 @@ import { defineStore } from "pinia"
 import { type RouteRecordRaw } from "vue-router"
 import { constantRoutes, asyncRoutes } from "@/router"
 import asyncRouteSettings from "@/config/async-route"
+import { lowerFirst } from 'lodash-es'
 
 const hasPermission = (roles: string[], route: RouteRecordRaw) => {
   const routeRoles = route.meta?.roles
+  console.log(roles);
+  
   return routeRoles ? roles.some((role) => routeRoles.includes(role)) : true
 }
 

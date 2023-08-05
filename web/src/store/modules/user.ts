@@ -24,15 +24,14 @@ export const useUserStore = defineStore("user", () => {
   const setRoles = (value: string[]) => {
     roles.value = value
   }
-  /** 登录 */
-  const login = async ({ username, password, code }: LoginRequestData) => {
-    const { data } = await loginApi({ username, password, code })
-    setToken(data.token)
-    token.value = data.token
-  }
   /** 获取用户详情 */
   const getInfo = async () => {
-    const { data } = await getUserInfoApi()
+    // const { data } = await getUserInfoApi()
+    const data ={
+      username:"admin",
+      // roles:["admin","editor"]
+      roles:[]
+    }
     username.value = data.username
     // 验证返回的 roles 是否为一个非空数组，否则塞入一个没有任何作用的默认角色，防止路由守卫逻辑进入无限循环
     roles.value = data.roles?.length > 0 ? data.roles : asyncRouteSettings.defaultRoles
@@ -72,7 +71,7 @@ export const useUserStore = defineStore("user", () => {
     }
   }
 
-  return { token, roles, username, setRoles, login, getInfo, changeRoles, logout, resetToken }
+  return { token, roles, username, setRoles, getInfo, changeRoles, logout, resetToken }
 })
 
 /** 在 setup 外使用 */

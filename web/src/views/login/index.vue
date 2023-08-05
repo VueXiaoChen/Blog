@@ -4,15 +4,16 @@ import { useRouter } from "vue-router"
 import { useUserStore } from "@/store/modules/user"
 import { type FormInstance, FormRules } from "element-plus"
 import { User, Lock, Key, Picture, Loading } from "@element-plus/icons-vue"
-import { getLoginCodeApi } from "@/api/login"
+import { loginApi } from "@/api/login"
 import { type LoginRequestData } from "@/api/login/types/login"
+import { getToken,setToken,removeToken} from "@/utils/cache/cookies"
+
 import ThemeSwitch from "@/components/ThemeSwitch/index.vue"
 
 const router = useRouter()
 
 /** 登录表单元素的引用 */
 const loginFormRef = ref<FormInstance | null>(null)
-
 /** 登录按钮 Loading */
 const loading = ref(false)
 /** 登录表单数据 */
@@ -25,7 +26,7 @@ const loginFormRules: FormRules = {
   username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
   password: [
     { required: true, message: "请输入密码", trigger: "blur" },
-    { min: 8, max: 16, message: "长度在 8 到 16 个字符", trigger: "blur" }
+    { min: 1, max: 16, message: "长度在 1 到 16 个字符", trigger: "blur" }
   ],
 }
 /** 登录逻辑 */
@@ -33,7 +34,19 @@ const handleLogin = () => {
   loginFormRef.value?.validate((valid: boolean, fields) => {
     if (valid) {
       loading.value = true
-      
+      return new Promise((resolve,reject)=>{
+      loginApi({
+          username:loginFormData.username,
+          password:loginFormData.password
+      }).then((res)=>{
+        setToken(res.data.token)
+        resolve(true)
+        router.push({ path: "/" })
+        console.log(res);
+      }).catch((error)=>{
+        console.log(error);
+      })
+    })
     } else {
       console.error("表单校验不通过", fields)
     }
