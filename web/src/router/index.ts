@@ -59,32 +59,39 @@ export const constantRoutes: RouteRecordRaw[] = [
   {
     path: "/blog",
     component: Layouts,
+    name: "Blog",
+    meta: {
+      title: "博客管理",
+      elIcon: "Grid"
+    },
     children: [
       {
-        path: "/blog/index",
+        path: "blogboolean/index",
         component: () => import("@/views/Blog/index.vue"),
-        name: "blog-index",
+        name: "blogboolean",
         meta: {
-          title: "文章管理",
+          title: "博客审核",
           svgIcon: "link"
         }
-      }
-    ]
-  },
-  {
-    path: "/unocss",
-    component: Layouts,
-    redirect: "/unocss/index",
-    children: [
+      },
       {
-        path: "index",
-        component: () => import("@/views/unocss/index.vue"),
-        name: "UnoCSS",
+        path: "blogupdata/index",
+        component: () => import("@/views/Blog/updateindex.vue"),
+        name: "blogupdata",
         meta: {
-          title: "unocss",
-          svgIcon: "unocss"
+          title: "博客修改",
+          svgIcon: "link"
         }
-      }
+      },
+      {
+        path: "blogadd/index",
+        component: () => import("@/views/Blog/addindex.vue"),
+        name: "blogadd",
+        meta: {
+          title: "博客增加",
+          svgIcon: "link"
+        }
+      },
     ]
   },
   {

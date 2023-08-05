@@ -15,12 +15,10 @@ const loginFormRef = ref<FormInstance | null>(null)
 
 /** 登录按钮 Loading */
 const loading = ref(false)
-/** 验证码图片 URL */
-const codeUrl = ref("")
 /** 登录表单数据 */
 const loginFormData: LoginRequestData = reactive({
-  username: "admin",
-  password: "12345678",
+  username: "4",
+  password: "3",
 })
 /** 登录表单校验规则 */
 const loginFormRules: FormRules = {
@@ -35,18 +33,7 @@ const handleLogin = () => {
   loginFormRef.value?.validate((valid: boolean, fields) => {
     if (valid) {
       loading.value = true
-      useUserStore()
-        .login(loginFormData)
-        .then(() => {
-          router.push({ path: "/" })
-        })
-        .catch(() => {
-          createCode()
-          loginFormData.password = ""
-        })
-        .finally(() => {
-          loading.value = false
-        })
+      
     } else {
       console.error("表单校验不通过", fields)
     }

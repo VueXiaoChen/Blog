@@ -1,17 +1,153 @@
 <script lang="ts" setup>
-import { ref, watch } from "vue"
+import { ref, watch,reactive  } from "vue"
 import { type RouteLocationMatched, useRoute, useRouter } from "vue-router"
-
+import { type FormInstance, type FormRules, ElMessage, ElMessageBox } from "element-plus"
+import { Search, Refresh, CirclePlus, Delete, Download, RefreshRight } from "@element-plus/icons-vue"
+import { usePagination } from "@/hooks/usePagination"
 const route = useRoute()
 const router = useRouter()
+
+const loading = ref<boolean>(false)
+const { paginationData, handleCurrentChange, handleSizeChange } = usePagination()
+
+const dialogVisible = ref<boolean>(false)
+const formRef = ref<FormInstance | null>(null)
+const handleSearch = () => {
+  paginationData.currentPage === 1 ? getTableData() : (paginationData.currentPage = 1)
+}
+const resetSearch = () => {
+  searchFormRef.value?.resetFields()
+  handleSearch()
+}
+const searchData = reactive({
+  blogTitle: "",
+  typeId: "",
+  blogContent:"",
+})
+const tableData = reactive([
+  {
+  blogId:"1",
+  blogTitle:"331231231232131231231321312231231231233",
+  userid:"2",
+  typeId:"3",
+  blogStatus:false,
+  createTime:"2022-09-05 12:22：22",
+  updateTime:"2022-09-05 12:22：22",
+  coverImage:"www.baidu.com",
+  blogContent:"我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙",
+},
+  {
+  blogId:"1",
+  blogTitle:"333",
+  userid:"2",
+  typeId:"3",
+  blogStatus:false,
+  createTime:"2022-09-05 12:22：22",
+  updateTime:"2022-09-05 12:22：22",
+  coverImage:"www.baidu.com",
+  blogContent:"我是一直小青蛙",
+},
+])
+
 
 </script>
 
 <template>
-  <div class="div">123</div>
+  <div class="app-container">
+    <el-card v-loading="loading" shadow="never" class="search-wrapper">
+      <el-form ref="searchFormRef" :inline="true" :model="searchData">
+        <el-form-item prop="blogTitle" label="博客标题">
+          <el-input v-model="searchData.username" placeholder="请输入" />
+        </el-form-item>
+        <el-form-item prop="typeId" label="博客类型">
+          <el-input v-model="searchData.phone" placeholder="请输入" />
+        </el-form-item>
+        <el-form-item prop="blogContent" label="博客内容">
+          <el-input v-model="searchData.phone" placeholder="请输入" />
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" :icon="Search" @click="handleSearch">查询</el-button>
+          <el-button :icon="Refresh" @click="resetSearch">重置</el-button>
+        </el-form-item>
+      </el-form>
+    </el-card>
+    <el-card v-loading="loading" shadow="never">
+      <div class="toolbar-wrapper">
+        <div>
+          <el-button type="primary" :icon="CirclePlus" @click="dialogVisible = true">新增用户</el-button>
+          <el-button type="danger" :icon="Delete">批量删除</el-button>
+        </div>
+        <div>
+          <el-tooltip content="下载">
+            <el-button type="primary" :icon="Download" circle />
+          </el-tooltip>
+          <el-tooltip content="刷新当前页">
+            <el-button type="primary" :icon="RefreshRight" circle @click="" />
+          </el-tooltip>
+        </div>
+      </div>
+      <div class="table-wrapper">
+        <el-table :data="tableData">
+          <el-table-column type="selection" width="50" align="center" />
+          <el-table-column prop="blogId" label="博客ID" width="100" align="center" />
+          <el-table-column prop="blogTitle" label="博客标题" align="center" :show-overflow-tooltip="true"/>
+          <el-table-column prop="userid" label="用户ID" width="100" align="center" />
+          <el-table-column prop="typeId" label="博客类型ID" width="100" align="center" />
+          <el-table-column prop="blogStatus" label="状态" width="100" align="center">
+            <template #default="scope">
+              <el-tag v-if="scope.row.status" type="success" effect="plain">通过</el-tag>
+              <el-tag v-else type="danger" effect="plain">未审核</el-tag>
+            </template>
+          </el-table-column>
+          <el-table-column prop="createTime" label="创建时间" align="center" />
+          <el-table-column prop="updateTime" label="更新时间" align="center" />
+          <el-table-column prop="coverImage" label="封面图片" width="200" align="center" />
+          <el-table-column prop="blogContent" label="博客内容" width="200" align="center" :show-overflow-tooltip="true"/>
+          <el-table-column fixed="right" label="操作" width="150" align="center">
+            <template #default="scope">
+              <el-button type="primary" text bg size="small" @click="">修改</el-button>
+              <el-button type="danger" text bg size="small" @click="">删除</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
+      <div class="pager-wrapper">
+        <el-pagination
+          background
+          :layout="paginationData.layout"
+          :page-sizes="paginationData.pageSizes"
+          :total="paginationData.total"
+          :page-size="paginationData.pageSize"
+          :currentPage="paginationData.currentPage"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+        />
+      </div>
+    </el-card>
+  </div>
 </template>
 
 <style lang="scss" scoped>
+.search-wrapper {
+  margin-bottom: 20px;
+  :deep(.el-card__body) {
+    padding-bottom: 2px;
+  }
+}
 
+.toolbar-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.table-wrapper {
+  margin-bottom: 20px;
+}
+
+.pager-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
 
 </style>
