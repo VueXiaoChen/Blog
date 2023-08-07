@@ -23,6 +23,17 @@ public class UserResp {
 
     private Date userRegisterTime;
 
+    private String role = "admin";
+
+
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public Long getUserid() {
         return userid;
@@ -103,24 +114,20 @@ public class UserResp {
     public void setUserRegisterTime(Date userRegisterTime) {
         this.userRegisterTime = userRegisterTime;
     }
-
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", userid=").append(userid);
-        sb.append(", username=").append(username);
-        sb.append(", userSex=").append(userSex);
-        sb.append(", email=").append(email);
-        sb.append(", phone=").append(phone);
-        sb.append(", firstname=").append(firstname);
-        sb.append(", avatar=").append(avatar);
-        sb.append(", isSuperuser=").append(isSuperuser);
-        sb.append(", lastLogin=").append(lastLogin);
-        sb.append(", userRegisterTime=").append(userRegisterTime);
-        sb.append("]");
-        return sb.toString();
+        return "UserResp{" +
+                "userid=" + userid +
+                ", username='" + username + '\'' +
+                ", userSex='" + userSex + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", isSuperuser=" + isSuperuser +
+                ", lastLogin=" + lastLogin +
+                ", userRegisterTime=" + userRegisterTime +
+                ", role='" + role + '\'' +
+                '}';
     }
 }

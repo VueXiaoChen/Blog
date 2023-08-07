@@ -8,8 +8,6 @@ import { lowerFirst } from 'lodash-es'
 
 const hasPermission = (roles: string[], route: RouteRecordRaw) => {
   const routeRoles = route.meta?.roles
-  console.log(roles);
-  
   return routeRoles ? roles.some((role) => routeRoles.includes(role)) : true
 }
 

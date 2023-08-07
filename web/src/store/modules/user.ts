@@ -15,6 +15,7 @@ export const useUserStore = defineStore("user", () => {
   const token = ref<string>(getToken() || "")
   const roles = ref<string[]>([])
   const username = ref<string>("")
+  const userid = ref<Integer>(null)
 
   const permissionStore = usePermissionStore()
   const tagsViewStore = useTagsViewStore()
@@ -26,15 +27,14 @@ export const useUserStore = defineStore("user", () => {
   }
   /** 获取用户详情 */
   const getInfo = async () => {
-    // const { data } = await getUserInfoApi()
-    const data ={
-      username:"admin",
-      // roles:["admin","editor"]
-      roles:[]
+    const { data } = await getUserInfoApi(userid.value)
+    const datas ={
+      username:data.username,
+      roles:[data.role]
     }
-    username.value = data.username
+    username.value = datas.username
     // 验证返回的 roles 是否为一个非空数组，否则塞入一个没有任何作用的默认角色，防止路由守卫逻辑进入无限循环
-    roles.value = data.roles?.length > 0 ? data.roles : asyncRouteSettings.defaultRoles
+    roles.value = datas.roles?.length > 0 ? datas.roles : asyncRouteSettings.defaultRoles
   }
   /** 切换角色 */
   const changeRoles = async (role: string) => {
@@ -71,7 +71,7 @@ export const useUserStore = defineStore("user", () => {
     }
   }
 
-  return { token, roles, username, setRoles, getInfo, changeRoles, logout, resetToken }
+  return { token, roles, username,userid, setRoles, getInfo, changeRoles, logout, resetToken,}
 })
 
 /** 在 setup 外使用 */

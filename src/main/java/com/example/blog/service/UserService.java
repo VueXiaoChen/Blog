@@ -132,8 +132,21 @@ public class UserService {
             return userList.get(0);
         }
     }
-
-
+    //查询用户信息,通过用户ID
+    public UserResp userinfo(Long userid) {
+        //固定写法
+        UserExample example = new UserExample();
+        //固定写法
+        UserExample.Criteria criteria = example.createCriteria();
+        if (!ObjectUtils.isEmpty(userid)) {
+            criteria.andUseridEqualTo(userid);
+        }
+        //类接收返回的数据
+        User user = userMapper.selectByPrimaryKey(userid);
+        //将返回的数据进行封装,某些信息是不需要返回的
+        UserResp data = CopyUtil.copy(user,UserResp.class);
+        return data;
+    }
     public UserLoadingResp loading(UserLoadingReq userLoadingReq) {
         User user = selectByLoginName(userLoadingReq.getUsername());
         if(ObjectUtils.isEmpty(user)){

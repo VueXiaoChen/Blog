@@ -72,6 +72,20 @@ public class UserController {
         return resp;
     }
 
+    @GetMapping("/info/{userid}")
+    //@RequestBody  定义传过来的参数是实体类
+    public CommonResp loading(@PathVariable Long userid) {
+        //返回信息里面定义返回的类型
+        CommonResp<UserResp> resp = new CommonResp<>();
+        //保存数据
+        UserResp  userinfo= userService.userinfo(userid);
+        LOG.info("查询用户信息成功:{},",userinfo);
+        //储存信息
+        resp.setMessage("查询成功");
+        resp.setData(userinfo);
+        return resp;
+    }
+
     @PostMapping("/loading")
     //@RequestBody  定义传过来的参数是实体类
     public CommonResp loading(@RequestBody UserLoadingReq userLoadingReq) {
@@ -90,6 +104,8 @@ public class UserController {
         resp.setData(userLoadingResp);
         return resp;
     }
+
+
 
 
     @GetMapping("/logout/{token}")

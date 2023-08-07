@@ -2,11 +2,10 @@ package com.example.blog.mapper;
 
 import com.example.blog.domain.User;
 import com.example.blog.domain.UserExample;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface UserMapper {
     long countByExample(UserExample example);
@@ -30,6 +29,5 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User row);
 
     int updateByPrimaryKey(User row);
-
     int deleteByIds(Long[] userid);
 }

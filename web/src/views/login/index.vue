@@ -7,20 +7,19 @@ import { User, Lock, Key, Picture, Loading } from "@element-plus/icons-vue"
 import { loginApi } from "@/api/login"
 import { type LoginRequestData } from "@/api/login/types/login"
 import { getToken,setToken,removeToken} from "@/utils/cache/cookies"
-
 import ThemeSwitch from "@/components/ThemeSwitch/index.vue"
-
 const router = useRouter()
-
 /** 登录表单元素的引用 */
 const loginFormRef = ref<FormInstance | null>(null)
 /** 登录按钮 Loading */
 const loading = ref(false)
 /** 登录表单数据 */
-const loginFormData: LoginRequestData = reactive({
+const loginFormData: any = reactive({
   username: "4",
   password: "3",
 })
+/** 调用user */
+const user = useUserStore()
 /** 登录表单校验规则 */
 const loginFormRules: FormRules = {
   username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
@@ -38,11 +37,11 @@ const handleLogin = () => {
       loginApi({
           username:loginFormData.username,
           password:loginFormData.password
-      }).then((res)=>{
+      }).then((res:any)=>{
+        user.userid = res.data.userid
         setToken(res.data.token)
         resolve(true)
         router.push({ path: "/" })
-        console.log(res);
       }).catch((error)=>{
         console.log(error);
       })

@@ -27,6 +27,8 @@ public class User {
 
     private Date userRegisterTime;
 
+    private String role;
+
     public Long getUserid() {
         return userid;
     }
@@ -123,6 +125,14 @@ public class User {
         this.userRegisterTime = userRegisterTime;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -141,6 +151,7 @@ public class User {
         sb.append(", isSuperuser=").append(isSuperuser);
         sb.append(", lastLogin=").append(lastLogin);
         sb.append(", userRegisterTime=").append(userRegisterTime);
+        sb.append(", role=").append(role);
         sb.append("]");
         return sb.toString();
     }
