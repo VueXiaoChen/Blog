@@ -151,7 +151,7 @@ public class UserService {
         User user = selectByLoginName(userLoadingReq.getUsername());
         if(ObjectUtils.isEmpty(user)){
             //判断用户名是否一样
-            throw new BusinessException(BusinessExceptionCode.USER_LOGIN_NAME_EXIST);
+            throw new BusinessException(BusinessExceptionCode.LOGIN_USER_ERROR);
         }else{
             if(user.getPassword().equals(userLoadingReq.getPassword())){
                 //登录成功

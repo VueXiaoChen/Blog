@@ -66,9 +66,18 @@ export const constantRoutes: RouteRecordRaw[] = [
     },
     children: [
       {
-        path: "blogboolean/index",
+        path: "blog/index",
         component: () => import("@/views/Blog/index.vue"),
-        name: "blogboolean",
+        name: "bloglist",
+        meta: {
+          title: "博客列表",
+          svgIcon: "link"
+        }
+      },
+      {
+        path: "blogUnaudited/index",
+        component: () => import("@/views/Blog/Unaudited.vue"),
+        name: "blogUnaudited",
         meta: {
           title: "博客审核",
           svgIcon: "link"

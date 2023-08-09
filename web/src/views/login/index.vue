@@ -2,7 +2,7 @@
 import { reactive, ref } from "vue"
 import { useRouter } from "vue-router"
 import { useUserStore } from "@/store/modules/user"
-import { type FormInstance, FormRules } from "element-plus"
+import { type FormInstance, FormRules,ElMessage } from "element-plus"
 import { User, Lock, Key, Picture, Loading } from "@element-plus/icons-vue"
 import { loginApi } from "@/api/login"
 import { type LoginRequestData } from "@/api/login/types/login"
@@ -38,9 +38,17 @@ const handleLogin = () => {
           username:loginFormData.username,
           password:loginFormData.password
       }).then((res:any)=>{
+        if(res.data==null){
+          ElMessage.error(res.message)
+          return
+        }
         user.userid = res.data.userid
         setToken(res.data.token)
         resolve(true)
+        ElMessage({
+          message: '登陆成功',
+          type: 'success',
+        })
         router.push({ path: "/" })
       }).catch((error)=>{
         console.log(error);

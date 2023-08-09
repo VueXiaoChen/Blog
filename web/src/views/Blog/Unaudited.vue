@@ -1,17 +1,17 @@
 <script lang="ts" setup>
-import { ref, watch,reactive,onMounted  } from "vue"
-import {useRoute, useRouter } from "vue-router"
+import { ref, watch,reactive  } from "vue"
+import { type RouteLocationMatched, useRoute, useRouter } from "vue-router"
 import { type FormInstance, type FormRules, ElMessage, ElMessageBox } from "element-plus"
 import { Search, Refresh, CirclePlus, Delete, Download, RefreshRight } from "@element-plus/icons-vue"
 import { usePagination } from "@/hooks/usePagination"
-import { GetUnauditedBlogApi } from "@/api/blog/index"
 const route = useRoute()
 const router = useRouter()
 
 const loading = ref<boolean>(false)
 const { paginationData, handleCurrentChange, handleSizeChange } = usePagination()
 
-
+const dialogVisible = ref<boolean>(false)
+const formRef = ref<FormInstance | null>(null)
 const handleSearch = () => {
   paginationData.currentPage === 1 ? getTableData() : (paginationData.currentPage = 1)
 }
@@ -24,22 +24,17 @@ const searchData = reactive({
   typeId: "",
   blogContent:"",
 })
-
-const tableData = ref([
+const tableData = reactive([
   {
   blogId:"1",
   blogTitle:"331231231232131231231321312231231231233",
   userid:"2",
   typeId:"3",
   blogStatus:false,
-  createTime:"2022-09-05 12:22:22",
-  updateTime:"2022-09-05 12:22:22",
+  createTime:"2022-09-05 12:22：22",
+  updateTime:"2022-09-05 12:22：22",
   coverImage:"www.baidu.com",
   blogContent:"我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙",
-  like:"1",
-  collect:'1',
-  subscribe:'1',
-  comment:'1'
 },
   {
   blogId:"1",
@@ -47,35 +42,14 @@ const tableData = ref([
   userid:"2",
   typeId:"3",
   blogStatus:false,
-  createTime:"2022-09-05 12:22:22",
-  updateTime:"2022-09-05 12:22:22",
+  createTime:"2022-09-05 12:22：22",
+  updateTime:"2022-09-05 12:22：22",
   coverImage:"www.baidu.com",
-  blogContent:"我是一直小青蛙1111111111111111111111111111111111111111111111111111111111111",
-  like:"1",
-  collect:'1',
-  subscribe:'1',
-  comment:'1'
+  blogContent:"我是一直小青蛙",
 },
 ])
-/** 博客获取 */
-const GetBlog = (userid) => {
-  return new Promise((resolve,reject)=>{
-    GetUnauditedBlogApi(userid).then((res:any)=>{
-      if(res){
-        tableData.value = res.data.list
-      }
-    }).catch((error)=>{
-      reject(error)
-      console.log(error);
-    })
-  })
-}
 
 
-
-onMounted(() => {
-  GetBlog(1)
-});
 </script>
 
 <template>
@@ -100,6 +74,7 @@ onMounted(() => {
     <el-card v-loading="loading" shadow="never">
       <div class="toolbar-wrapper">
         <div>
+          <el-button type="primary" :icon="CirclePlus" @click="dialogVisible = true">新增用户</el-button>
           <el-button type="danger" :icon="Delete">批量删除</el-button>
         </div>
         <div>
@@ -124,14 +99,10 @@ onMounted(() => {
               <el-tag v-else type="danger" effect="plain">未审核</el-tag>
             </template>
           </el-table-column>
-          <el-table-column prop="createTime" label="创建时间"  width="160" align="center" />
-          <el-table-column prop="updateTime" label="更新时间"   width="160" align="center" />
-          <el-table-column prop="coverImage" label="封面图片" width="160" align="center" />
-          <el-table-column prop="blogContent" label="博客内容" width="160" align="center" :show-overflow-tooltip="true"/>
-          <el-table-column prop="like" label="点赞数"  align="center" width="80" :show-overflow-tooltip="true"/>
-          <el-table-column prop="collect" label="收藏数"  align="center" width="70" :show-overflow-tooltip="true"/>
-          <el-table-column prop="subscribe" label="订阅数"  align="center" width="70" :show-overflow-tooltip="true"/>
-          <el-table-column prop="comment" label="评论数"  align="center" width="70" :show-overflow-tooltip="true"/>
+          <el-table-column prop="createTime" label="创建时间" align="center" />
+          <el-table-column prop="updateTime" label="更新时间" align="center" />
+          <el-table-column prop="coverImage" label="封面图片" width="200" align="center" />
+          <el-table-column prop="blogContent" label="博客内容" width="200" align="center" :show-overflow-tooltip="true"/>
           <el-table-column fixed="right" label="操作" width="150" align="center">
             <template #default="scope">
               <el-button type="primary" text bg size="small" @click="">修改</el-button>
