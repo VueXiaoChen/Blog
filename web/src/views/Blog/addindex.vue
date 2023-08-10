@@ -1,93 +1,30 @@
 <script lang="ts" setup>
-import { ref, watch, reactive } from "vue"
+import { ref, watch, reactive,onMounted } from "vue"
 import type { FormInstance, FormRules } from 'element-plus'
+import { GetBlogTypeApi,GetBlogTagApi } from "@/api/blog/index"
 const loading = ref<boolean>(false)
 
 
-
-
-interface RuleForm {
-  name: string
-  region: string
-  count: string
-  date1: string
-  date2: string
-  delivery: boolean
-  type: string[]
-  resource: string
-  desc: string
-}
-
 const formSize = ref('default')
 const ruleFormRef = ref<FormInstance>()
-const ruleForm = reactive<RuleForm>({
-  name: 'Hello',
-  region: '',
-  count: '',
-  date1: '',
-  date2: '',
-  delivery: false,
-  type: [],
-  resource: '',
-  desc: '',
+const ruleForm = reactive<any>({
+  blogTitle: 'Hello',
+  coverImage: '',
+  type: '',
+  blogContent: '',
+  tagList: [],
 })
-
+//博客类型数组
+const bolgtype = ref()
+//博客标签数组
+const bolgtag = ref([])
 const rules = reactive<FormRules<RuleForm>>({
-  name: [
-    { required: true, message: 'Please input Activity name', trigger: 'blur' },
-    { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' },
-  ],
-  region: [
-    {
-      required: true,
-      message: 'Please select Activity zone',
-      trigger: 'change',
-    },
-  ],
-  count: [
-    {
-      required: true,
-      message: 'Please select Activity count',
-      trigger: 'change',
-    },
-  ],
-  date1: [
-    {
-      type: 'date',
-      required: true,
-      message: 'Please pick a date',
-      trigger: 'change',
-    },
-  ],
-  date2: [
-    {
-      type: 'date',
-      required: true,
-      message: 'Please pick a time',
-      trigger: 'change',
-    },
-  ],
-  type: [
-    {
-      type: 'array',
-      required: true,
-      message: 'Please select at least one activity type',
-      trigger: 'change',
-    },
-  ],
-  resource: [
-    {
-      required: true,
-      message: 'Please select activity resource',
-      trigger: 'change',
-    },
-  ],
-  desc: [
-    { required: true, message: 'Please input activity form', trigger: 'blur' },
-  ],
+  
 })
 
 const submitForm = async (formEl: FormInstance | undefined) => {
+  console.log(ruleForm);
+  
   if (!formEl) return
   await formEl.validate((valid, fields) => {
     if (valid) {
@@ -109,6 +46,39 @@ const options = Array.from({ length: 10000 }).map((_, idx) => ({
 }))
 
 
+/** 博客类型获取 */
+const GetBlogType = () => {
+  return new Promise((resolve,reject)=>{
+    GetBlogTypeApi().then((res:any)=>{
+      if(res){   
+        bolgtype.value = res.data.list
+        console.log(res);
+      }
+    }).catch((error)=>{
+      reject(error)
+      console.log(error);
+    })
+  })
+}
+/** 博客标签获取 */
+const GetBlogTag = () => {
+  return new Promise((resolve,reject)=>{
+    GetBlogTagApi().then((res:any)=>{
+      if(res){   
+        bolgtag.value = res.data.list
+      }
+    }).catch((error)=>{
+      reject(error)
+      console.log(error);
+    })
+  })
+}
+
+onMounted(() => {
+  GetBlogType()
+  GetBlogTag()
+});
+
 </script>
 
 <template>
@@ -123,67 +93,25 @@ const options = Array.from({ length: 10000 }).map((_, idx) => ({
         :size="formSize"
         status-icon
       >
-        <el-form-item label="Activity name" prop="name">
-          <el-input v-model="ruleForm.name" />
+        <el-form-item label="文章标题" prop="blogTitle">
+          <el-input v-model="ruleForm.blogTitle" />
         </el-form-item>
-        <el-form-item label="Activity zone" prop="region">
-          <el-select v-model="ruleForm.region" placeholder="Activity zone">
-            <el-option label="Zone one" value="shanghai" />
-            <el-option label="Zone two" value="beijing" />
-          </el-select>
-        </el-form-item>
-        <el-form-item label="Activity count" prop="count">
-          <el-select-v2 v-model="ruleForm.count" placeholder="Activity count" :options="options" />
-        </el-form-item>
-        <el-form-item label="Activity time" required>
-          <el-col :span="11">
-            <el-form-item prop="date1">
-              <el-date-picker
-                v-model="ruleForm.date1"
-                type="date"
-                label="Pick a date"
-                placeholder="Pick a date"
-                style="width: 100%"
-              />
-            </el-form-item>
-          </el-col>
-          <el-col class="text-center" :span="2">
-            <span class="text-gray-500">-</span>
-          </el-col>
-          <el-col :span="11">
-            <el-form-item prop="date2">
-              <el-time-picker
-                v-model="ruleForm.date2"
-                label="Pick a time"
-                placeholder="Pick a time"
-                style="width: 100%"
-              />
-            </el-form-item>
-          </el-col>
-        </el-form-item>
-        <el-form-item label="Instant delivery" prop="delivery">
-          <el-switch v-model="ruleForm.delivery" />
-        </el-form-item>
-        <el-form-item label="Activity type" prop="type">
-          <el-checkbox-group v-model="ruleForm.type">
-            <el-checkbox label="Online activities" name="type" />
-            <el-checkbox label="Promotion activities" name="type" />
-            <el-checkbox label="Offline activities" name="type" />
-            <el-checkbox label="Simple brand exposure" name="type" />
-          </el-checkbox-group>
-        </el-form-item>
-        <el-form-item label="Resources" prop="resource">
-          <el-radio-group v-model="ruleForm.resource">
-            <el-radio label="Sponsorship" />
-            <el-radio label="Venue" />
+        <el-form-item label="文章类型" prop="type">
+          <el-radio-group v-model="ruleForm.type">
+            <el-radio :label=item.typeName v-for="(item,index) in bolgtype" :key="index" />
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="Activity form" prop="desc">
-          <el-input v-model="ruleForm.desc" type="textarea" />
+        <el-form-item label="文章标签" prop="tagList">
+          <el-checkbox-group v-model="ruleForm.tagList">
+            <el-checkbox :label="item.tagName" :name="item.tagName" v-for="(item,index) in bolgtag"  :key="index"/>
+          </el-checkbox-group>
         </el-form-item>
+        <el-form-item label="文章内容" prop="blogContent">
+          <el-input v-model="ruleForm.blogContent" type="textarea" />
+        </el-form-item> 
         <el-form-item>
-          <el-button type="primary" @click="submitForm(ruleFormRef)">Create</el-button>
-          <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
+          <el-button type="primary" @click="submitForm(ruleFormRef)">创建</el-button>
+          <el-button @click="resetForm(ruleFormRef)">重置</el-button>
         </el-form-item>
       </el-form>
     </el-card>

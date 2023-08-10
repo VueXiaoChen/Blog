@@ -9,10 +9,24 @@ export function GetBlogApi(userid,currentPage,pagesize) {
     method: "get"
   })
 }
-/** 获取w未审核的博客 */
+/** 获取未审核的博客 */
 export function GetUnauditedBlogApi(userid,currentPage,pagesize) {
   return request<any>({
     url: "api/blog/list?blogStatus=0&userid=" + userid+"&page="+currentPage+"&size="+pagesize,
+    method: "get"
+  })
+}
+/** 获取博客的类型 */
+export function GetBlogTypeApi() {
+  return request<any>({
+    url: "api/blogtype/list",
+    method: "get"
+  })
+}
+/** 获取博客的所有标签 */
+export function GetBlogTagApi() {
+  return request<any>({
+    url: "api/tag/list",
     method: "get"
   })
 }
