@@ -1,17 +1,19 @@
 <script lang="ts" setup>
-import { ref, watch,reactive  } from "vue"
-import { type RouteLocationMatched, useRoute, useRouter } from "vue-router"
+import { ref, watch,watchEffect,reactive,onMounted  } from "vue"
+import {useRoute, useRouter } from "vue-router"
 import { type FormInstance, type FormRules, ElMessage, ElMessageBox } from "element-plus"
 import { Search, Refresh, CirclePlus, Delete, Download, RefreshRight } from "@element-plus/icons-vue"
 import { usePagination } from "@/hooks/usePagination"
+import { GetUnauditedBlogApi } from "@/api/blog/index"
+import { useUserStore } from "@/store/modules/user"
 const route = useRoute()
 const router = useRouter()
-
+/** 调用user Pian */
+const user = useUserStore()
 const loading = ref<boolean>(false)
 const { paginationData, handleCurrentChange, handleSizeChange } = usePagination()
 
-const dialogVisible = ref<boolean>(false)
-const formRef = ref<FormInstance | null>(null)
+
 const handleSearch = () => {
   paginationData.currentPage === 1 ? getTableData() : (paginationData.currentPage = 1)
 }
@@ -24,17 +26,22 @@ const searchData = reactive({
   typeId: "",
   blogContent:"",
 })
-const tableData = reactive([
+
+const tableData = ref([
   {
   blogId:"1",
   blogTitle:"331231231232131231231321312231231231233",
   userid:"2",
   typeId:"3",
   blogStatus:false,
-  createTime:"2022-09-05 12:22：22",
-  updateTime:"2022-09-05 12:22：22",
+  createTime:"2022-09-05 12:22:22",
+  updateTime:"2022-09-05 12:22:22",
   coverImage:"www.baidu.com",
   blogContent:"我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙",
+  like:"1",
+  collect:'1',
+  subscribe:'1',
+  comment:'1'
 },
   {
   blogId:"1",
@@ -42,14 +49,41 @@ const tableData = reactive([
   userid:"2",
   typeId:"3",
   blogStatus:false,
-  createTime:"2022-09-05 12:22：22",
-  updateTime:"2022-09-05 12:22：22",
+  createTime:"2022-09-05 12:22:22",
+  updateTime:"2022-09-05 12:22:22",
   coverImage:"www.baidu.com",
-  blogContent:"我是一直小青蛙",
+  blogContent:"我是一直小青蛙1111111111111111111111111111111111111111111111111111111111111",
+  like:"1",
+  collect:'1',
+  subscribe:'1',
+  comment:'1'
 },
 ])
+/** 博客获取 */
+const GetBlog = (userid,currentPage,pagesize) => {
+  return new Promise((resolve,reject)=>{
+    GetUnauditedBlogApi(userid,currentPage,pagesize).then((res:any)=>{
+      if(res){   
+        tableData.value = res.data.list        
+        paginationData.total = res.data.total
+      }
+    }).catch((error)=>{
+      reject(error)
+      console.log(error);
+    })
+  })
+}
+
+//监听分页
+watch(()=>[paginationData.currentPage,paginationData.pageSize],(newValue, oldValue) => {
+  GetBlog(user.userid,paginationData.currentPage,paginationData.pageSize)
+});
 
 
+
+onMounted(() => {
+  GetBlog(user.userid,paginationData.currentPage,paginationData.pageSize)
+});
 </script>
 
 <template>
@@ -105,7 +139,7 @@ const tableData = reactive([
           <el-table-column prop="blogContent" label="博客内容" width="200" align="center" :show-overflow-tooltip="true"/>
           <el-table-column fixed="right" label="操作" width="150" align="center">
             <template #default="scope">
-              <el-button type="primary" text bg size="small" @click="">修改</el-button>
+              <el-button type="primary" text bg size="small" @click="">通过</el-button>
               <el-button type="danger" text bg size="small" @click="">删除</el-button>
             </template>
           </el-table-column>

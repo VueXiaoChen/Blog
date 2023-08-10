@@ -4,10 +4,12 @@ import {useRoute, useRouter } from "vue-router"
 import { type FormInstance, type FormRules, ElMessage, ElMessageBox } from "element-plus"
 import { Search, Refresh, CirclePlus, Delete, Download, RefreshRight } from "@element-plus/icons-vue"
 import { usePagination } from "@/hooks/usePagination"
-import { GetUnauditedBlogApi } from "@/api/blog/index"
+import { GetBlogApi } from "@/api/blog/index"
+import { useUserStore } from "@/store/modules/user"
 const route = useRoute()
 const router = useRouter()
-
+/** 调用user Pian */
+const user = useUserStore()
 const loading = ref<boolean>(false)
 const { paginationData, handleCurrentChange, handleSizeChange } = usePagination()
 
@@ -58,11 +60,12 @@ const tableData = ref([
 },
 ])
 /** 博客获取 */
-const GetBlog = (userid) => {
+const GetBlog = (userid,currentPage,pagesize) => {
   return new Promise((resolve,reject)=>{
-    GetUnauditedBlogApi(userid).then((res:any)=>{
-      if(res){
-        tableData.value = res.data.list
+    GetBlogApi(userid,currentPage,pagesize).then((res:any)=>{
+      if(res){   
+        tableData.value = res.data.list        
+        paginationData.total = res.data.total
       }
     }).catch((error)=>{
       reject(error)
@@ -71,10 +74,15 @@ const GetBlog = (userid) => {
   })
 }
 
+//监听分页
+watch(()=>[paginationData.currentPage,paginationData.pageSize],(newValue, oldValue) => {
+  GetBlog(user.userid,paginationData.currentPage,paginationData.pageSize)
+});
+
 
 
 onMounted(() => {
-  GetBlog(1)
+  GetBlog(user.userid,paginationData.currentPage,paginationData.pageSize)
 });
 </script>
 
