@@ -32,7 +32,7 @@ export function GetBlogTagApi() {
 }
 
 /** 博客修改或增加 */
-export function GetBloguodate(data) {
+export function GetBlogUpdateOrAddApi(data) {
   return request<any>({
     url: "api/blog/save",
     method: "post",

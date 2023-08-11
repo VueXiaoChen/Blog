@@ -113,6 +113,7 @@ public class BlogService {
             blog.setSubscribe(0);
             blog.setBlogStatus(0);
             blogMapper.insertSelective(blog);
+            System.out.println(blog.getBlogId());
             //数组blog标签
             List<TagBlog> tagBlogList = blogReq.getTagBlog();
             //实例化一个tag类
