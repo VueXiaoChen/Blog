@@ -1,6 +1,7 @@
 package com.example.blog.req;
 
 import com.example.blog.domain.TagBlog;
+import com.example.blog.resp.TagBlogResp;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -31,26 +32,6 @@ public class BlogReq extends PageReq {
     private Integer like;
 
     private Integer collect;
-
-    @Override
-    public String toString() {
-        return "BlogReq{" +
-                "blogId=" + blogId +
-                ", blogTitle='" + blogTitle + '\'' +
-                ", userid=" + userid +
-                ", typeId=" + typeId +
-                ", blogStatus=" + blogStatus +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                ", coverImage='" + coverImage + '\'' +
-                ", blogContent='" + blogContent + '\'' +
-                ", like=" + like +
-                ", collect=" + collect +
-                ", subscribe=" + subscribe +
-                ", comment=" + comment +
-                ", tagBlog=" + tagBlog +
-                '}';
-    }
 
     public Integer getLike() {
         return like;
@@ -88,15 +69,16 @@ public class BlogReq extends PageReq {
 
     private Integer comment;
 
-    private List<TagBlog> tagBlog;
+    private List<TagBlogResp> tagBlog;
 
-    public List<TagBlog> getTagBlog() {
+    public List<TagBlogResp> getTagBlog() {
         return tagBlog;
     }
 
-    public void setTagBlog(List<TagBlog> tagBlog) {
+    public void setTagBlog(List<TagBlogResp> tagBlog) {
         this.tagBlog = tagBlog;
     }
+
 
     public Long getBlogId() {
         return blogId;
@@ -168,6 +150,26 @@ public class BlogReq extends PageReq {
 
     public void setBlogContent(String blogContent) {
         this.blogContent = blogContent;
+    }
+
+    @Override
+    public String toString() {
+        return "BlogReq{" +
+                "blogId=" + blogId +
+                ", blogTitle='" + blogTitle + '\'' +
+                ", userid=" + userid +
+                ", typeId=" + typeId +
+                ", blogStatus=" + blogStatus +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", coverImage='" + coverImage + '\'' +
+                ", blogContent='" + blogContent + '\'' +
+                ", like=" + like +
+                ", collect=" + collect +
+                ", subscribe=" + subscribe +
+                ", comment=" + comment +
+                ", tagBlog=" + tagBlog +
+                '}';
     }
 
 }

@@ -14,6 +14,7 @@ import com.example.blog.req.BlogFindReq;
 import com.example.blog.req.BlogReq;
 import com.example.blog.resp.BlogResp;
 import com.example.blog.resp.PageResp;
+import com.example.blog.resp.TagBlogResp;
 import com.example.blog.util.CopyUtil;
 import com.example.blog.util.RedisUtil;
 import com.example.blog.util.RequestContext;
@@ -115,7 +116,7 @@ public class BlogService {
             blogMapper.insertSelective(blog);
             System.out.println(blog.getBlogId());
             //数组blog标签
-            List<TagBlog> tagBlogList = blogReq.getTagBlog();
+            List<TagBlogResp> tagBlogList = blogReq.getTagBlog();
             //实例化一个tag类
             TagBlog tagBlog = new TagBlog();
             //获取新建的blogId

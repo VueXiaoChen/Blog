@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { ref, watch, reactive,onMounted } from "vue"
-import type { FormInstance, FormRules } from 'element-plus'
+import {type FormInstance,FormRules,ElMessage } from 'element-plus'
 import { GetBlogTypeApi,GetBlogTagApi,GetBlogUpdateOrAddApi } from "@/api/blog/index"
+import { useUserStore } from "@/store/modules/user"
 const loading = ref<boolean>(false)
-
-
+const user = useUserStore()
 const formSize = ref('default')
 const ruleFormRef = ref<FormInstance>()
 const ruleForm = reactive<any>({
@@ -13,6 +13,7 @@ const ruleForm = reactive<any>({
   typeId: '',
   blogContent: '',
   tagBlog: [],
+  userid:user.userid
 })
 //博客类型数组
 const bolgtype = ref()
@@ -43,7 +44,6 @@ const GetBlogType = () => {
     GetBlogTypeApi().then((res:any)=>{
       if(res){   
         bolgtype.value = res.data.list
-        console.log(res);
       }
     }).catch((error)=>{
       reject(error)
@@ -57,7 +57,6 @@ const GetBlogTag = () => {
     GetBlogTagApi().then((res:any)=>{
       if(res){   
         bolgtag.value = res.data.list
-        console.log(bolgtag.value);
       }
     }).catch((error)=>{
       reject(error)
@@ -72,7 +71,10 @@ const GetBlogUpdateOrAdd = (ruleForm) => {
     console.log(ruleForm);
     GetBlogUpdateOrAddApi(ruleForm).then((res:any)=>{
       if(res){   
-        console.log(res);
+        ElMessage({
+          message: res.message,
+          type: 'success',
+        })
       }
     }).catch((error)=>{
       reject(error)
@@ -86,7 +88,6 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   await formEl.validate((valid, fields) => {
     if (valid) {
       GetBlogUpdateOrAdd(ruleForm)
-      console.log('submit!')
     } else {
       console.log('error submit!', fields)
     }

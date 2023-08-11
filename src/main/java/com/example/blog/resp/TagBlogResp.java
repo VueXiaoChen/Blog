@@ -5,6 +5,16 @@ public class TagBlogResp {
 
     private Long blogId;
 
+    private String tagName;
+
+    public String getTagName() {
+        return tagName;
+    }
+
+    public void setTagName(String tagName) {
+        this.tagName = tagName;
+    }
+
     public Integer getTagId() {
         return tagId;
     }
@@ -20,16 +30,13 @@ public class TagBlogResp {
     public void setBlogId(Long blogId) {
         this.blogId = blogId;
     }
-
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", tagId=").append(tagId);
-        sb.append(", blogId=").append(blogId);
-        sb.append("]");
-        return sb.toString();
+        return "TagBlogResp{" +
+                "tagId=" + tagId +
+                ", blogId=" + blogId +
+                ", tagName='" + tagName + '\'' +
+                '}';
     }
+
 }
