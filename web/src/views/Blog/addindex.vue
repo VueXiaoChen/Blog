@@ -22,7 +22,7 @@ const ruleForm = reactive<any>({
 const bolgtype = ref()
 //博客标签数组
 const bolgtag = ref([])
-const rules = reactive<FormRules<RuleForm>>({
+const rules = reactive<FormRules>({
   
 })
 //typeId
@@ -44,7 +44,7 @@ const options = Array.from({ length: 10000 }).map((_, idx) => ({
 
 
 // 编辑器实例，必须用 shallowRef
-    const editorRef = shallowRef()
+const editorRef = shallowRef()
     // 内容 HTML
     const valueHtml = ref('<p>请输入内容...</p>')
     const toolbarConfig = {}
@@ -55,7 +55,7 @@ const options = Array.from({ length: 10000 }).map((_, idx) => ({
         if (editor == null) return
         editor.destroy()
     })
-    const handleCreated = (editor) => {
+    const handleCreated = (editor: any) => {
       editorRef.value = editor // 记录 editor 实例，重要！
     }
     const mode = ref('default')
@@ -90,7 +90,7 @@ const GetBlogTag = () => {
 }
 
 /** 博客增加 */
-const GetBlogUpdateOrAdd = (ruleForm) => {
+const GetBlogUpdateOrAdd = (ruleForm: any) => {
   return new Promise((resolve,reject)=>{
     console.log(ruleForm);
     GetBlogUpdateOrAddApi(ruleForm).then((res:any)=>{
@@ -120,11 +120,11 @@ const submitForm = async (formEl: FormInstance | undefined) => {
     }
   })
 }
-function BlogRadioChange(typeId){
+function BlogRadioChange(typeId: any){
   ruleForm.typeId = typeId
 }
 
-function BlogCheckRadioChange(item){
+function BlogCheckRadioChange(item: any){
   ruleForm.tagBlog.push(item)
 }
 

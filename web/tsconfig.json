@@ -6,8 +6,9 @@
     "module": "esnext",
     "moduleResolution": "node",
     /** TS 严格模式 */
-    "strict": true,
+    "strict": false,
     "jsx": "preserve",
+    "noImplicitAny": false,
     "importHelpers": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,

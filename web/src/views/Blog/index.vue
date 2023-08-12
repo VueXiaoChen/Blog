@@ -15,11 +15,10 @@ const { paginationData, handleCurrentChange, handleSizeChange } = usePagination(
 
 
 const handleSearch = () => {
-  paginationData.currentPage === 1 ? getTableData() : (paginationData.currentPage = 1)
+  
 }
 const resetSearch = () => {
-  searchFormRef.value?.resetFields()
-  handleSearch()
+  
 }
 const searchData = reactive({
   blogTitle: "",
@@ -74,6 +73,12 @@ const GetBlog = (userid,currentPage,pagesize) => {
   })
 }
 
+
+//获取修改的内容
+function GetUpdataComment(item){
+  user.blogform = item
+  router.push({name:"blogupdata"})
+}
 //监听分页
 watch(()=>[paginationData.currentPage,paginationData.pageSize],(newValue, oldValue) => {
   GetBlog(user.userid,paginationData.currentPage,paginationData.pageSize)
@@ -142,7 +147,7 @@ onMounted(() => {
           <el-table-column prop="comment" label="评论数"  align="center" width="70" :show-overflow-tooltip="true"/>
           <el-table-column fixed="right" label="操作" width="150" align="center">
             <template #default="scope">
-              <el-button type="primary" text bg size="small" @click="">修改</el-button>
+              <el-button type="primary" text bg size="small" @click="GetUpdataComment(scope.row)">修改</el-button>
               <el-button type="danger" text bg size="small" @click="">删除</el-button>
             </template>
           </el-table-column>
