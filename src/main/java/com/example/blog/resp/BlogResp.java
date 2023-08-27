@@ -1,5 +1,6 @@
 package com.example.blog.resp;
 
+import com.example.blog.domain.BlogType;
 import com.example.blog.domain.Tag;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -31,24 +32,14 @@ public class BlogResp {
 
     private List<Tag> tagList;
 
-    @Override
-    public String toString() {
-        return "BlogResp{" +
-                "blogId=" + blogId +
-                ", blogTitle='" + blogTitle + '\'' +
-                ", userid=" + userid +
-                ", typeId=" + typeId +
-                ", blogStatus=" + blogStatus +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                ", coverImage='" + coverImage + '\'' +
-                ", blogContent='" + blogContent + '\'' +
-                ", tagList=" + tagList +
-                ", like=" + like +
-                ", collect=" + collect +
-                ", subscribe=" + subscribe +
-                ", comment=" + comment +
-                '}';
+    private BlogType blogType;
+
+    public BlogType getBlogType() {
+        return blogType;
+    }
+
+    public void setBlogType(BlogType blogType) {
+        this.blogType = blogType;
     }
 
     public Integer getLike() {
@@ -170,4 +161,24 @@ public class BlogResp {
         this.blogContent = blogContent;
     }
 
+    @Override
+    public String toString() {
+        return "BlogResp{" +
+                "blogId=" + blogId +
+                ", blogTitle='" + blogTitle + '\'' +
+                ", userid=" + userid +
+                ", typeId=" + typeId +
+                ", blogStatus=" + blogStatus +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", coverImage='" + coverImage + '\'' +
+                ", blogContent='" + blogContent + '\'' +
+                ", tagList=" + tagList +
+                ", blogType=" + blogType +
+                ", like=" + like +
+                ", collect=" + collect +
+                ", subscribe=" + subscribe +
+                ", comment=" + comment +
+                '}';
+    }
 }

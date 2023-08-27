@@ -88,13 +88,13 @@ onMounted(() => {
         :size="formSize"
         status-icon
       >
-        <el-form-item label="文章标题：" prop="blogTitle" required>
+        <el-form-item label="文章标题：" prop="blogTitle" >
           <el-input v-model="ruleForm.blogTitle" />
         </el-form-item>
-        <el-form-item label="文章图片：" prop="coverImage" required>
+        <el-form-item label="文章图片：" prop="coverImage" >
           <el-input v-model="ruleForm.coverImage" />
         </el-form-item>
-        <el-form-item label="创建时间：" required>
+        <el-form-item label="创建时间：" >
           <el-col :span="3">
             <el-form-item prop="createTime">
               <el-date-picker
@@ -120,7 +120,7 @@ onMounted(() => {
             </el-form-item>
           </el-col>
         </el-form-item>
-        <el-form-item label="更新时间：" required>
+        <el-form-item label="更新时间：" >
           <el-col :span="3">
             <el-form-item prop="updateTime">
               <el-date-picker

@@ -1,13 +1,11 @@
 package com.example.blog.service;
 
-import com.example.blog.domain.Blog;
-import com.example.blog.domain.BlogExample;
-import com.example.blog.domain.Tag;
-import com.example.blog.domain.TagBlog;
+import com.example.blog.domain.*;
 import com.example.blog.exception.BusinessException;
 import com.example.blog.exception.BusinessExceptionCode;
 import com.example.blog.exception.RedisCode;
 import com.example.blog.mapper.BlogMapper;
+import com.example.blog.mapper.BlogTypeMapper;
 import com.example.blog.mapper.TagBlogMapper;
 import com.example.blog.mapper.TagMapper;
 import com.example.blog.req.BlogFindReq;
@@ -40,6 +38,9 @@ public class BlogService {
     public TagBlogMapper tagBlogMapper;
     @Resource
     public TagMapper tagMapper;
+
+    @Resource
+    public BlogTypeMapper blogTypeMapper;
 
     @Resource
     private SnowFlake snowFlake;
@@ -88,6 +89,9 @@ public class BlogService {
             Integer blogId = Integer.valueOf(Long.toString(data.get(i).getBlogId()));
             List<Tag> tagList = tagMapper.selectByBlogId(blogId);
             data.get(i).setTagList(tagList);
+            Integer typeid = Integer.valueOf(Long.toString(data.get(i).getTypeId()));
+            BlogType blogType = blogTypeMapper.selectByPrimaryKey(typeid);
+            data.get(i).setBlogType(blogType);
         }
         //定义分页获取总数
         PageInfo<Blog> pageInfo = new PageInfo<>(blogList);
