@@ -1,8 +1,8 @@
-package com.example.blog.domain;
+package com.example.blog.resp;
 
 import java.util.Date;
 
-public class VideoAddress {
+public class VideoAddressResp {
     private Long videoid;
 
     private String videotag;

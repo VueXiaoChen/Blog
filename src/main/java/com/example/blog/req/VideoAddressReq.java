@@ -1,8 +1,8 @@
-package com.example.blog.domain;
+package com.example.blog.req;
 
 import java.util.Date;
 
-public class VideoAddress {
+public class VideoAddressReq extends PageReq{
     private Long videoid;
 
     private String videotag;

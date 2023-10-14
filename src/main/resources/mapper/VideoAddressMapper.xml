@@ -6,6 +6,8 @@
     <result column="videotag" jdbcType="VARCHAR" property="videotag" />
     <result column="videosource" jdbcType="VARCHAR" property="videosource" />
     <result column="videoaddress" jdbcType="VARCHAR" property="videoaddress" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.blog.domain.VideoAddress">
     <result column="videoimg" jdbcType="LONGVARCHAR" property="videoimg" />
@@ -69,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    videoid, videotag, videosource, videoaddress
+    videoid, videotag, videosource, videoaddress, update_time, create_time
   </sql>
   <sql id="Blob_Column_List">
     videoimg
@@ -124,9 +126,11 @@
   </delete>
   <insert id="insert" parameterType="com.example.blog.domain.VideoAddress">
     insert into t_video (videoid, videotag, videosource, 
-      videoaddress, videoimg)
+      videoaddress, update_time, create_time, 
+      videoimg)
     values (#{videoid,jdbcType=BIGINT}, #{videotag,jdbcType=VARCHAR}, #{videosource,jdbcType=VARCHAR}, 
-      #{videoaddress,jdbcType=VARCHAR}, #{videoimg,jdbcType=LONGVARCHAR})
+      #{videoaddress,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{videoimg,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.example.blog.domain.VideoAddress">
     insert into t_video
@@ -142,6 +146,12 @@
       </if>
       <if test="videoaddress != null">
         videoaddress,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
       </if>
       <if test="videoimg != null">
         videoimg,
@@ -159,6 +169,12 @@
       </if>
       <if test="videoaddress != null">
         #{videoaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="videoimg != null">
         #{videoimg,jdbcType=LONGVARCHAR},
@@ -186,6 +202,12 @@
       <if test="row.videoaddress != null">
         videoaddress = #{row.videoaddress,jdbcType=VARCHAR},
       </if>
+      <if test="row.updateTime != null">
+        update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="row.videoimg != null">
         videoimg = #{row.videoimg,jdbcType=LONGVARCHAR},
       </if>
@@ -200,6 +222,8 @@
       videotag = #{row.videotag,jdbcType=VARCHAR},
       videosource = #{row.videosource,jdbcType=VARCHAR},
       videoaddress = #{row.videoaddress,jdbcType=VARCHAR},
+      update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
       videoimg = #{row.videoimg,jdbcType=LONGVARCHAR}
     <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -210,7 +234,9 @@
     set videoid = #{row.videoid,jdbcType=BIGINT},
       videotag = #{row.videotag,jdbcType=VARCHAR},
       videosource = #{row.videosource,jdbcType=VARCHAR},
-      videoaddress = #{row.videoaddress,jdbcType=VARCHAR}
+      videoaddress = #{row.videoaddress,jdbcType=VARCHAR},
+      update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP}
     <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,6 +253,12 @@
       <if test="videoaddress != null">
         videoaddress = #{videoaddress,jdbcType=VARCHAR},
       </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
       <if test="videoimg != null">
         videoimg = #{videoimg,jdbcType=LONGVARCHAR},
       </if>
@@ -238,6 +270,8 @@
     set videotag = #{videotag,jdbcType=VARCHAR},
       videosource = #{videosource,jdbcType=VARCHAR},
       videoaddress = #{videoaddress,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
       videoimg = #{videoimg,jdbcType=LONGVARCHAR}
     where videoid = #{videoid,jdbcType=BIGINT}
   </update>
@@ -245,7 +279,9 @@
     update t_video
     set videotag = #{videotag,jdbcType=VARCHAR},
       videosource = #{videosource,jdbcType=VARCHAR},
-      videoaddress = #{videoaddress,jdbcType=VARCHAR}
+      videoaddress = #{videoaddress,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
     where videoid = #{videoid,jdbcType=BIGINT}
   </update>
 </mapper>

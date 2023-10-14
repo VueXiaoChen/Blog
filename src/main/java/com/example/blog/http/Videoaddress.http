@@ -1,0 +1,25 @@
+###
+GET http://localhost:8080/videoAddress/list?videoaddress=而为人
+
+###
+
+###
+GET http://localhost:8080/tag/bloglist?blogId=50
+
+###
+
+###
+GET http://localhost:8080/tag/delete/5
+
+###
+
+
+###
+POST http://localhost:8080/tag/save
+Content-Type: application/json
+
+{
+  "tagName": "我是谁啊啊啊啊啊啊"
+}
+
+###
