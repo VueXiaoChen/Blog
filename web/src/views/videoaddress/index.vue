@@ -4,7 +4,7 @@ import {useRoute, useRouter } from "vue-router"
 import { type FormInstance, type FormRules, ElMessage, ElMessageBox } from "element-plus"
 import { Search, Refresh, CirclePlus, Delete, Download, RefreshRight } from "@element-plus/icons-vue"
 import { usePagination } from "@/hooks/usePagination"
-import { GetBlogApi } from "@/api/blog/index"
+import { GetvideoaddressApi,GetvideoaddressUpdateOrAddApi } from "@/api/videoaddress/index"
 import { useUserStore } from "@/store/modules/user"
 const route = useRoute()
 const router = useRouter()
@@ -12,59 +12,115 @@ const router = useRouter()
 const user = useUserStore()
 const loading = ref<boolean>(false)
 const { paginationData, handleCurrentChange, handleSizeChange } = usePagination()
-
-
-const handleSearch = () => {
-  
-}
+const dialogFormVisible = ref(false)
+const formLabelWidth = ref(120)
+const updatedata = ref(
+  {
+    videotag: '',
+    videosource: '',
+    videoaddress: '',
+  }
+)
+const oldupdatedata = ref()
 const resetSearch = () => {
-  
+  searchData.videotag=''
+  searchData.videosource=''
+  searchData.videoaddress=''
+  ElMessage({
+    message: '重置成功',
+    type: 'success',
+  })
 }
-const searchData = reactive({
-  blogTitle: "",
-  typeId: "",
-  blogContent:"",
-})
 
+const searchData = reactive({
+  videotag: "",
+  videosource: "",
+  videoaddress:"",
+})
+const oldtableData = ref([])
 const tableData = ref([
   {
-  blogId:"1",
-  blogTitle:"331231231232131231231321312231231231233",
-  userid:"2",
-  typeId:"3",
-  blogStatus:false,
-  createTime:"2022-09-05 12:22:22",
-  updateTime:"2022-09-05 12:22:22",
-  coverImage:"www.baidu.com",
-  blogContent:"我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙我是一直小青蛙",
-  like:"1",
-  collect:'1',
-  subscribe:'1',
-  comment:'1'
-},
+    videotag: "1",
+    videosource: "2",
+    videoaddress:"3",
+  },
   {
-  blogId:"1",
-  blogTitle:"333",
-  userid:"2",
-  typeId:"3",
-  blogStatus:false,
-  createTime:"2022-09-05 12:22:22",
-  updateTime:"2022-09-05 12:22:22",
-  coverImage:"www.baidu.com",
-  blogContent:"我是一直小青蛙1111111111111111111111111111111111111111111111111111111111111",
-  like:"1",
-  collect:'1',
-  subscribe:'1',
-  comment:'1'
-},
+    videotag: "4",
+    videosource: "5",
+    videoaddress:"6",
+  },
 ])
-/** 博客获取 */
-const GetBlog = (userid,currentPage,pagesize) => {
+
+const SearchAll = () => {
+  if(searchData.videotag == "" && searchData.videosource == "" && searchData.videoaddress == ""){
+    ElMessage.error('请输入查询的数据')
+    return
+  }
+  let newtabledata = []
+  if(searchData.videotag!= null && searchData.videotag != ""){
+    for(let i=0;i<tableData.value.length;i++){
+      if(tableData.value[i].videotag.indexOf(searchData.videotag)!=-1){
+        newtabledata.push(tableData.value[i])
+      }
+    }
+    console.log(newtabledata);
+    tableData.value= []
+    tableData.value = newtabledata
+    paginationData.total = tableData.value.length
+    newtabledata= []
+  }
+  if(searchData.videosource!= null && searchData.videosource != ""){
+    for(let i=0;i<tableData.value.length;i++){
+    if(tableData.value[i].videosource.indexOf(searchData.videosource)!=-1){
+      newtabledata.push(tableData.value[i])
+    }
+  }
+    tableData.value= []
+    tableData.value = newtabledata
+    paginationData.total = tableData.value.length
+    newtabledata= []
+  }
+  if(searchData.videoaddress!= null && searchData.videoaddress != ""){
+    for(let i=0;i<tableData.value.length;i++){
+    if(tableData.value[i].videoaddress.indexOf(searchData.videoaddress)!=-1){
+      newtabledata.push(tableData.value[i])
+    }
+  }
+    tableData.value= []
+    tableData.value = newtabledata
+    paginationData.total = tableData.value.length
+    newtabledata= []
+  }
+  ElMessage({
+    message: '查询成功',
+    type: 'success',
+  })
+}
+
+/** 视频地址获取 */
+const Getvideoaddress = (currentPage,pagesize) => {
   return new Promise((resolve,reject)=>{
-    GetBlogApi(userid,currentPage,pagesize).then((res:any)=>{
+    GetvideoaddressApi(currentPage,pagesize).then((res:any)=>{
       if(res){   
         tableData.value = res.data.list        
+        oldtableData.value = res.data.list      
         paginationData.total = res.data.total
+      }
+    }).catch((error)=>{
+      reject(error)
+      console.log(error);
+    })
+  })
+}
+/** 视频地址修改 */
+const updatevideoaddress = () => {
+  return new Promise((resolve,reject)=>{ 
+    GetvideoaddressUpdateOrAddApi(updatedata.value).then((res:any)=>{
+      if(res){   
+        ElMessage({
+          message: res.message,
+          type: 'success',
+        })
       }
     }).catch((error)=>{
       reject(error)
@@ -75,37 +131,37 @@ const GetBlog = (userid,currentPage,pagesize) => {
 
 
 //获取修改的内容
-function GetUpdataComment(item){
-  user.blogform = item
-  router.push({name:"blogupdata"})
+function GetUpdatadata(item){
+  dialogFormVisible.value =true
+  updatedata.value = item
+  oldupdatedata.value = item
 }
 //监听分页
 watch(()=>[paginationData.currentPage,paginationData.pageSize],(newValue, oldValue) => {
-  GetBlog(user.userid,paginationData.currentPage,paginationData.pageSize)
+  Getvideoaddress(paginationData.currentPage,paginationData.pageSize)
 });
 
-
-
 onMounted(() => {
-  GetBlog(user.userid,paginationData.currentPage,paginationData.pageSize)
+  Getvideoaddress(paginationData.currentPage,paginationData.pageSize)
 });
 </script>
 
 <template>
+  
   <div class="app-container">
     <el-card v-loading="loading" shadow="never" class="search-wrapper">
       <el-form ref="searchFormRef" :inline="true" :model="searchData">
-        <el-form-item prop="blogTitle" label="博客标题">
-          <el-input v-model="searchData.username" placeholder="请输入" />
+        <el-form-item prop="videotag" label="视频标签">
+          <el-input v-model="searchData.videotag" placeholder="请输入" />
         </el-form-item>
-        <el-form-item prop="typeId" label="博客类型">
-          <el-input v-model="searchData.phone" placeholder="请输入" />
+        <el-form-item prop="videosource" label="视频来源">
+          <el-input v-model="searchData.videosource" placeholder="请输入" />
         </el-form-item>
-        <el-form-item prop="blogContent" label="博客内容">
-          <el-input v-model="searchData.phone" placeholder="请输入" />
+        <el-form-item prop="videoaddress" label="视频地址">
+          <el-input v-model="searchData.videoaddress" placeholder="请输入" />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" :icon="Search" @click="handleSearch">查询</el-button>
+          <el-button type="primary" :icon="Search" @click="SearchAll()">查询</el-button>
           <el-button :icon="Refresh" @click="resetSearch">重置</el-button>
         </el-form-item>
       </el-form>
@@ -127,28 +183,14 @@ onMounted(() => {
       <div class="table-wrapper">
         <el-table :data="tableData">
           <el-table-column type="selection" width="50" align="center" />
-          <el-table-column prop="blogId" label="博客ID" width="100" align="center" />
-          <el-table-column prop="blogTitle" label="博客标题" align="center" :show-overflow-tooltip="true"/>
-          <el-table-column prop="userid" label="用户ID" width="100" align="center" />
-          <el-table-column prop="typeId" label="博客类型ID" width="100" align="center" />
-          <el-table-column prop="blogStatus" label="状态" width="100" align="center">
+          <el-table-column type="index" width="50" />
+          <el-table-column prop="videotag" label="视频标签" width="160" align="center" :show-overflow-tooltip="true"/>
+          <el-table-column prop="videosource" label="视频来源"  align="center"  :show-overflow-tooltip="true"/>
+          <el-table-column prop="videoaddress" label="视频地址"  align="center"  :show-overflow-tooltip="true"/>
+          <el-table-column fixed="right" label="操作" width="250" align="center">
             <template #default="scope">
-              <el-tag v-if="scope.row.status" type="success" effect="plain">通过</el-tag>
-              <el-tag v-else type="danger" effect="plain">未审核</el-tag>
-            </template>
-          </el-table-column>
-          <el-table-column prop="createTime" label="创建时间"  width="160" align="center" />
-          <el-table-column prop="updateTime" label="更新时间"   width="160" align="center" />
-          <el-table-column prop="coverImage" label="封面图片" width="160" align="center" />
-          <el-table-column prop="blogContent" label="博客内容" width="160" align="center" :show-overflow-tooltip="true"/>
-          <el-table-column prop="like" label="点赞数"  align="center" width="80" :show-overflow-tooltip="true"/>
-          <el-table-column prop="collect" label="收藏数"  align="center" width="70" :show-overflow-tooltip="true"/>
-          <el-table-column prop="subscribe" label="订阅数"  align="center" width="70" :show-overflow-tooltip="true"/>
-          <el-table-column prop="comment" label="评论数"  align="center" width="70" :show-overflow-tooltip="true"/>
-          <el-table-column fixed="right" label="操作" width="150" align="center">
-            <template #default="scope">
-              <el-button type="primary" text bg size="small" @click="GetUpdataComment(scope.row)">修改</el-button>
-              <el-button type="danger" text bg size="small" @click="">删除</el-button>
+              <el-button type="primary"  @click="GetUpdatadata(scope.row)">修改</el-button>
+              <el-button type="danger"  @click="">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -166,10 +208,32 @@ onMounted(() => {
         />
       </div>
     </el-card>
+    <el-dialog v-model="dialogFormVisible" title="修改" center>
+    <el-form :model="updatedata">
+      <el-form-item label="视频标签：" :label-width="formLabelWidth">
+        <el-input v-model="updatedata.videotag" autocomplete="off" />
+      </el-form-item>
+      <el-form-item label="视频来源：" :label-width="formLabelWidth">
+        <el-input v-model="updatedata.videosource" autocomplete="off" />
+      </el-form-item>
+      <el-form-item label="视频地址：" :label-width="formLabelWidth">
+        <el-input v-model="updatedata.videoaddress" autocomplete="off" />
+      </el-form-item>
+    </el-form>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="dialogFormVisible = false" round>取消</el-button>
+        <el-button type="primary" round @click="updatevideoaddress">
+          确定
+        </el-button>
+      </span>
+    </template>
+  </el-dialog>
   </div>
+  
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .search-wrapper {
   margin-bottom: 20px;
   :deep(.el-card__body) {
@@ -190,6 +254,14 @@ onMounted(() => {
 .pager-wrapper {
   display: flex;
   justify-content: flex-end;
+}
+// .el-overlay-dialog{
+//   :deep(.el-dialog) {
+//     border-radius: 20px; 
+//   }
+// }
+.app-container .el-dialog--center{
+  border-radius: 20px !important;
 }
 
 </style>

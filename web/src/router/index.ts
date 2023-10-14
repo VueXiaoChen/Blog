@@ -130,15 +130,6 @@ export const constantRoutes: RouteRecordRaw[] = [
           svgIcon: "link"
         }
       },
-      {
-        path: "videoaddressupdata/index",
-        component: () => import("@/views/videoaddress/updateindex.vue"),
-        name: "videoaddressupdata",
-        meta: {
-          title: "视频地址修改",
-          svgIcon: "link"
-        }
-      },
     ]
   },
   {
