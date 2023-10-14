@@ -104,6 +104,44 @@ export const constantRoutes: RouteRecordRaw[] = [
     ]
   },
   {
+    path: "/videoaddress",
+    component: Layouts,
+    name: "videoaddress",
+    meta: {
+      title: "视频管理",
+      elIcon: "Grid"
+    },
+    children: [
+      {
+        path: "videoaddresslist/index",
+        component: () => import("@/views/videoaddress/index.vue"),
+        name: "videoaddresslist",
+        meta: {
+          title: "视频地址列表",
+          svgIcon: "link"
+        }
+      },
+      {
+        path: "videoaddressadd/index",
+        component: () => import("@/views/videoaddress/addindex.vue"),
+        name: "videoaddressadd",
+        meta: {
+          title: "视频地址增加",
+          svgIcon: "link"
+        }
+      },
+      {
+        path: "videoaddressupdata/index",
+        component: () => import("@/views/videoaddress/updateindex.vue"),
+        name: "videoaddressupdata",
+        meta: {
+          title: "视频地址修改",
+          svgIcon: "link"
+        }
+      },
+    ]
+  },
+  {
     path: "/table",
     component: Layouts,
     redirect: "/table/element-plus",
