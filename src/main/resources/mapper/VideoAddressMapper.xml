@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.blog.mapper.VideoAddressMapper">
+  <resultMap id="BaseResultMap" type="com.example.blog.domain.VideoAddress">
+    <id column="videoid" jdbcType="BIGINT" property="videoid" />
+    <result column="videotag" jdbcType="VARCHAR" property="videotag" />
+    <result column="videosource" jdbcType="VARCHAR" property="videosource" />
+    <result column="videoaddress" jdbcType="VARCHAR" property="videoaddress" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.blog.domain.VideoAddress">
+    <result column="videoimg" jdbcType="LONGVARCHAR" property="videoimg" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    videoid, videotag, videosource, videoaddress
+  </sql>
+  <sql id="Blob_Column_List">
+    videoimg
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.example.blog.domain.VideoAddressExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_video
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.example.blog.domain.VideoAddressExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_video
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_video
+    where videoid = #{videoid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_video
+    where videoid = #{videoid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.blog.domain.VideoAddressExample">
+    delete from t_video
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.blog.domain.VideoAddress">
+    insert into t_video (videoid, videotag, videosource, 
+      videoaddress, videoimg)
+    values (#{videoid,jdbcType=BIGINT}, #{videotag,jdbcType=VARCHAR}, #{videosource,jdbcType=VARCHAR}, 
+      #{videoaddress,jdbcType=VARCHAR}, #{videoimg,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.blog.domain.VideoAddress">
+    insert into t_video
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="videoid != null">
+        videoid,
+      </if>
+      <if test="videotag != null">
+        videotag,
+      </if>
+      <if test="videosource != null">
+        videosource,
+      </if>
+      <if test="videoaddress != null">
+        videoaddress,
+      </if>
+      <if test="videoimg != null">
+        videoimg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="videoid != null">
+        #{videoid,jdbcType=BIGINT},
+      </if>
+      <if test="videotag != null">
+        #{videotag,jdbcType=VARCHAR},
+      </if>
+      <if test="videosource != null">
+        #{videosource,jdbcType=VARCHAR},
+      </if>
+      <if test="videoaddress != null">
+        #{videoaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="videoimg != null">
+        #{videoimg,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.blog.domain.VideoAddressExample" resultType="java.lang.Long">
+    select count(*) from t_video
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_video
+    <set>
+      <if test="row.videoid != null">
+        videoid = #{row.videoid,jdbcType=BIGINT},
+      </if>
+      <if test="row.videotag != null">
+        videotag = #{row.videotag,jdbcType=VARCHAR},
+      </if>
+      <if test="row.videosource != null">
+        videosource = #{row.videosource,jdbcType=VARCHAR},
+      </if>
+      <if test="row.videoaddress != null">
+        videoaddress = #{row.videoaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="row.videoimg != null">
+        videoimg = #{row.videoimg,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update t_video
+    set videoid = #{row.videoid,jdbcType=BIGINT},
+      videotag = #{row.videotag,jdbcType=VARCHAR},
+      videosource = #{row.videosource,jdbcType=VARCHAR},
+      videoaddress = #{row.videoaddress,jdbcType=VARCHAR},
+      videoimg = #{row.videoimg,jdbcType=LONGVARCHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_video
+    set videoid = #{row.videoid,jdbcType=BIGINT},
+      videotag = #{row.videotag,jdbcType=VARCHAR},
+      videosource = #{row.videosource,jdbcType=VARCHAR},
+      videoaddress = #{row.videoaddress,jdbcType=VARCHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.blog.domain.VideoAddress">
+    update t_video
+    <set>
+      <if test="videotag != null">
+        videotag = #{videotag,jdbcType=VARCHAR},
+      </if>
+      <if test="videosource != null">
+        videosource = #{videosource,jdbcType=VARCHAR},
+      </if>
+      <if test="videoaddress != null">
+        videoaddress = #{videoaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="videoimg != null">
+        videoimg = #{videoimg,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where videoid = #{videoid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.blog.domain.VideoAddress">
+    update t_video
+    set videotag = #{videotag,jdbcType=VARCHAR},
+      videosource = #{videosource,jdbcType=VARCHAR},
+      videoaddress = #{videoaddress,jdbcType=VARCHAR},
+      videoimg = #{videoimg,jdbcType=LONGVARCHAR}
+    where videoid = #{videoid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.blog.domain.VideoAddress">
+    update t_video
+    set videotag = #{videotag,jdbcType=VARCHAR},
+      videosource = #{videosource,jdbcType=VARCHAR},
+      videoaddress = #{videoaddress,jdbcType=VARCHAR}
+    where videoid = #{videoid,jdbcType=BIGINT}
+  </update>
+</mapper>
