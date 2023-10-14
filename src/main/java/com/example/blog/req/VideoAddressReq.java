@@ -1,14 +1,15 @@
 package com.example.blog.req;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class VideoAddressReq extends PageReq{
     private Long videoid;
-
+    @NotNull(message = "【视频标签】不能为空")
     private String videotag;
-
+    @NotNull(message = "【视频源地址】不能为空")
     private String videosource;
-
+    @NotNull(message = "【视频地址】不能为空")
     private String videoaddress;
 
     private Date updateTime;

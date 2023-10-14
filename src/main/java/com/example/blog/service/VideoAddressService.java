@@ -5,6 +5,7 @@ import com.example.blog.mapper.RedisTestMapper;
 import com.example.blog.mapper.VideoAddressMapper;
 import com.example.blog.req.BlogFindReq;
 import com.example.blog.req.RedisTestReq;
+import com.example.blog.req.TagReq;
 import com.example.blog.req.VideoAddressReq;
 import com.example.blog.resp.BlogResp;
 import com.example.blog.resp.PageResp;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 
@@ -70,6 +72,28 @@ public class VideoAddressService {
         //将分页的数据加入类
         pageResp.setList(data);
         return pageResp;
+    }
+
+
+    //保存数据
+    public void save(VideoAddressReq videoAddressReq) {
+        VideoAddress videoAddress = CopyUtil.copy(videoAddressReq, VideoAddress.class);
+        //增加数据
+        if (ObjectUtils.isEmpty(videoAddressReq.getVideoid())) {
+            videoAddress.setCreateTime(new Date());
+            videoAddress.setUpdateTime(new Date());
+            videoAddressMapper.insertSelective(videoAddress);
+        } else {
+            //更新数据
+            videoAddress.setUpdateTime(new Date());
+            videoAddressMapper.updateByPrimaryKeySelective(videoAddress);
+        }
+    }
+
+    //删除数据
+    public void delete(long videoid) {
+        //删除数据
+        videoAddressMapper.deleteByPrimaryKey(videoid);
     }
 }
 

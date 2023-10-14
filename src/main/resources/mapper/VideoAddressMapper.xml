@@ -132,7 +132,8 @@
       #{videoaddress,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
       #{videoimg,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.blog.domain.VideoAddress">
+  <insert id="insertSelective" parameterType="com.example.blog.domain.VideoAddress" useGeneratedKeys="true"
+          keyColumn="videoid" keyProperty="videoid">
     insert into t_video
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="videoid != null">

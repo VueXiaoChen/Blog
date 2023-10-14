@@ -4,22 +4,19 @@ GET http://localhost:8080/videoAddress/list?videoaddress=而为人
 ###
 
 ###
-GET http://localhost:8080/tag/bloglist?blogId=50
-
-###
-
-###
-GET http://localhost:8080/tag/delete/5
-
-###
-
-
-###
-POST http://localhost:8080/tag/save
+POST http://localhost:8080/videoAddress/save
 Content-Type: application/json
 
 {
-  "tagName": "我是谁啊啊啊啊啊啊"
+  "videoid": 5,
+  "videotag": "昌吉22222",
+  "videosource": "比斯33333333",
+  "videoaddress": "www.lilil111111111"
 }
+
+###
+
+###
+GET http://localhost:8080/videoAddress/delete/4
 
 ###
