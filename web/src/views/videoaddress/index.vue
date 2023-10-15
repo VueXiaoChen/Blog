@@ -4,24 +4,46 @@ import {useRoute, useRouter } from "vue-router"
 import { type FormInstance, type FormRules, ElMessage, ElMessageBox } from "element-plus"
 import { Search, Refresh, CirclePlus, Delete, Download, RefreshRight } from "@element-plus/icons-vue"
 import { usePagination } from "@/hooks/usePagination"
-import { GetvideoaddressApi,GetvideoaddressUpdateOrAddApi } from "@/api/videoaddress/index"
+import { GetvideoaddressApi,GetvideoaddressUpdateOrAddApi,DeletevideoaddressApi,GetAllvideoaddressApi } from "@/api/videoaddress/index"
 import { useUserStore } from "@/store/modules/user"
+import fs from 'file-saver'
+import * as XLSX from 'xlsx'
 const route = useRoute()
 const router = useRouter()
+
 /** 调用user Pian */
 const user = useUserStore()
 const loading = ref<boolean>(false)
 const { paginationData, handleCurrentChange, handleSizeChange } = usePagination()
+//修改对话框
 const dialogFormVisible = ref(false)
+//删除对话框
+const centerDialogVisible = ref(false)
+//lable的值
 const formLabelWidth = ref(120)
-const updatedata = ref(
-  {
-    videotag: '',
-    videosource: '',
-    videoaddress: '',
-  }
-)
-const oldupdatedata = ref()
+//通用index的位置 用于删除和修改
+const olditemindex:any = ref()
+//储存总数据的条数
+const pagetotal =  ref(0)
+//使用递归的方式实现数组、对象的深拷贝
+function deepClone (obj) {
+    let objClone = Array.isArray(obj) ? [] : {};
+    if (obj && typeof obj === "object") {
+        for (var key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                //判断ojb子元素是否为对象，如果是，递归复制
+                if (obj[key] && typeof obj[key] === "object") {
+                    objClone[key] = deepClone(obj[key]);
+                } else {
+                    //如果不是，简单复制
+                    objClone[key] = obj[key];
+                }
+            }
+        }
+    }
+    return objClone;
+};   
+
 const resetSearch = () => {
   searchData.videotag=''
   searchData.videosource=''
@@ -31,14 +53,8 @@ const resetSearch = () => {
     type: 'success',
   })
 }
-
-const searchData = reactive({
-  videotag: "",
-  videosource: "",
-  videoaddress:"",
-})
 const oldtableData = ref([])
-const tableData = ref([
+const tableData= ref([
   {
     videotag: "1",
     videosource: "2",
@@ -50,7 +66,13 @@ const tableData = ref([
     videoaddress:"6",
   },
 ])
-
+//查询参数
+const searchData = reactive({
+  videotag: "",
+  videosource: "",
+  videoaddress:"",
+})
+//查询功能
 const SearchAll = () => {
   if(searchData.videotag == "" && searchData.videosource == "" && searchData.videoaddress == ""){
     ElMessage.error('请输入查询的数据')
@@ -75,7 +97,7 @@ const SearchAll = () => {
       newtabledata.push(tableData.value[i])
     }
   }
-    tableData.value= []
+  tableData.value= []
     tableData.value = newtabledata
     paginationData.total = tableData.value.length
     newtabledata= []
@@ -97,6 +119,7 @@ const SearchAll = () => {
   })
 }
 
+
 /** 视频地址获取 */
 const Getvideoaddress = (currentPage,pagesize) => {
   return new Promise((resolve,reject)=>{
@@ -105,20 +128,9 @@ const Getvideoaddress = (currentPage,pagesize) => {
         tableData.value = res.data.list        
         oldtableData.value = res.data.list      
         paginationData.total = res.data.total
-      }
-    }).catch((error)=>{
-      reject(error)
-      console.log(error);
-    })
-  })
-}
-/** 视频地址修改 */
-const updatevideoaddress = () => {
-  return new Promise((resolve,reject)=>{ 
-    GetvideoaddressUpdateOrAddApi(updatedata.value).then((res:any)=>{
-      if(res){   
+        pagetotal.value = res.data.total
         ElMessage({
-          message: res.message,
+          message: '获取成功',
           type: 'success',
         })
       }
@@ -130,11 +142,129 @@ const updatevideoaddress = () => {
 }
 
 
+//用于更新的数据
+const updatedata:any = ref(
+  {
+    videotag: '',
+    videosource: '',
+    videoaddress: '',
+  }
+)
+const oldupdatedata:any = ref({})
 //获取修改的内容
-function GetUpdatadata(item){
+function GetUpdatadata(index,item){
+  olditemindex.value = index
+  oldupdatedata.value  = deepClone(item)
   dialogFormVisible.value =true
-  updatedata.value = item
-  oldupdatedata.value = item
+}
+
+/** 视频地址修改 */
+const updatevideoaddress = () => {
+  return new Promise((resolve,reject)=>{ 
+    GetvideoaddressUpdateOrAddApi(oldupdatedata.value).then((res:any)=>{
+      if(res){   
+        tableData.value[olditemindex.value] = oldupdatedata.value
+        ElMessage({
+          message: res.message,
+          type: 'success',
+        })
+        dialogFormVisible.value =false
+      }
+    }).catch((error)=>{
+      reject(error)
+      console.log(error);
+    })
+  })
+}
+
+//删除用的videoid
+const itemvideoid = ref()
+const Deletedata =(index,item)=>{
+  olditemindex.value = index
+  centerDialogVisible.value=true
+  itemvideoid.value = item.videoid
+}
+/** 视频地址删除 */
+const deletevideoaddress = () => {
+  return new Promise((resolve,reject)=>{ 
+    DeletevideoaddressApi(itemvideoid.value).then((res:any)=>{
+      if(res){   
+        //oldtableData.value.splice((paginationData.currentPage-1)*paginationData.pageSize + olditemindex.value,1)
+        tableData.value.splice(olditemindex.value,1)
+        pagetotal.value-=1
+        paginationData.total = pagetotal.value
+        ElMessage({
+          message: res.message,
+          type: 'success',
+        })
+        centerDialogVisible.value =false
+      }
+    }).catch((error)=>{
+      reject(error)
+      console.log(error);
+    })
+  })
+}
+//刷新当前页
+function shuaxin(){
+  //router.push({name:router.currentRoute.value.name})
+  Getvideoaddress(paginationData.currentPage,paginationData.pageSize)
+}
+//设置execl的表头
+const headerexecl = ref({
+  videoid:"id",
+  videotag: "视频标签",
+  videosource: "视频来源",
+  videoaddress:"视频地址",
+})
+//导出Execl文件函数
+function xlsx(json, fields, filename = '.xlsx') {//导出xlsx
+  json.forEach(item => {
+    for (let i in item) {
+      if (fields.hasOwnProperty(i)) {
+        item[fields[i]] = item[i];
+      }
+      delete item[i]; //删除原先的对象属性
+    }
+  })
+  let sheetName = filename //excel的文件名称
+  let wb = XLSX.utils.book_new()  //工作簿对象包含一SheetNames数组，以及一个表对象映射表名称到表对象。XLSX.utils.book_new实用函数创建一个新的工作簿对象。
+  let ws = XLSX.utils.json_to_sheet(json, { header: Object.values(fields) }) //将JS对象数组转换为工作表。
+  wb.SheetNames.push(sheetName)
+  wb.Sheets[sheetName] = ws
+  const defaultCellStyle = { font: { name: "Verdana", sz: 13, color: "FF00FF88" }, fill: { fgColor: { rgb: "FFFFAA00" } } };//设置表格的样式
+  let wopts:any = { bookType: 'xlsx', bookSST: false, type: 'binary', cellStyles: true, defaultCellStyle: defaultCellStyle, showGridLines: false }  //写入的样式
+  let wbout = XLSX.write(wb, wopts)
+  let blob = new Blob([s2ab(wbout)], { type: 'application/octet-stream' })
+  fs.saveAs(blob, filename + '.xlsx')
+}
+const s2ab = s => {
+  var buf;
+  if (typeof ArrayBuffer !== 'undefined') {
+    buf = new ArrayBuffer(s.length)
+    var view = new Uint8Array(buf)
+    for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xff
+    return buf
+  } else {
+    buf = new Array(s.length);
+    for (var i = 0; i != s.length; ++i) buf[i] = s.charCodeAt(i) & 0xFF;
+    return buf;
+  }
+}
+//导出execl
+//获取所有的视频地址不分页的
+const OutExecl = () => {
+  return new Promise((resolve,reject)=>{
+    GetAllvideoaddressApi().then((res:any)=>{
+      if(res){   
+        xlsx(res.data.list,headerexecl.value,"数据")
+      }
+    }).catch((error)=>{
+      reject(error)
+      console.log(error);
+    })
+  })
+
 }
 //监听分页
 watch(()=>[paginationData.currentPage,paginationData.pageSize],(newValue, oldValue) => {
@@ -173,10 +303,10 @@ onMounted(() => {
         </div>
         <div>
           <el-tooltip content="下载">
-            <el-button type="primary" :icon="Download" circle />
+            <el-button type="primary" :icon="Download" circle @click="OutExecl"/>
           </el-tooltip>
           <el-tooltip content="刷新当前页">
-            <el-button type="primary" :icon="RefreshRight" circle @click="" />
+            <el-button type="primary" :icon="RefreshRight" circle @click="shuaxin" />
           </el-tooltip>
         </div>
       </div>
@@ -189,8 +319,8 @@ onMounted(() => {
           <el-table-column prop="videoaddress" label="视频地址"  align="center"  :show-overflow-tooltip="true"/>
           <el-table-column fixed="right" label="操作" width="250" align="center">
             <template #default="scope">
-              <el-button type="primary"  @click="GetUpdatadata(scope.row)">修改</el-button>
-              <el-button type="danger"  @click="">删除</el-button>
+              <el-button type="primary"  @click="GetUpdatadata(scope.$index,scope.row)">修改</el-button>
+              <el-button type="danger"  @click="Deletedata(scope.$index,scope.row)">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -209,21 +339,33 @@ onMounted(() => {
       </div>
     </el-card>
     <el-dialog v-model="dialogFormVisible" title="修改" center>
-    <el-form :model="updatedata">
+    <el-form :model="oldupdatedata">
       <el-form-item label="视频标签：" :label-width="formLabelWidth">
-        <el-input v-model="updatedata.videotag" autocomplete="off" />
+        <el-input v-model="oldupdatedata.videotag" autocomplete="off" />
       </el-form-item>
       <el-form-item label="视频来源：" :label-width="formLabelWidth">
-        <el-input v-model="updatedata.videosource" autocomplete="off" />
+        <el-input v-model="oldupdatedata.videosource" autocomplete="off" />
       </el-form-item>
       <el-form-item label="视频地址：" :label-width="formLabelWidth">
-        <el-input v-model="updatedata.videoaddress" autocomplete="off" />
+        <el-input v-model="oldupdatedata.videoaddress" autocomplete="off" />
       </el-form-item>
     </el-form>
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="dialogFormVisible = false" round>取消</el-button>
         <el-button type="primary" round @click="updatevideoaddress">
+          确定
+        </el-button>
+      </span>
+    </template>
+  </el-dialog>
+
+  <el-dialog v-model="centerDialogVisible" title="提示" width="30%"  top=30vh center>
+    <span>确定删除该条数据?</span>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="centerDialogVisible = false">取消</el-button>
+        <el-button type="primary" @click="deletevideoaddress" >
           确定
         </el-button>
       </span>
@@ -263,5 +405,8 @@ onMounted(() => {
 .app-container .el-dialog--center{
   border-radius: 20px !important;
 }
-
+.app-container .el-dialog__body{
+  text-align: center;
+  font-size: 1.3rem;
+}
 </style>
