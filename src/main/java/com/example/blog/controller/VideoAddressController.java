@@ -9,6 +9,7 @@ import com.example.blog.resp.TagResp;
 import com.example.blog.resp.VideoAddressResp;
 import com.example.blog.service.TagService;
 import com.example.blog.service.VideoAddressService;
+import com.example.blog.util.Mylog;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +37,7 @@ public class VideoAddressController {
         return resp;
     }
     //单个增加
+    @Mylog(value="增加视频地址")
     @PostMapping("/save")
     //@RequestBody  定义传过来的参数是实体类
     public CommonResp save(@Validated @RequestBody VideoAddressReq videoAddressReq) {

@@ -8,8 +8,7 @@ POST http://localhost:8080/videoAddress/save
 Content-Type: application/json
 
 {
-  "videoid": 5,
-  "videotag": "昌吉22222",
+  "videotag": "昌吉22222666",
   "videosource": "比斯33333333",
   "videoaddress": "www.lilil111111111"
 }

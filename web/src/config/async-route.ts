@@ -15,7 +15,7 @@ interface AsyncRouteSettings {
 
 const asyncRouteSettings: AsyncRouteSettings = {
   open: false,
-  defaultRoles: ["admin"]
+  defaultRoles: ["editor"]
 }
 
 export default asyncRouteSettings

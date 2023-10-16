@@ -2,6 +2,9 @@ package com.example.blog.aspect;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.support.spring.PropertyPreFilters;
+import com.example.blog.domain.OperateLog;
+import com.example.blog.mapper.OperateLogMapper;
+import com.example.blog.util.Mylog;
 import com.example.blog.util.RequestContext;
 import com.example.blog.util.SnowFlake;
 import org.aspectj.lang.JoinPoint;
@@ -11,6 +14,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -23,6 +27,12 @@ import javax.annotation.Resource;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.crypto.Data;
+import java.lang.reflect.Method;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Date;
 
 @Aspect
 @Component
@@ -34,8 +44,15 @@ public class LogAspect {
     @Pointcut("execution(public * com.example.*.controller..*Controller.*(..))")
     public void controllerPointcut() {}
 
+    Long startTime =null;
+    Date stratDate;
+    OperateLog operateLog = new OperateLog();
+
     @Resource
     private SnowFlake snowFlake;
+
+    @Resource
+    private OperateLogMapper operateLogMapper;
 
     @Before("controllerPointcut()")
     public void doBefore(JoinPoint joinPoint) throws Throwable {
@@ -48,6 +65,16 @@ public class LogAspect {
         HttpServletRequest request = attributes.getRequest();
         Signature signature = joinPoint.getSignature();
         String name = signature.getName();
+        //从切面织入点处通过反射机制获取织入点处的方法
+        MethodSignature signatures = (MethodSignature)joinPoint.getSignature();
+        //获取切入点的所有方法
+        Method method = signatures.getMethod();
+        //获取操作（获取方法注解上的类,比如Controller类中的 @Mylog(value="增加视频地址")）
+        Mylog mylog = method.getAnnotation(Mylog.class);
+        if(mylog!=null){
+            String value = mylog.value();
+            operateLog.setLogOperation(value);
+        }
 
         // 打印请求信息
         LOG.info("------------- 开始 -------------");
@@ -77,11 +104,17 @@ public class LogAspect {
         PropertyPreFilters.MySimplePropertyPreFilter excludefilter = filters.addFilter();
         excludefilter.addExcludes(excludeProperties);
         LOG.info("请求参数: {}", JSONObject.toJSONString(arguments, excludefilter));
+        operateLog.setLogId(snowFlake.nextId());
+        operateLog.setLogIp(request.getRemoteAddr());
+        operateLog.setLogParams(JSONObject.toJSONString(arguments, excludefilter));
+        operateLog.setLogMethod(request.getMethod());
+        operateLog.setLogUrl(request.getRequestURL().toString());
     }
 
     @Around("controllerPointcut()")
     public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
+        operateLog.setLogStartdate(String.valueOf(startTime));
         Object result = proceedingJoinPoint.proceed();
         // 排除字段，敏感字段或太长的字段不显示
         String[] excludeProperties = {"password", "file"};
@@ -90,6 +123,14 @@ public class LogAspect {
         excludefilter.addExcludes(excludeProperties);
         LOG.info("返回结果: {}", JSONObject.toJSONString(result, excludefilter));
         LOG.info("------------- 结束 耗时：{} ms -------------", System.currentTimeMillis() - startTime);
+        //储存结果
+        operateLog.setLogResult(JSONObject.toJSONString(result, excludefilter));
+        //结束时间
+        operateLog.setLogEnddate(String.valueOf(System.currentTimeMillis() - startTime));
+        //耗时
+        operateLog.setLogResponsetime(String.valueOf(System.currentTimeMillis() - startTime));
+        operateLog.setLogOperationtime(new Date());
+        operateLogMapper.insertSelective(operateLog);
         return result;
     }
 
