@@ -22,7 +22,7 @@ import java.util.List;
 public class VideoAddressController {
     @Resource
     private VideoAddressService videoAddressService;
-
+    @Mylog(value="查询视频地址")
     @GetMapping("/list")
     //@Valid  开启参数检验
     public CommonResp list(VideoAddressReq videoAddressReq) {
@@ -55,6 +55,7 @@ public class VideoAddressController {
         return resp;
     }
     //单个删除
+    @Mylog(value="删除视频地址")
     @GetMapping("/delete/{videoid}")
     //@PathVariable与{videoid}是绑定的
     public CommonResp delete(@PathVariable long videoid) {

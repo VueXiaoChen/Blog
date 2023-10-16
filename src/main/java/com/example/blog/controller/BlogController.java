@@ -6,6 +6,7 @@ import com.example.blog.resp.BlogResp;
 import com.example.blog.resp.CommonResp;
 import com.example.blog.resp.PageResp;
 import com.example.blog.service.BlogService;
+import com.example.blog.util.Mylog;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ import javax.annotation.Resource;
 public class BlogController {
     @Resource
     private BlogService blogService;
-
+    @Mylog(value="查询博客")
     @GetMapping("/list")
     //@Valid  开启参数检验
     public CommonResp list(@Validated BlogFindReq blogFindReq) {
@@ -33,6 +34,7 @@ public class BlogController {
     }
 
     //单个增加
+    @Mylog(value="保存博客")
     @PostMapping("/save")
     //@RequestBody  定义传过来的参数是实体类
     public CommonResp save(@Validated @RequestBody BlogReq blogReq) {
@@ -49,7 +51,7 @@ public class BlogController {
         //将信息添加到返回信息里
         return resp;
     }
-
+    @Mylog(value="点赞")
     @PostMapping("/like")
     //@RequestBody  定义传过来的参数是实体类
     public CommonResp like(@Validated @RequestBody BlogReq blogReq) {
@@ -62,7 +64,7 @@ public class BlogController {
         //将信息添加到返回信息里
         return resp;
     }
-
+    @Mylog(value="关注")
     @PostMapping("/focus")
     //@RequestBody  定义传过来的参数是实体类
     public CommonResp focus(@Validated @RequestBody BlogReq blogReq) {
@@ -75,7 +77,7 @@ public class BlogController {
         //将信息添加到返回信息里
         return resp;
     }
-
+    @Mylog(value="收藏")
     @PostMapping("/collect")
     //@RequestBody  定义传过来的参数是实体类
     public CommonResp collect(@Validated @RequestBody BlogReq blogReq) {
@@ -88,7 +90,7 @@ public class BlogController {
         //将信息添加到返回信息里
         return resp;
     }
-
+    @Mylog(value="删除博客")
     //单个删除
     @GetMapping("/delete/{blogId}")
     //@PathVariable与{blogId}是绑定的

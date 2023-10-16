@@ -5,6 +5,7 @@ import com.example.blog.resp.BlogTypeResp;
 import com.example.blog.resp.CommonResp;
 import com.example.blog.resp.PageResp;
 import com.example.blog.service.BlogTypeService;
+import com.example.blog.util.Mylog;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ import java.util.List;
 public class BlogTypeController {
     @Resource
     private BlogTypeService blogTypeService;
-
+    @Mylog(value="查询博客类别")
     @GetMapping("/list")
     //@Valid  开启参数检验
     public CommonResp list(@Valid BlogTypeReq blogTypeReq) {
@@ -31,7 +32,7 @@ public class BlogTypeController {
         resp.setData(data);
         return resp;
     }
-
+    @Mylog(value="id查询博客类别")
     //单个id查询
     @GetMapping("/find/{typeid}")
     //@PathVariable与{userid}是绑定的
@@ -45,7 +46,7 @@ public class BlogTypeController {
         resp.setMessage("查询成功");
         return resp;
     }
-
+    @Mylog(value="删除博客类别")
     //单个删除
     @GetMapping("/delete/{typeid}")
     //@PathVariable与{typeid}是绑定的
@@ -58,7 +59,7 @@ public class BlogTypeController {
         resp.setMessage("删除成功");
         return resp;
     }
-
+    @Mylog(value="保存博客类别")
     //单个增加
     @PostMapping("/save")
     //@RequestBody  定义传过来的参数是实体类

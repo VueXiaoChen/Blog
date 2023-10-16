@@ -5,6 +5,7 @@ import com.example.blog.resp.CommonResp;
 import com.example.blog.resp.PageResp;
 import com.example.blog.resp.TagBlogResp;
 import com.example.blog.service.TagBlogService;
+import com.example.blog.util.Mylog;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,7 @@ import javax.annotation.Resource;
 public class TagBlogController {
     @Resource
     private TagBlogService tagBlogService;
-
+    @Mylog(value="查询所有博客标签")
     @GetMapping("/list")
     //@Valid  开启参数检验
     public CommonResp list(TagBlogReq tagBlogReq) {

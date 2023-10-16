@@ -5,6 +5,7 @@ import com.example.blog.resp.CommonResp;
 import com.example.blog.resp.PageResp;
 import com.example.blog.resp.TagResp;
 import com.example.blog.service.TagService;
+import com.example.blog.util.Mylog;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ import java.util.List;
 public class TagController {
     @Resource
     private TagService tagService;
-
+    @Mylog(value="查询博客标签")
     @GetMapping("/list")
     //@Valid  开启参数检验
     public CommonResp list(TagReq tagReq) {
@@ -31,7 +32,7 @@ public class TagController {
         resp.setData(data);
         return resp;
     }
-
+    @Mylog(value="查询固定博客标签")
     @GetMapping("/bloglist")
     //获取固定博客的标签
     public CommonResp GetBlogTag(Integer blogId) {
@@ -45,7 +46,7 @@ public class TagController {
         resp.setData(data);
         return resp;
     }
-
+    @Mylog(value="保存博客标签")
     //单个增加
     @PostMapping("/save")
     //@RequestBody  定义传过来的参数是实体类
@@ -71,7 +72,7 @@ public class TagController {
         //将信息添加到返回信息里
         return resp;
     }
-
+    @Mylog(value="删除博客标签")
     //单个删除
     @GetMapping("/delete/{tagId}")
     //@PathVariable与{blogId}是绑定的

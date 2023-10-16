@@ -6,6 +6,7 @@ import com.example.blog.req.UserReq;
 import com.example.blog.req.UserSaveReq;
 import com.example.blog.resp.*;
 import com.example.blog.service.UserService;
+import com.example.blog.util.Mylog;
 import com.example.blog.util.SnowFlake;
 import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
@@ -40,7 +41,7 @@ public class UserController {
     public List<User> list(){
         return userService.list();
     }*/
-
+    @Mylog(value="查询用户")
     @GetMapping("/list")
     //@Valid  开启参数检验
     public CommonResp list(@Valid UserReq req) {
@@ -54,7 +55,7 @@ public class UserController {
         resp.setData(data);
         return resp;
     }
-
+    @Mylog(value="保存用户")
     @PostMapping("/save")
     //@RequestBody  定义传过来的参数是实体类
     public CommonResp save(@RequestBody UserSaveReq userSaveReq) {
@@ -71,7 +72,7 @@ public class UserController {
 
         return resp;
     }
-
+    @Mylog(value="查询用户信息")
     @GetMapping("/info/{userid}")
     //@RequestBody  定义传过来的参数是实体类
     public CommonResp loading(@PathVariable Long userid) {
@@ -85,7 +86,7 @@ public class UserController {
         resp.setData(userinfo);
         return resp;
     }
-
+    @Mylog(value="登录")
     @PostMapping("/loading")
     //@RequestBody  定义传过来的参数是实体类
     public CommonResp loading(@RequestBody UserLoadingReq userLoadingReq) {
