@@ -1,8 +1,5 @@
 package com.example.blog.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.util.Date;
 
 public class VideoAddress {
@@ -14,15 +11,23 @@ public class VideoAddress {
 
     private String videoaddress;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
+    private String videotype;
+
+    private String videostate;
+
+    private String currencytwo;
+
+    private String currencyone;
+
+    private String currencythree;
+
     private String videoimg;
+
+    private byte[] videofile;
 
     public Long getVideoid() {
         return videoid;
@@ -72,12 +77,60 @@ public class VideoAddress {
         this.createTime = createTime;
     }
 
+    public String getVideotype() {
+        return videotype;
+    }
+
+    public void setVideotype(String videotype) {
+        this.videotype = videotype;
+    }
+
+    public String getVideostate() {
+        return videostate;
+    }
+
+    public void setVideostate(String videostate) {
+        this.videostate = videostate;
+    }
+
+    public String getCurrencytwo() {
+        return currencytwo;
+    }
+
+    public void setCurrencytwo(String currencytwo) {
+        this.currencytwo = currencytwo;
+    }
+
+    public String getCurrencyone() {
+        return currencyone;
+    }
+
+    public void setCurrencyone(String currencyone) {
+        this.currencyone = currencyone;
+    }
+
+    public String getCurrencythree() {
+        return currencythree;
+    }
+
+    public void setCurrencythree(String currencythree) {
+        this.currencythree = currencythree;
+    }
+
     public String getVideoimg() {
         return videoimg;
     }
 
     public void setVideoimg(String videoimg) {
         this.videoimg = videoimg;
+    }
+
+    public byte[] getVideofile() {
+        return videofile;
+    }
+
+    public void setVideofile(byte[] videofile) {
+        this.videofile = videofile;
     }
 
     @Override
@@ -92,7 +145,13 @@ public class VideoAddress {
         sb.append(", videoaddress=").append(videoaddress);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", createTime=").append(createTime);
+        sb.append(", videotype=").append(videotype);
+        sb.append(", videostate=").append(videostate);
+        sb.append(", currencytwo=").append(currencytwo);
+        sb.append(", currencyone=").append(currencyone);
+        sb.append(", currencythree=").append(currencythree);
         sb.append(", videoimg=").append(videoimg);
+        sb.append(", videofile=").append(videofile);
         sb.append("]");
         return sb.toString();
     }

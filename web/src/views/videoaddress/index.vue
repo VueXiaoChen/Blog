@@ -48,6 +48,7 @@ const resetSearch = () => {
   searchData.videotag=''
   searchData.videosource=''
   searchData.videoaddress=''
+  searchData.videotype=''
   ElMessage({
     message: '重置成功',
     type: 'success',
@@ -59,11 +60,15 @@ const tableData= ref([
     videotag: "1",
     videosource: "2",
     videoaddress:"3",
+    videotype:'',
+    videostate:"无条件"
   },
   {
     videotag: "4",
     videosource: "5",
     videoaddress:"6",
+    videotype:'',
+    videostate:"无条件"
   },
 ])
 //查询参数
@@ -71,10 +76,12 @@ const searchData = reactive({
   videotag: "",
   videosource: "",
   videoaddress:"",
+  videotype:'',
+  videostate:"无条件"
 })
 //查询功能
 const SearchAll = () => {
-  if(searchData.videotag == "" && searchData.videosource == "" && searchData.videoaddress == ""){
+  if(searchData.videotag == "" && searchData.videosource == "" && searchData.videoaddress == "" && searchData.videotype == "" && searchData.videostate == "无条件"){
     ElMessage.error('请输入查询的数据')
     return
   }
@@ -105,6 +112,29 @@ const SearchAll = () => {
   if(searchData.videoaddress!= null && searchData.videoaddress != ""){
     for(let i=0;i<tableData.value.length;i++){
     if(tableData.value[i].videoaddress.indexOf(searchData.videoaddress)!=-1){
+      newtabledata.push(tableData.value[i])
+    }
+  }
+    tableData.value= []
+    tableData.value = newtabledata
+    paginationData.total = tableData.value.length
+    newtabledata= []
+  }
+  if(searchData.videotype!= null && searchData.videotype != ""){
+    for(let i=0;i<tableData.value.length;i++){
+    if(tableData.value[i].videotype.indexOf(searchData.videotype)!=-1){
+      newtabledata.push(tableData.value[i])
+    }
+  }
+    tableData.value= []
+    tableData.value = newtabledata
+    paginationData.total = tableData.value.length
+    newtabledata= []
+  }
+  
+  if(searchData.videostate!= "无条件"){
+    for(let i=0;i<tableData.value.length;i++){
+    if(tableData.value[i].videostate.indexOf(searchData.videostate)!=-1){
       newtabledata.push(tableData.value[i])
     }
   }
@@ -216,6 +246,9 @@ const headerexecl = ref({
   videotag: "视频标签",
   videosource: "视频来源",
   videoaddress:"视频地址",
+  videotype:"视频类型",
+  videostate:"视频存盘",
+  
 })
 //导出Execl文件函数
 function xlsx(json, fields, filename = '.xlsx') {//导出xlsx
@@ -290,6 +323,19 @@ onMounted(() => {
         <el-form-item prop="videoaddress" label="视频地址">
           <el-input v-model="searchData.videoaddress" placeholder="请输入" />
         </el-form-item>
+        <el-form-item prop="videoaddress" label="视频类型">
+          <el-input v-model="searchData.videotype" placeholder="请输入" />
+        </el-form-item>
+        <!-- <el-form-item prop="videostate" label="视频存盘">
+          <el-input v-model="searchData.videostate" placeholder="请输入" />
+        </el-form-item> -->
+        <el-form-item label="视频存盘：" prop="videostate">
+        <el-select v-model="searchData.videostate" placeholder="">
+          <el-option label="无条件" value="无条件" />
+          <el-option label="未存盘" value="未存盘" />
+          <el-option label="已存盘" value="已存盘" />
+        </el-select>
+        </el-form-item>
         <el-form-item>
           <el-button type="primary" :icon="Search" @click="SearchAll()">查询</el-button>
           <el-button :icon="Refresh" @click="resetSearch">重置</el-button>
@@ -317,6 +363,13 @@ onMounted(() => {
           <el-table-column prop="videotag" label="视频标签" width="160" align="center" :show-overflow-tooltip="true"/>
           <el-table-column prop="videosource" label="视频来源"  align="center"  :show-overflow-tooltip="true"/>
           <el-table-column prop="videoaddress" label="视频地址"  align="center"  :show-overflow-tooltip="true"/>
+          <el-table-column prop="videotype" label="视频类型"  align="center" />
+          <el-table-column prop="videostate" label="视频存盘" width="100" align="center">
+            <template #default="scope">
+              <el-tag v-if="scope.row.videostate==='已存盘'" type="success" effect="plain">已存盘</el-tag>
+              <el-tag v-else type="danger" effect="plain">未存盘</el-tag>
+            </template>
+          </el-table-column>
           <el-table-column fixed="right" label="操作" width="250" align="center">
             <template #default="scope">
               <el-button type="primary"  @click="GetUpdatadata(scope.$index,scope.row)">修改</el-button>
@@ -349,6 +402,7 @@ onMounted(() => {
       <el-form-item label="视频地址：" :label-width="formLabelWidth">
         <el-input v-model="oldupdatedata.videoaddress" autocomplete="off" />
       </el-form-item>
+
     </el-form>
     <template #footer>
       <span class="dialog-footer">

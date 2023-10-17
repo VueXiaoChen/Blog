@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.Date;
 
 public class VideoAddressReq extends PageReq{
@@ -22,6 +23,66 @@ public class VideoAddressReq extends PageReq{
     private Date createTime;
 
     private String videoimg;
+
+    private String videotype;
+
+    private String videostate;
+
+    private String currencytwo;
+
+    public String getVideotype() {
+        return videotype;
+    }
+
+    public void setVideotype(String videotype) {
+        this.videotype = videotype;
+    }
+
+    private String currencyone;
+
+    private String currencythree;
+
+    public String getVideostate() {
+        return videostate;
+    }
+
+    public void setVideostate(String videostate) {
+        this.videostate = videostate;
+    }
+
+    public String getCurrencytwo() {
+        return currencytwo;
+    }
+
+    public void setCurrencytwo(String currencytwo) {
+        this.currencytwo = currencytwo;
+    }
+
+    public String getCurrencyone() {
+        return currencyone;
+    }
+
+    public void setCurrencyone(String currencyone) {
+        this.currencyone = currencyone;
+    }
+
+    public String getCurrencythree() {
+        return currencythree;
+    }
+
+    public void setCurrencythree(String currencythree) {
+        this.currencythree = currencythree;
+    }
+
+    public byte[] getVideofile() {
+        return videofile;
+    }
+
+    public void setVideofile(byte[] videofile) {
+        this.videofile = videofile;
+    }
+
+    private byte[] videofile;
 
     public Long getVideoid() {
         return videoid;
@@ -81,18 +142,20 @@ public class VideoAddressReq extends PageReq{
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", videoid=").append(videoid);
-        sb.append(", videotag=").append(videotag);
-        sb.append(", videosource=").append(videosource);
-        sb.append(", videoaddress=").append(videoaddress);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", createTime=").append(createTime);
-        sb.append(", videoimg=").append(videoimg);
-        sb.append("]");
-        return sb.toString();
+        return "VideoAddressReq{" +
+                "videoid=" + videoid +
+                ", videotag='" + videotag + '\'' +
+                ", videosource='" + videosource + '\'' +
+                ", videoaddress='" + videoaddress + '\'' +
+                ", updateTime=" + updateTime +
+                ", createTime=" + createTime +
+                ", videoimg='" + videoimg + '\'' +
+                ", videotype='" + videotype + '\'' +
+                ", videostate='" + videostate + '\'' +
+                ", currencytwo='" + currencytwo + '\'' +
+                ", currencyone='" + currencyone + '\'' +
+                ", currencythree='" + currencythree + '\'' +
+                ", videofile=" + Arrays.toString(videofile) +
+                '}';
     }
 }

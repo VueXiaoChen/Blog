@@ -12,6 +12,8 @@ const ruleForm = reactive<any>({
   videotag: '',
   videosource: '',
   videoaddress: '',
+  videotype:'其他',
+  videostate:"未存盘",
 })
 
 const rules = reactive<FormRules>({
@@ -30,8 +32,8 @@ const resetForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
   formEl.resetFields()
 }
-/** 博客增加 */
-const GetBlogUpdateOrAdd = (ruleForm: any) => {
+/** 视频增加 */
+const GetvideoaddressUpdateOrAdd = (ruleForm: any) => {
   return new Promise((resolve,reject)=>{
     GetvideoaddressUpdateOrAddApi(ruleForm).then((res:any)=>{
       if(res){   
@@ -51,7 +53,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return
   await formEl.validate((valid, fields) => {
     if (valid) {
-      GetBlogUpdateOrAdd(ruleForm)
+      GetvideoaddressUpdateOrAdd(ruleForm)
     } else {
       console.log('error submit!', fields)
     }
@@ -86,6 +88,18 @@ onMounted(() => {
         </el-form-item>
         <el-form-item label="视频地址：" prop="videoaddress" required>
           <el-input v-model="ruleForm.videoaddress" />
+        </el-form-item>
+        <el-form-item label="视频类别：" prop="videotype">
+        <el-select v-model="ruleForm.videotype" placeholder="其他">
+          <el-option label="其他" value="其他" />
+          <el-option label="口交" value="口交" />
+        </el-select>
+        </el-form-item>
+        <el-form-item label="视频存盘：" prop="videostate">
+          <el-radio-group v-model="ruleForm.videostate">
+            <el-radio label="未存盘" />
+            <el-radio label="已存盘" />
+          </el-radio-group>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm(ruleFormRef)">创建</el-button>

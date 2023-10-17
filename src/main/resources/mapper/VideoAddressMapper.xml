@@ -8,9 +8,15 @@
     <result column="videoaddress" jdbcType="VARCHAR" property="videoaddress" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="videotype" jdbcType="VARCHAR" property="videotype" />
+    <result column="videostate" jdbcType="VARCHAR" property="videostate" />
+    <result column="currencytwo" jdbcType="VARCHAR" property="currencytwo" />
+    <result column="currencyone" jdbcType="VARCHAR" property="currencyone" />
+    <result column="currencythree" jdbcType="VARCHAR" property="currencythree" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.blog.domain.VideoAddress">
     <result column="videoimg" jdbcType="LONGVARCHAR" property="videoimg" />
+    <result column="videofile" jdbcType="LONGVARBINARY" property="videofile" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -71,10 +77,11 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    videoid, videotag, videosource, videoaddress, update_time, create_time
+    videoid, videotag, videosource, videoaddress, update_time, create_time, videotype, 
+    videostate, currencytwo, currencyone, currencythree
   </sql>
   <sql id="Blob_Column_List">
-    videoimg
+    videoimg, videofile
   </sql>
   <select id="selectByExampleWithBLOBs" parameterType="com.example.blog.domain.VideoAddressExample" resultMap="ResultMapWithBLOBs">
     select
@@ -127,10 +134,14 @@
   <insert id="insert" parameterType="com.example.blog.domain.VideoAddress">
     insert into t_video (videoid, videotag, videosource, 
       videoaddress, update_time, create_time, 
-      videoimg)
+      videotype, videostate, currencytwo, 
+      currencyone, currencythree, videoimg, 
+      videofile)
     values (#{videoid,jdbcType=BIGINT}, #{videotag,jdbcType=VARCHAR}, #{videosource,jdbcType=VARCHAR}, 
       #{videoaddress,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{videoimg,jdbcType=LONGVARCHAR})
+      #{videotype,jdbcType=VARCHAR}, #{videostate,jdbcType=VARCHAR}, #{currencytwo,jdbcType=VARCHAR}, 
+      #{currencyone,jdbcType=VARCHAR}, #{currencythree,jdbcType=VARCHAR}, #{videoimg,jdbcType=LONGVARCHAR}, 
+      #{videofile,jdbcType=LONGVARBINARY})
   </insert>
   <insert id="insertSelective" parameterType="com.example.blog.domain.VideoAddress" useGeneratedKeys="true"
           keyColumn="videoid" keyProperty="videoid">
@@ -154,8 +165,26 @@
       <if test="createTime != null">
         create_time,
       </if>
+      <if test="videotype != null">
+        videotype,
+      </if>
+      <if test="videostate != null">
+        videostate,
+      </if>
+      <if test="currencytwo != null">
+        currencytwo,
+      </if>
+      <if test="currencyone != null">
+        currencyone,
+      </if>
+      <if test="currencythree != null">
+        currencythree,
+      </if>
       <if test="videoimg != null">
         videoimg,
+      </if>
+      <if test="videofile != null">
+        videofile,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -177,8 +206,26 @@
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="videotype != null">
+        #{videotype,jdbcType=VARCHAR},
+      </if>
+      <if test="videostate != null">
+        #{videostate,jdbcType=VARCHAR},
+      </if>
+      <if test="currencytwo != null">
+        #{currencytwo,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyone != null">
+        #{currencyone,jdbcType=VARCHAR},
+      </if>
+      <if test="currencythree != null">
+        #{currencythree,jdbcType=VARCHAR},
+      </if>
       <if test="videoimg != null">
         #{videoimg,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="videofile != null">
+        #{videofile,jdbcType=LONGVARBINARY},
       </if>
     </trim>
   </insert>
@@ -209,8 +256,26 @@
       <if test="row.createTime != null">
         create_time = #{row.createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="row.videotype != null">
+        videotype = #{row.videotype,jdbcType=VARCHAR},
+      </if>
+      <if test="row.videostate != null">
+        videostate = #{row.videostate,jdbcType=VARCHAR},
+      </if>
+      <if test="row.currencytwo != null">
+        currencytwo = #{row.currencytwo,jdbcType=VARCHAR},
+      </if>
+      <if test="row.currencyone != null">
+        currencyone = #{row.currencyone,jdbcType=VARCHAR},
+      </if>
+      <if test="row.currencythree != null">
+        currencythree = #{row.currencythree,jdbcType=VARCHAR},
+      </if>
       <if test="row.videoimg != null">
         videoimg = #{row.videoimg,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="row.videofile != null">
+        videofile = #{row.videofile,jdbcType=LONGVARBINARY},
       </if>
     </set>
     <if test="example != null">
@@ -225,7 +290,13 @@
       videoaddress = #{row.videoaddress,jdbcType=VARCHAR},
       update_time = #{row.updateTime,jdbcType=TIMESTAMP},
       create_time = #{row.createTime,jdbcType=TIMESTAMP},
-      videoimg = #{row.videoimg,jdbcType=LONGVARCHAR}
+      videotype = #{row.videotype,jdbcType=VARCHAR},
+      videostate = #{row.videostate,jdbcType=VARCHAR},
+      currencytwo = #{row.currencytwo,jdbcType=VARCHAR},
+      currencyone = #{row.currencyone,jdbcType=VARCHAR},
+      currencythree = #{row.currencythree,jdbcType=VARCHAR},
+      videoimg = #{row.videoimg,jdbcType=LONGVARCHAR},
+      videofile = #{row.videofile,jdbcType=LONGVARBINARY}
     <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -237,7 +308,12 @@
       videosource = #{row.videosource,jdbcType=VARCHAR},
       videoaddress = #{row.videoaddress,jdbcType=VARCHAR},
       update_time = #{row.updateTime,jdbcType=TIMESTAMP},
-      create_time = #{row.createTime,jdbcType=TIMESTAMP}
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      videotype = #{row.videotype,jdbcType=VARCHAR},
+      videostate = #{row.videostate,jdbcType=VARCHAR},
+      currencytwo = #{row.currencytwo,jdbcType=VARCHAR},
+      currencyone = #{row.currencyone,jdbcType=VARCHAR},
+      currencythree = #{row.currencythree,jdbcType=VARCHAR}
     <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -260,8 +336,26 @@
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="videotype != null">
+        videotype = #{videotype,jdbcType=VARCHAR},
+      </if>
+      <if test="videostate != null">
+        videostate = #{videostate,jdbcType=VARCHAR},
+      </if>
+      <if test="currencytwo != null">
+        currencytwo = #{currencytwo,jdbcType=VARCHAR},
+      </if>
+      <if test="currencyone != null">
+        currencyone = #{currencyone,jdbcType=VARCHAR},
+      </if>
+      <if test="currencythree != null">
+        currencythree = #{currencythree,jdbcType=VARCHAR},
+      </if>
       <if test="videoimg != null">
         videoimg = #{videoimg,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="videofile != null">
+        videofile = #{videofile,jdbcType=LONGVARBINARY},
       </if>
     </set>
     where videoid = #{videoid,jdbcType=BIGINT}
@@ -273,7 +367,13 @@
       videoaddress = #{videoaddress,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      videoimg = #{videoimg,jdbcType=LONGVARCHAR}
+      videotype = #{videotype,jdbcType=VARCHAR},
+      videostate = #{videostate,jdbcType=VARCHAR},
+      currencytwo = #{currencytwo,jdbcType=VARCHAR},
+      currencyone = #{currencyone,jdbcType=VARCHAR},
+      currencythree = #{currencythree,jdbcType=VARCHAR},
+      videoimg = #{videoimg,jdbcType=LONGVARCHAR},
+      videofile = #{videofile,jdbcType=LONGVARBINARY}
     where videoid = #{videoid,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.blog.domain.VideoAddress">
@@ -282,7 +382,12 @@
       videosource = #{videosource,jdbcType=VARCHAR},
       videoaddress = #{videoaddress,jdbcType=VARCHAR},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      videotype = #{videotype,jdbcType=VARCHAR},
+      videostate = #{videostate,jdbcType=VARCHAR},
+      currencytwo = #{currencytwo,jdbcType=VARCHAR},
+      currencyone = #{currencyone,jdbcType=VARCHAR},
+      currencythree = #{currencythree,jdbcType=VARCHAR}
     where videoid = #{videoid,jdbcType=BIGINT}
   </update>
 </mapper>

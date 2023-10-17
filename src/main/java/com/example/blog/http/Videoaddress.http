@@ -1,5 +1,5 @@
 ###
-GET http://localhost:8080/videoAddress/list?videoaddress=而为人
+GET http://localhost:8080/videoAddress/list
 
 ###
 
@@ -10,7 +10,8 @@ Content-Type: application/json
 {
   "videotag": "昌吉22222666",
   "videosource": "比斯33333333",
-  "videoaddress": "www.lilil111111111"
+  "videoaddress": "www.lilil111111111",
+  "videotype": "口角"
 }
 
 ###
