@@ -178,6 +178,8 @@ const updatedata:any = ref(
     videotag: '',
     videosource: '',
     videoaddress: '',
+    videotype:'',
+    videostate:''
   }
 )
 const oldupdatedata:any = ref({})
@@ -323,7 +325,7 @@ onMounted(() => {
         <el-form-item prop="videoaddress" label="视频地址">
           <el-input v-model="searchData.videoaddress" placeholder="请输入" />
         </el-form-item>
-        <el-form-item prop="videoaddress" label="视频类型">
+        <el-form-item prop="videotype" label="视频类型">
           <el-input v-model="searchData.videotype" placeholder="请输入" />
         </el-form-item>
         <!-- <el-form-item prop="videostate" label="视频存盘">
@@ -402,7 +404,18 @@ onMounted(() => {
       <el-form-item label="视频地址：" :label-width="formLabelWidth">
         <el-input v-model="oldupdatedata.videoaddress" autocomplete="off" />
       </el-form-item>
-
+      <el-form-item label="视频类别：" prop="videotype" :label-width="formLabelWidth">
+        <el-select v-model="oldupdatedata.videotype" placeholder="其他">
+          <el-option label="其他" value="其他" />
+          <el-option label="口交" value="口交" />
+        </el-select>
+        </el-form-item>
+        <el-form-item label="视频存盘：" prop="videostate" :label-width="formLabelWidth">
+          <el-radio-group v-model="oldupdatedata.videostate">
+            <el-radio label="未存盘" />
+            <el-radio label="已存盘" />
+          </el-radio-group>
+        </el-form-item>
     </el-form>
     <template #footer>
       <span class="dialog-footer">
