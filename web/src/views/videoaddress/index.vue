@@ -49,6 +49,12 @@ const resetSearch = () => {
   searchData.videosource=''
   searchData.videoaddress=''
   searchData.videotype=''
+  paginationData.currentPage=1
+  let numbertotal = (paginationData.currentPage-1)*paginationData.pageSize + paginationData.pageSize
+  for(let i=(paginationData.currentPage-1)*paginationData.pageSize;i<numbertotal;i++){
+    tableData.value.push(oldtableData.value[i])
+  } 
+  paginationData.total=oldtableData.value.length
   ElMessage({
     message: '重置成功',
     type: 'success',
@@ -92,7 +98,6 @@ const SearchAll = () => {
         newtabledata.push(tableData.value[i])
       }
     }
-    console.log(newtabledata);
     tableData.value= []
     tableData.value = newtabledata
     paginationData.total = tableData.value.length
@@ -286,28 +291,54 @@ const s2ab = s => {
     return buf;
   }
 }
-//导出execl
-//获取所有的视频地址不分页的
-const OutExecl = () => {
-  return new Promise((resolve,reject)=>{
-    GetAllvideoaddressApi().then((res:any)=>{
-      if(res){   
-        xlsx(res.data.list,headerexecl.value,"数据")
-      }
-    }).catch((error)=>{
-      reject(error)
-      console.log(error);
-    })
-  })
 
+//获取所有的视频地址不分页的
+
+async function GetAllVideoAdder(){
+  await GetAllvideoaddressApi().then((res:any)=>{
+    oldtableData.value = res.data.list
+    paginationData.total = res.data.total
+    tableData.value=[]
+    for(let i=0;i<10;i++){
+      tableData.value.push(oldtableData.value[i])
+    }
+  })
 }
 //监听分页
-watch(()=>[paginationData.currentPage,paginationData.pageSize],(newValue, oldValue) => {
-  Getvideoaddress(paginationData.currentPage,paginationData.pageSize)
+watch(()=>[paginationData.currentPage],(newValue, oldValue) => {
+  //Getvideoaddress(paginationData.currentPage,paginationData.pageSize)
+  tableData.value=[]
+  let numbertotal = 0
+  if(paginationData.currentPage*paginationData.pageSize>paginationData.total){
+    let number = paginationData.pageSize-(paginationData.currentPage*paginationData.pageSize-paginationData.total)
+    numbertotal= (paginationData.currentPage-1)*paginationData.pageSize + number
+    for(let i=(paginationData.currentPage-1)*paginationData.pageSize;i<numbertotal;i++){
+      tableData.value.push(oldtableData.value[i])
+    }
+  }else{
+    numbertotal = (paginationData.currentPage-1)*paginationData.pageSize + paginationData.pageSize
+    for(let i=(paginationData.currentPage-1)*paginationData.pageSize;i<numbertotal;i++){
+      tableData.value.push(oldtableData.value[i])
+    } 
+  }
 });
-
+//导出execl
+const OutExecl = () => {
+  // return new Promise((resolve,reject)=>{
+  //   GetAllvideoaddressApi().then((res:any)=>{
+  //     if(res){   
+  //       xlsx(res.data.list,headerexecl.value,"数据")
+  //     }
+  //   }).catch((error)=>{
+  //     reject(error)
+  //     console.log(error);
+  //   })
+  // })
+  xlsx(oldtableData.value,headerexecl.value,"数据")
+}
 onMounted(() => {
-  Getvideoaddress(paginationData.currentPage,paginationData.pageSize)
+  //Getvideoaddress(paginationData.currentPage,paginationData.pageSize)
+  GetAllVideoAdder()
 });
 </script>
 
