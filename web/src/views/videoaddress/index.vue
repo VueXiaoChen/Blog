@@ -66,15 +66,17 @@ const tableData= ref([
     videotag: "1",
     videosource: "2",
     videoaddress:"3",
-    videotype:'',
-    videostate:"无条件"
+    videotype:'11',
+    videostate:"未存盘",
+    currencyone:"",
   },
   {
     videotag: "4",
     videosource: "5",
     videoaddress:"6",
-    videotype:'',
-    videostate:"无条件"
+    videotype:'11',
+    videostate:"未存盘",
+    currencyone:"",
   },
 ])
 //查询参数
@@ -83,7 +85,8 @@ const searchData = reactive({
   videosource: "",
   videoaddress:"",
   videotype:'',
-  videostate:"无条件"
+  videostate:"无条件",
+  currencyone:""
 })
 //查询功能
 const SearchAll = () => {
@@ -255,6 +258,7 @@ const headerexecl = ref({
   videoaddress:"视频地址",
   videotype:"视频类型",
   videostate:"视频存盘",
+  currencyone:"文件位置"
   
 })
 //导出Execl文件函数
@@ -293,14 +297,20 @@ const s2ab = s => {
 }
 
 //获取所有的视频地址不分页的
-
 async function GetAllVideoAdder(){
   await GetAllvideoaddressApi().then((res:any)=>{
     oldtableData.value = res.data.list
     paginationData.total = res.data.total
     tableData.value=[]
-    for(let i=0;i<10;i++){
-      tableData.value.push(oldtableData.value[i])
+    //防止第一页数据不够每页的最低数据进行处理
+    if(paginationData.pageSize>=paginationData.total){
+      for(let i=0;i<paginationData.total;i++){
+        tableData.value.push(oldtableData.value[i])
+      }
+    }else{
+      for(let i=0;i<paginationData.pageSize;i++){
+        tableData.value.push(oldtableData.value[i])
+      }
     }
   })
 }
@@ -359,6 +369,9 @@ onMounted(() => {
         <el-form-item prop="videotype" label="视频类型">
           <el-input v-model="searchData.videotype" placeholder="请输入" />
         </el-form-item>
+        <el-form-item prop="videotype" label="文件位置">
+          <el-input v-model="searchData.currencyone" placeholder="请输入" />
+        </el-form-item>
         <!-- <el-form-item prop="videostate" label="视频存盘">
           <el-input v-model="searchData.videostate" placeholder="请输入" />
         </el-form-item> -->
@@ -397,8 +410,9 @@ onMounted(() => {
           <el-table-column prop="videosource" label="视频来源"  align="center"  :show-overflow-tooltip="true"/>
           <el-table-column prop="videoaddress" label="视频地址"  align="center"  :show-overflow-tooltip="true"/>
           <el-table-column prop="videotype" label="视频类型"  align="center" />
+          <el-table-column prop="currencyone" label="文件位置"  align="center" />
           <el-table-column prop="videostate" label="视频存盘" width="100" align="center">
-            <template #default="scope">
+            <template #default="scope:any">
               <el-tag v-if="scope.row.videostate==='已存盘'" type="success" effect="plain">已存盘</el-tag>
               <el-tag v-else type="danger" effect="plain">未存盘</el-tag>
             </template>

@@ -84,8 +84,8 @@ public class VideoAddressService {
         if (ObjectUtils.isEmpty(videoAddressReq.getVideoid())) {
             videoAddress.setCreateTime(new Date());
             videoAddress.setUpdateTime(new Date());
-            videoAddress.setCurrencyone("暂未使用该参数");
             videoAddress.setCurrencytwo("暂未使用该参数");
+            videoAddress.setVideoimg("暂无图片");
             videoAddress.setCurrencythree("暂未使用该参数");
             videoAddressMapper.insertSelective(videoAddress);
         } else {

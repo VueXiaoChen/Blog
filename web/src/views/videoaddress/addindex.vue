@@ -12,11 +12,12 @@ const formSize = ref('default')
 const uploadRef =ref(null)
 const ruleForm = reactive<any>({
   videotag: '',
-  videosource: '',
+  videosource: '比斯',
   videoaddress: '',
   videotype:'其他',
   videostate:"未存盘",
-  videofile:''
+  videofile:'',
+  currencyone:''
 })
 //使用递归的方式实现数组、对象的深拷贝
 function deepClone (obj) {
@@ -75,12 +76,20 @@ const handleVideoSuccess = () => {
   })
 }
 
-const canshu = ref()
+
+function getData(n) {
+  let now = new Date(n),
+    y = now.getFullYear(),
+    m = now.getMonth() + 1,
+    d = now.getDate();
+  return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
+}
 
 const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return
   await formEl.validate((valid, fields) => {
     if (valid) {
+      ruleForm.currencyone = getData(new Date()).substring(0,10)
       GetvideoaddressUpdateOrAdd(ruleForm)
       //uploadRef.value.submit()
       
