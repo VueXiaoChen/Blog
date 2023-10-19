@@ -18,8 +18,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -76,7 +78,7 @@ public class VideoAddressService {
 
 
     //保存数据
-    public void save(VideoAddressReq videoAddressReq) {
+    public void save(VideoAddressReq videoAddressReq){
         VideoAddress videoAddress = CopyUtil.copy(videoAddressReq, VideoAddress.class);
         //增加数据
         if (ObjectUtils.isEmpty(videoAddressReq.getVideoid())) {

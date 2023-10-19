@@ -3,19 +3,39 @@ import { ref, watch, reactive,onMounted,shallowRef,onBeforeUnmount } from "vue"
 import {type FormInstance,FormRules,ElMessage } from 'element-plus'
 import { GetvideoaddressApi,GetvideoaddressUpdateOrAddApi } from "@/api/videoaddress/index"
 import { useUserStore } from "@/store/modules/user"
+import { UploadFilled } from '@element-plus/icons-vue'
 
 const loading = ref<boolean>(false)
 const user = useUserStore()
 const ruleFormRef = ref<FormInstance>()
 const formSize = ref('default')
+const uploadRef =ref(null)
 const ruleForm = reactive<any>({
   videotag: '',
   videosource: '',
   videoaddress: '',
   videotype:'其他',
   videostate:"未存盘",
+  videofile:''
 })
-
+//使用递归的方式实现数组、对象的深拷贝
+function deepClone (obj) {
+    let objClone = Array.isArray(obj) ? [] : {};
+    if (obj && typeof obj === "object") {
+        for (var key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                //判断ojb子元素是否为对象，如果是，递归复制
+                if (obj[key] && typeof obj[key] === "object") {
+                    objClone[key] = deepClone(obj[key]);
+                } else {
+                    //如果不是，简单复制
+                    objClone[key] = obj[key];
+                }
+            }
+        }
+    }
+    return objClone;
+};
 const rules = reactive<FormRules>({
   videotag: [
     { required: true, message: '视频标题不能为空', trigger: 'blur' },
@@ -49,11 +69,21 @@ const GetvideoaddressUpdateOrAdd = (ruleForm: any) => {
   })
 }
 
+const handleVideoSuccess = () => {
+  return new Promise((resolve,reject)=>{
+    
+  })
+}
+
+const canshu = ref()
+
 const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return
   await formEl.validate((valid, fields) => {
     if (valid) {
       GetvideoaddressUpdateOrAdd(ruleForm)
+      //uploadRef.value.submit()
+      
     } else {
       console.log('error submit!', fields)
     }
@@ -79,6 +109,7 @@ onMounted(() => {
         class="demo-ruleForm"
         :size="formSize"
         status-icon
+        
       >
         <el-form-item label="视频标签：" prop="videotag" required>
           <el-input v-model="ruleForm.videotag" />
@@ -101,11 +132,29 @@ onMounted(() => {
             <el-radio label="已存盘" />
           </el-radio-group>
         </el-form-item>
+        <!-- <el-form-item label="文件上传：" prop="videofile">
+          <el-upload
+            ref="uploadRef"
+            :auto-upload="false"
+            class="upload-demo"
+            :drag="true"
+            action="api/videoAddress/upload"
+            multiple
+            :on-success="handleVideoSuccess"
+            :data="{ruleForm:JSON.stringify(ruleForm)}"
+          >
+            <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+            <div class="el-upload__text">
+              将文件拖入此处 <em>或点击上传</em>
+            </div>
+          </el-upload>
+        </el-form-item> -->
         <el-form-item>
           <el-button type="primary" @click="submitForm(ruleFormRef)">创建</el-button>
           <el-button @click="resetForm(ruleFormRef)">重置</el-button>
         </el-form-item>
       </el-form>
+      
     </el-card>
   </div>
 </template>

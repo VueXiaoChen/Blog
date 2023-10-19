@@ -1,25 +1,26 @@
 package com.example.blog.controller;
 
-import com.example.blog.req.BlogReq;
-import com.example.blog.req.TagReq;
+import com.alibaba.fastjson.JSON;
 import com.example.blog.req.VideoAddressReq;
 import com.example.blog.resp.CommonResp;
 import com.example.blog.resp.PageResp;
-import com.example.blog.resp.TagResp;
 import com.example.blog.resp.VideoAddressResp;
-import com.example.blog.service.TagService;
 import com.example.blog.service.VideoAddressService;
 import com.example.blog.util.Mylog;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import java.util.List;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/videoAddress")
 public class VideoAddressController {
+    private static final Logger LOG = (Logger) LoggerFactory.getLogger(VideoAddressController.class);
     @Resource
     private VideoAddressService videoAddressService;
     @Mylog(value="查询视频地址")
@@ -40,7 +41,7 @@ public class VideoAddressController {
     @Mylog(value="增加视频地址")
     @PostMapping("/save")
     //@RequestBody  定义传过来的参数是实体类
-    public CommonResp save(@Validated @RequestBody VideoAddressReq videoAddressReq) {
+    public CommonResp save(@Validated @RequestBody VideoAddressReq videoAddressReq){
         //返回信息里面定义返回的类型
         CommonResp resp = new CommonResp<>();
         //保存数据
@@ -65,6 +66,13 @@ public class VideoAddressController {
         videoAddressService.delete(videoid);
         //将信息添加到返回信息里
         resp.setMessage("删除成功");
+        return resp;
+    }
+    @PostMapping("/upload")
+    //文件上传
+    public CommonResp uploadfile(@RequestParam("file") MultipartFile multipartFile,@RequestParam("ruleForm") String ruleForm){
+        //返回信息里面定义返回的类型
+        CommonResp resp = new CommonResp<>();
         return resp;
     }
 }
