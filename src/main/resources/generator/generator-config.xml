@@ -45,12 +45,13 @@
         <table tableName="t_tag" domainObjectName="Tag"/>
         <table tableName="t_tag_blog" domainObjectName="TagBlog"/>
 
-        <table tableName="t_blog" domainObjectName="Blog"/>
+
         <table tableName="t_redis" domainObjectName="RedisTest"/>
         <table tableName="t_users" domainObjectName="User"/>
 
-        <table tableName="t_log" domainObjectName="OperateLog"/>-->
-        <table tableName="t_video" domainObjectName="VideoAddress"/>
+        <table tableName="t_log" domainObjectName="OperateLog"/>
+        <table tableName="t_video" domainObjectName="VideoAddress"/>-->
+        <table tableName="t_blog" domainObjectName="Blog"/>
         <!--<table tableName="t_exam_paper_question_customer_answer" domainObjectName="ExaPaperQuestionCustomerAnswer"/>-->
 
 

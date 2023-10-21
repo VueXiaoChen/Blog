@@ -10,8 +10,10 @@ import { loginApi, getUserInfoApi } from "@/api/login"
 import { type LoginRequestData } from "@/api/login/types/login"
 import { type RouteRecordRaw } from "vue-router"
 import asyncRouteSettings from "@/config/async-route"
+import { log } from "console"
 
 export const useUserStore = defineStore("user", () => {
+  
   const token = ref<string>(getToken() || "")
   const roles = ref<string[]>([])
   const username = ref<string>("")
@@ -21,6 +23,7 @@ export const useUserStore = defineStore("user", () => {
   const permissionStore = usePermissionStore()
   const tagsViewStore = useTagsViewStore()
   const settingsStore = useSettingsStore()
+
 
   /** 设置角色数组 */
   const setRoles = (value: string[]) => {

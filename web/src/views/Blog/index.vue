@@ -9,7 +9,10 @@ import { useUserStore } from "@/store/modules/user"
 const route = useRoute()
 const router = useRouter()
 /** 调用user Pian */
-const user = useUserStore()
+//let user = useUserStore()
+const user = reactive(JSON.parse(sessionStorage.getItem("user")))
+console.log(user);
+
 const loading = ref<boolean>(false)
 const { paginationData, handleCurrentChange, handleSizeChange } = usePagination()
 
@@ -127,28 +130,28 @@ onMounted(() => {
       <div class="table-wrapper">
         <el-table :data="tableData">
           <el-table-column type="selection" width="50" align="center" />
-          <el-table-column prop="blogId" label="博客ID" width="100" align="center" />
+          <el-table-column type="index" width="50" />
           <el-table-column prop="blogTitle" label="博客标题" align="center" :show-overflow-tooltip="true"/>
-          <el-table-column prop="userid" label="用户ID" width="100" align="center" />
-          <el-table-column prop="typeId" label="博客类型ID" width="100" align="center" />
+          <el-table-column prop="typeId" label="博客类型" width="100" align="center" />
           <el-table-column prop="blogStatus" label="状态" width="100" align="center">
             <template #default="scope">
               <el-tag v-if="scope.row.status" type="success" effect="plain">通过</el-tag>
               <el-tag v-else type="danger" effect="plain">未审核</el-tag>
             </template>
           </el-table-column>
-          <el-table-column prop="createTime" label="创建时间"  width="160" align="center" />
+          <el-table-column prop="createTime" label="创建时间"   width="160" align="center" />
           <el-table-column prop="updateTime" label="更新时间"   width="160" align="center" />
-          <el-table-column prop="coverImage" label="封面图片" width="160" align="center" />
-          <el-table-column prop="blogContent" label="博客内容" width="160" align="center" :show-overflow-tooltip="true"/>
-          <el-table-column prop="like" label="点赞数"  align="center" width="80" :show-overflow-tooltip="true"/>
-          <el-table-column prop="collect" label="收藏数"  align="center" width="70" :show-overflow-tooltip="true"/>
-          <el-table-column prop="subscribe" label="订阅数"  align="center" width="70" :show-overflow-tooltip="true"/>
-          <el-table-column prop="comment" label="评论数"  align="center" width="70" :show-overflow-tooltip="true"/>
-          <el-table-column fixed="right" label="操作" width="150" align="center">
+          <el-table-column prop="coverImage" label="封面图片"  align="center" />
+          <el-table-column prop="blogContent" label="博客内容"  align="center" :show-overflow-tooltip="true"/>
+          <el-table-column prop="like" label="点赞"  align="center"   width="60" :show-overflow-tooltip="true"/>
+          <el-table-column prop="collect" label="收藏"  align="center"  width="60" :show-overflow-tooltip="true"/>
+          <el-table-column prop="subscribe" label="订阅"  align="center"  width="60" :show-overflow-tooltip="true"/>
+          <el-table-column prop="comment" label="评论"  align="center" width="60" :show-overflow-tooltip="true"/>
+          <el-table-column fixed="right" label="操作" width="250" align="center">
             <template #default="scope">
-              <el-button type="primary" text bg size="small" @click="GetUpdataComment(scope.row)">修改</el-button>
-              <el-button type="danger" text bg size="small" @click="">删除</el-button>
+              <el-button type="primary"  @click="GetUpdataComment(scope.row)">修改</el-button>
+              <el-button type="danger"  @click="">删除</el-button>
+              
             </template>
           </el-table-column>
         </el-table>

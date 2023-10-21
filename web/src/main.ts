@@ -8,6 +8,7 @@ import "@/router/permission"
 import { loadSvg } from "@/icons"
 import { loadPlugins } from "@/plugins"
 import { loadDirectives } from "@/directives"
+
 // css
 import "uno.css"
 import "normalize.css"

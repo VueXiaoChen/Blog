@@ -9,7 +9,6 @@ import NProgress from "nprogress"
 import "nprogress/nprogress.css"
 import { log } from "console"
 
-
 NProgress.configure({ showSpinner: false })
 
 router.beforeEach(async (to, _from, next) => {

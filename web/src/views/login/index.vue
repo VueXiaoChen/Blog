@@ -45,6 +45,7 @@ const handleLogin = () => {
         user.userid = res.data.userid
         setToken(res.data.token)
         resolve(true)
+        sessionStorage.setItem("user",JSON.stringify(user))
         ElMessage({
           message: '登陆成功',
           type: 'success',
