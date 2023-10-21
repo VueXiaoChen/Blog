@@ -10,15 +10,27 @@ const user = useUserStore()
 const ruleFormRef = ref<FormInstance>()
 const formSize = ref('default')
 const uploadRef =ref(null)
-const ruleForm = reactive<any>({
+let ruleForm = reactive<any>({
   videotag: '',
   videosource: '比斯',
   videoaddress: '',
   videotype:'其他',
   videostate:"未存盘",
   videofile:'',
-  currencyone:''
+  currencyone:'',
+  currencytwo:""
 })
+let oldruleForm=reactive<any>({
+  videotag: '',
+  videosource: '比斯',
+  videoaddress: '',
+  videotype:'其他',
+  videostate:"未存盘",
+  videofile:'',
+  currencyone:'',
+  currencytwo:'',
+})
+const ruleFormatag = ref([])
 //使用递归的方式实现数组、对象的深拷贝
 function deepClone (obj) {
     let objClone = Array.isArray(obj) ? [] : {};
@@ -57,7 +69,16 @@ const resetForm = (formEl: FormInstance | undefined) => {
 const GetvideoaddressUpdateOrAdd = (ruleForm: any) => {
   return new Promise((resolve,reject)=>{
     GetvideoaddressUpdateOrAddApi(ruleForm).then((res:any)=>{
-      if(res){   
+      if(res){  
+        ruleFormatag.value.push(ruleForm.currencytwo)
+        ruleForm.videotag= '',
+        ruleForm.videosource= '比斯',
+        ruleForm.videoaddress= '',
+        ruleForm.videotype= '其他',
+        ruleForm.videostate= "未存盘",
+        ruleForm.videofile= '',
+        ruleForm.currencyone= '',
+        ruleForm.currencytwo= ""
         ElMessage({
           message: res.message,
           type: 'success',
@@ -98,7 +119,10 @@ const submitForm = async (formEl: FormInstance | undefined) => {
     }
   })
 }
-
+const count = ref(0)
+const load = () => {
+  count.value += 2
+}
 
 onMounted(() => {
   
@@ -128,6 +152,9 @@ onMounted(() => {
         </el-form-item>
         <el-form-item label="视频地址：" prop="videoaddress" required>
           <el-input v-model="ruleForm.videoaddress" />
+        </el-form-item>
+        <el-form-item label="地址文件：" prop="currencytwo" required>
+          <el-input v-model="ruleForm.currencytwo" />
         </el-form-item>
         <el-form-item label="视频类别：" prop="videotype">
         <el-select v-model="ruleForm.videotype" placeholder="其他">
@@ -163,7 +190,11 @@ onMounted(() => {
           <el-button @click="resetForm(ruleFormRef)">重置</el-button>
         </el-form-item>
       </el-form>
-      
+    </el-card>
+    <el-card v-loading="loading" shadow="never" class="search-wrapper">
+      <ul v-infinite-scroll="load" class="infinite-list" style="overflow: auto">
+        <li v-for="i in ruleFormatag" :key="i" class="infinite-list-item">{{ i }}</li>
+      </ul>
     </el-card>
   </div>
 </template>

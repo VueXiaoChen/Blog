@@ -69,6 +69,7 @@ const tableData= ref([
     videotype:'11',
     videostate:"未存盘",
     currencyone:"",
+    currencytwo:'',
   },
   {
     videotag: "4",
@@ -77,6 +78,7 @@ const tableData= ref([
     videotype:'11',
     videostate:"未存盘",
     currencyone:"",
+    currencytwo:'',
   },
 ])
 //查询参数
@@ -258,7 +260,8 @@ const headerexecl = ref({
   videoaddress:"视频地址",
   videotype:"视频类型",
   videostate:"视频存盘",
-  currencyone:"文件位置"
+  currencyone:"文件位置",
+  currencytwo:'文件名'
   
 })
 //导出Execl文件函数
@@ -411,6 +414,7 @@ onMounted(() => {
           <el-table-column prop="videoaddress" label="视频地址"  align="center"  :show-overflow-tooltip="true"/>
           <el-table-column prop="videotype" label="视频类型"  align="center" />
           <el-table-column prop="currencyone" label="文件位置"  align="center" />
+          <el-table-column prop="currencytwo" label="文件名"  align="center" />
           <el-table-column prop="videostate" label="视频存盘" width="100" align="center">
             <template #default="scope:any">
               <el-tag v-if="scope.row.videostate==='已存盘'" type="success" effect="plain">已存盘</el-tag>
