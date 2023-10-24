@@ -16,7 +16,7 @@ const formLabelAlign = reactive({
 });
 //跳转页面
 function loadings(){
-  Router.push({name:'Ceshi'})
+  Router.push({name:'sumber'})
 }
 
 //申请captcha验证码
@@ -90,52 +90,43 @@ async function UserLoading(validate,seccode) {
     });
 }
 //获取检验
-async function GtCaptcha(gt,challenge) {
-  // await axios
-  //   .get(
-  //     "http://www.geetest.com/demo/gt/register-slide?t=" + new Date().getTime()
-  //   )
-  //   .then(res => {
-  //     let data = res.data;
-  //   })
-  //   .catch(error => {
-  //     console.log(error);
-  //   });
-  initGeetest(
-    {
-      // 以下配置参数来自服务端 SDK
-      gt: gt,
-      challenge: challenge,
-      //offline: true,
-      //new_captcha: true,
-      //width: "100%",
-      product: "popup",
-      //https: true,
-      lang: 'zh-cn',
-    },
-    function(captchaObj) {
-      captchaObj.appendTo("#geetest");
-      captchaObj
-        .onReady(function() {
-          console.log("准备好了");
-        })
-        .onSuccess(function() {
-          let result = captchaObj.getValidate();
-          validate.value = result.geetest_validate
-          seccode.value = result.geetest_seccode
-          console.log(validate.value);
-          console.log(seccode.value);
-          //此处用的密码登录函数
-          UserLoading(validate.value,seccode.value)
-          //此处用的的短信登录函数
-          //GetPhoneSms(validate.value,seccode.value)
-        })
-        .onError(function() {
-          console.log("错误");
-        });
-    }
-  );
-}
+// async function GtCaptcha(gt,challenge) {
+
+//   initGeetest(
+//     {
+//       // 以下配置参数来自服务端 SDK
+//       gt: gt,
+//       challenge: challenge,
+//       //offline: true,
+//       //new_captcha: true,
+//       //width: "100%",
+//       product: "popup",
+//       //https: true,
+//       lang: 'zh-cn',
+//     },
+//     function(captchaObj) {
+//       captchaObj.appendTo("#geetest");
+//       captchaObj
+//         .onReady(function() {
+//           console.log("准备好了");
+//         })
+//         .onSuccess(function() {
+//           let result = captchaObj.getValidate();
+//           validate.value = result.geetest_validate
+//           seccode.value = result.geetest_seccode
+//           console.log(validate.value);
+//           console.log(seccode.value);
+//           //此处用的密码登录函数
+//           UserLoading(validate.value,seccode.value)
+//           //此处用的的短信登录函数
+//           //GetPhoneSms(validate.value,seccode.value)
+//         })
+//         .onError(function() {
+//           console.log("错误");
+//         });
+//     }
+//   );
+// }
 
 function SetCookie(){
   localStorage.setItem("SESSDATA",'SESSDATA='+formLabelAlign.SESSDATA)
@@ -210,7 +201,8 @@ onMounted(() => {
 });
 </script>
   <template>
-    <div id="geetest"></div>
+  <div class="Sessdata">
+  <div id="geetest"></div>
   <div style="margin: 20px" />
   <el-form
     label-width="100px"
@@ -234,10 +226,17 @@ onMounted(() => {
       <el-button type="primary" @click="loadings" v-onceClick>登录</el-button>
     </el-form-item>
   </el-form>
+</div>
 </template>
 
 
 <style >
+.Sessdata{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>
 
 

@@ -132,6 +132,36 @@ export const constantRoutes: RouteRecordRaw[] = [
       },
     ]
   },
+
+  {
+    path: "/doctorsumber",
+    component: Layouts,
+    name: "doctorsumber",
+    meta: {
+      title: "夏医生",
+      elIcon: "Grid"
+    },
+    children: [
+      {
+        path: "sumberloading/index",
+        component: () => import("@/views/dotorsumber/Sessdata.vue"),
+        name: "sumberloading",
+        meta: {
+          title: "登录",
+          svgIcon: "link"
+        }
+      },
+      {
+        path: "sumber/index",
+        component: () => import("@/views/dotorsumber/DoctorSumber.vue"),
+        name: "sumber",
+        meta: {
+          title: "夏医生Vlog",
+          svgIcon: "link"
+        }
+      },
+    ]
+  },
   {
     path: "/table",
     component: Layouts,

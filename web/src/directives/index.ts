@@ -5,3 +5,18 @@ import { permission } from "./permission"
 export function loadDirectives(app: App) {
   app.directive("permission", permission)
 }
+
+export function OnceClicks(app: App) {
+  app.directive('onceClick',{
+    mounted(el, binding, vnode) {
+        el.addEventListener('click', () => {
+            if (!el.disabled) {
+                el.disabled = true;
+                setTimeout(() => {
+                    el.disabled = false;
+                }, binding.value || 1000);
+            }
+        });
+    }
+  })
+}

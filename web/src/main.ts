@@ -7,7 +7,7 @@ import "@/router/permission"
 // load
 import { loadSvg } from "@/icons"
 import { loadPlugins } from "@/plugins"
-import { loadDirectives } from "@/directives"
+import { loadDirectives,OnceClicks } from "@/directives"
 
 // css
 import "uno.css"
@@ -26,6 +26,9 @@ loadPlugins(app)
 loadSvg(app)
 /** 加载自定义指令 */
 loadDirectives(app)
+OnceClicks(app)
+
+
 
 app.use(store).use(router)
 router.isReady().then(() => {

@@ -4,9 +4,7 @@ import { ref, getCurrentInstance } from "vue";
 import { onMounted } from "vue";
 import { loadRouteLocation, useRouter } from "vue-router";
 import { ElMessage } from "element-plus";
-import JsEncrypt from "jsencrypt";
 import { Md5 } from "ts-md5";
-import { Base64 } from "js-base64";
 import { Header } from "element-plus/es/components/table-v2/src/components";
 
 const { proxy } = getCurrentInstance();
@@ -125,7 +123,7 @@ function encWbi(params, img_key, sub_key) {
 
 // 获取最新的 img_key 和 sub_key
 async function getWbiKeys() {
-  await axios.get("/api/x/web-interface/nav").then((resp) => {
+  await axios.get("/sumber/x/web-interface/nav").then((resp) => {
     let img_url = resp.data.data.wbi_img.img_url;
     let sub_url = resp.data.data.wbi_img.sub_url;
     let img_key = img_url
@@ -159,7 +157,7 @@ async function GetUpAllVideoBv(data){
 async function SetVideoTriple(bvarr){
   for(let i =0 ;i<bvarr.length;i++){
     //暂时不用
-    //UserTriple(bvarr[i])
+    UserTriple(bvarr[i])
   }
 }
 //获取所有视频
@@ -175,10 +173,8 @@ async function GetUpAllVideo(sort, index, upmid) {
     sessionStorage.getItem("sub_key")
   );
   await axios
-    .get("/api/x/space/wbi/arc/search?" + allvideoquery)
-    .then((res) => {
-      console.log(res);
-      
+    .get("/sumber/x/space/wbi/arc/search?" + allvideoquery)
+    .then((res) => { 
       //视频所有数据
       videoalldata.value = res.data.data.list.vlist;
       //传入数据获取所有的bv-50个
@@ -214,7 +210,7 @@ async function GetVideoAndComment(page) {
 //获取单个视频详细信息
 async function GetOnlyVideo(bvid) {
   // BV1zk4y1M7Eo
-  await axios.get("/api/x/web-interface/view?bvid=" + bvid).then((res) => {
+  await axios.get("/sumber/x/web-interface/view?bvid=" + bvid).then((res) => {
     //暂时不用
   });
 }
@@ -256,9 +252,9 @@ async function GetSortAllComment(sort, page) {
 //获取所有评论
 async function GetAllComment(sort, oid, page) {
   let url =
-    "/api/x/v2/reply?type=1&ps=20&sort=" + sort + "&oid=" + oid + "&pn=" + page;
-  //await axios.get("/api/x/v2/reply?type=1&ps=15&oid=742469384&pn="+page+"&sort=2").then((res) => {
-  //await axios.get("/api/x/v2/reply?type=1&ps=20&oid=" + oid + "&pn=" + page).then((res) => {
+    "/sumber/x/v2/reply?type=1&ps=20&sort=" + sort + "&oid=" + oid + "&pn=" + page;
+  //await axios.get("/sumber/x/v2/reply?type=1&ps=15&oid=742469384&pn="+page+"&sort=2").then((res) => {
+  //await axios.get("/sumber/x/v2/reply?type=1&ps=20&oid=" + oid + "&pn=" + page).then((res) => {
   await axios.get(url).then((res) => {
     if (res.data.data.replies === null) {
       ScrollrefBoolean.value = true;
@@ -315,7 +311,7 @@ async function GetDetailedComment(page, index, rpid) {
 async function GetPageDetailedComment(page, index, rpid) {
   await axios
     .get(
-      "/api/x/v2/reply/reply?type=1&oid=" +
+      "/sumber/x/v2/reply/reply?type=1&oid=" +
         videooid.value +
         "&ps=15&pn=" +
         page +
@@ -366,21 +362,6 @@ async function GetPageNext() {
   GetVideoAndComment(videoallpage.value);
 }
 
-//跳转网站
-function JumpBZ() {
-  //maskboolean.value = true
-  // window.location.href = " http://www.baidu.com/ " ;
-  // const newElement = document.createElement('span');
-  // newElement.innerHTML = '22222';
-  // // console.dir(topref.value[0].appendChild(newElement));
-  // console.log(topref.value[0]);
-  // topref.value[0].appendChild(newElement)
-  //Router.push({name:"ChangePeople"})
-  //GetSortAllComment(0, "997526170");
-
-  SetVideoTriple(videoarrbv.value)
-}
-
 //更换Up主
 function GetChangeUP() {
   GetUpAllVideo(0,0,"1254444178");
@@ -388,14 +369,14 @@ function GetChangeUP() {
 
 //获取自己的用户信息
 async function GetUserInformation(){
-  await axios.get("/api/nav?SESSDATA="+SESSDATA.value).then((res) => {
+  await axios.get("/sumber/nav?SESSDATA="+SESSDATA.value).then((res) => {
     console.log(res);
   });
 }
 
 //查询投币信息
 async function UserCoinImformation() {
-  await axios.get("api/x/member/web/coin/log").then((res) => {
+  await axios.get("sumber/x/member/web/coin/log").then((res) => {
     console.log(res);
   });
 }
@@ -410,7 +391,7 @@ async function UserCoin(bv,coin) {
   };
   axios({
     method: "POST",
-    url: "api/x/web-interface/coin/add",
+    url: "sumber/x/web-interface/coin/add",
     headers: {
       "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
     },
@@ -425,7 +406,7 @@ async function UserCoin(bv,coin) {
 }
 //判断视频是否投币
 async function UserOrCoin(bv){
-  await axios.get("api/x/web-interface/archive/coins?bvid="+bv).then((res) => {
+  await axios.get("sumber/x/web-interface/archive/coins?bvid="+bv).then((res) => {
     console.log(res);
     if(res.data.data.multiply===0){
       console.log("没有投币");
@@ -438,7 +419,7 @@ async function UserOrCoin(bv){
 
 //视频点赞
 async function UserLike(bv){
-  await axios.post("api/x/web-interface/archive/like","bvid="+bv+"&like=1&csrf="+bili_jct.value,{
+  await axios.post("sumber/x/web-interface/archive/like","bvid="+bv+"&like=1&csrf="+bili_jct.value,{
     headers: {
       "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
     },
@@ -448,7 +429,7 @@ async function UserLike(bv){
 }
 //判断视频是否普点赞
 async function UserOrLike(bv){
-  await axios.get("api/x/web-interface/archive/has/like?bvid="+bv).then((res) => {
+  await axios.get("sumber/x/web-interface/archive/has/like?bvid="+bv).then((res) => {
     console.log(res);
     if(res.data.data===1){
       console.log("已经点赞");
@@ -459,7 +440,7 @@ async function UserOrLike(bv){
 }
 //一键三连
 async function UserTriple(bv){
-  await axios.post("api/x/web-interface/archive/like/triple","bvid="+bv+"&like=1&csrf="+bili_jct.value,{
+  await axios.post("sumber/x/web-interface/archive/like/triple","bvid="+bv+"&like=1&csrf="+bili_jct.value,{
     headers: {
       "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
     },
@@ -474,17 +455,15 @@ async function UserTriple(bv){
 //
 const doclist = ref([])
 async function GetLikeDraw(){
-  console.log(111);
-  // 'https://api.bilibili.com/x/dynamic/feed/draw/doc_list?uid=492659913&page_num=0&page_size=30&biz=all'
-  await axios.get('api/x/dynamic/feed/draw/doc_list?uid=492659913&page_num=0&page_size=30&biz=all').then((res)=>{
-    console.log(res);
-    
+  // 'https://sumber.bilibili.com/x/dynamic/feed/draw/doc_list?uid=492659913&page_num=0&page_size=30&biz=all'
+  await axios.get('sumber/x/dynamic/feed/draw/doc_list?uid=492659913&page_num=0&page_size=30&biz=all').then((res)=>{
+    //console.log(res);
   })
   
 }
 
 onMounted(async () => {
-  //GetUpAllVideo(0,0,"492659913")
+  GetUpAllVideo(0,0,"492659913")
   //GetUpAllVideo(0,0,"242144977")
   // setTimeout(() => {
   //   GetUpAllVideo(0,0,"242144977")
@@ -499,7 +478,7 @@ onMounted(async () => {
   //GetPassportKey()
   //GetCaptchaCode()
   SetCookie()
-  GetLikeDraw()
+  //GetLikeDraw()
   //GetUserInformation()
   //GetLikeDraw()
   //UserTriple('BV1Ft4y1A7rY')
@@ -543,7 +522,7 @@ onMounted(async () => {
                 评论数<span>{{ commentcount }}</span>
               </li>
             </ul>
-            <button @click="JumpBZ()">播放</button>
+            <button @click="">播放</button>
           </div>
         </div>
         <div class="circle">
@@ -557,7 +536,7 @@ onMounted(async () => {
           <button @click="GetPageTop" v-onceClick>上一页</button>
           <button v-onceClick @click="GetChangeUP">更换UP主</button>
           <button @click="GetPageNext" v-onceClick>下一页</button>
-          <button @click="SetVideoTriple" v-onceClick>批量三连</button>
+          <button @click="SetVideoTriple(videoarrbv)" v-onceClick>批量三连</button>
         </div>
       </div>
     </div>
@@ -846,7 +825,7 @@ onMounted(async () => {
   align-items: center;
 }
 .card-btn .btn {
-  width: 65%;
+  width: 95%;
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -1038,7 +1017,7 @@ onMounted(async () => {
 
 .card .box .content button {
   position: relative;
-  top: 25px;
+  top: 45px;
   padding: 8px 30px;
   border: none;
   outline: none;
@@ -1344,7 +1323,7 @@ onMounted(async () => {
   align-items: center;
 }
 .comment-btn .btn {
-  width: 50%;
+  width: 80%;
   height: 100%;
   display: flex;
   flex-direction: row;
