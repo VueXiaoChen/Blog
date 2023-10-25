@@ -5,11 +5,14 @@ import com.alibaba.fastjson.JSONArray;
 import com.example.blog.resp.BlogResp;
 import com.example.blog.service.WebSocsService;
 import com.example.blog.util.RequestContext;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
 import com.example.blog.util.RedisUtil;
+import org.springframework.stereotype.Controller;
+
 import javax.annotation.Resource;
 
 
@@ -22,6 +25,7 @@ public class RedisReceiver {
     public WebSocsService webSocsService;
     @Resource
     public RedisUtil redisUtil;
+
     public void praiseReceive(String blog) {
         //将传过来的字符串转换成数组
         JSONArray arr = JSON.parseArray(blog);
@@ -31,7 +35,11 @@ public class RedisReceiver {
         String logId = MDC.get("LOG_ID");
         String ip = RequestContext.getRemoteAddr();
         //webSock发送消息
-        webSocsService.sendInfo("你点赞了《"+m.getBlogTitle()+"》文章",logId);
+        if(redisUtil.validateRepeat("FOCUS_VOC"+m.getBlogId() + m.getUserid() + ip,3600*24)){
+            webSocsService.sendInfo("你点赞了《"+m.getBlogTitle()+"》文章",logId);
+        }else{
+            webSocsService.sendInfo("你取消了《"+m.getBlogTitle()+"》文章的点赞",logId);
+        }
         LOG.info("消费点赞数据:{}", m);
     }
 

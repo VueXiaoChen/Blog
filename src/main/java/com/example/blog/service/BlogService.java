@@ -19,6 +19,8 @@ import com.example.blog.util.RequestContext;
 import com.example.blog.util.SnowFlake;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
@@ -31,7 +33,7 @@ import java.util.List;
 @Service
 public class BlogService {
     //打印日志
-    /*private static final Logger LOG = (Logger) LoggerFactory.getLogger(UserService.class);*/
+    private static final Logger LOG = (Logger) LoggerFactory.getLogger(BlogService.class);
     @Resource
     public BlogMapper blogMapper;
     @Resource
@@ -140,14 +142,15 @@ public class BlogService {
     public void like(BlogReq blogReq) {
         Blog blog = CopyUtil.copy(blogReq, Blog.class);
         String ip = RequestContext.getRemoteAddr();
+        LOG.info("ip地址为:{}",ip);
         if(redisUtil.validateRepeat("LIKE_VOC"+blogReq.getBlogId() + blogReq.getUserid() + ip,3600*24)){
             //redis发布消息
             redisTemplate.convertAndSend(RedisCode.TOPIC_PRAISE,blogReq);
             //更新点赞
             blogMapper.updateByPrimaryKeySelective(blog);
         }else{
-            redisTemplate.convertAndSend(RedisCode.TOPIC_PRAISE,blogReq);
             redisUtil.delete("LIKE_VOC"+blogReq.getBlogId() + blogReq.getUserid() + ip);
+            redisTemplate.convertAndSend(RedisCode.TOPIC_PRAISE,blogReq);
             throw new BusinessException(BusinessExceptionCode.VOTE_PRAISE);
         }
     }
