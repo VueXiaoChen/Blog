@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, ref, shallowRef, onMounted } from 'vue'
 import axios from "axios";
-import { Tool } from "../util/tool"
+import { Tool } from "../../utils/tool"
 import { ElMessage } from 'element-plus'
 let websocket: any;
 let token: any;
@@ -33,18 +33,20 @@ const initWebSocket = () => {
     websocket.onclose = onClose;
 };
 onMounted(async() => {
-    // // WebSocket
-    // if ('WebSocket' in window) {
-    //     token = Tool.uuid(10);
-    //     // 连接地址：ws://127.0.0.1:8880/ws/xxx
-    //     const url = "ws://127.0.0.1:8080/ws/" + token
-    //     websocket = new WebSocket(url);
-    //     await initWebSocket()
-    //     // 关闭
-    //     // websocket.close();s
-    // } else {
-    //     alert('当前浏览器 不支持')
-    // }
+    // WebSocket
+    if ('WebSocket' in window) {
+        token = Tool.uuid(10);
+        // 连接地址：ws://127.0.0.1:8080/ws/xxx
+        const url = "ws://127.0.0.1:8080/ws/" + token
+        websocket = new WebSocket(url);
+        await initWebSocket()
+        // 关闭
+        // websocket.close();s
+    } else {
+        alert('当前浏览器 不支持')
+    }
+    
+    
 })
 
 </script>

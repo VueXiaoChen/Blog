@@ -146,6 +146,8 @@ public class BlogService {
             //更新点赞
             blogMapper.updateByPrimaryKeySelective(blog);
         }else{
+            redisTemplate.convertAndSend(RedisCode.TOPIC_PRAISE,blogReq);
+            redisUtil.delete("LIKE_VOC"+blogReq.getBlogId() + blogReq.getUserid() + ip);
             throw new BusinessException(BusinessExceptionCode.VOTE_PRAISE);
         }
     }

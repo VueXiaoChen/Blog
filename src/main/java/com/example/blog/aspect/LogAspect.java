@@ -82,6 +82,7 @@ public class LogAspect {
         LOG.info("类名方法: {}.{}", signature.getDeclaringTypeName(), name);
         LOG.info("远程地址: {}", request.getRemoteAddr());
         //Reids的使用
+
         //获取IP地址
         RequestContext.setRemoteAddr(getRemoteIp(request));
 

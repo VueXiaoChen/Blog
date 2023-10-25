@@ -163,6 +163,27 @@ export const constantRoutes: RouteRecordRaw[] = [
     ]
   },
   {
+    path: "/websockets",
+    component: Layouts,
+    name: "websockets",
+    meta: {
+      title: "websocket测试",
+      elIcon: "Grid"
+    },
+    //component: () => import("@/views/websocket/Websocket.vue"),
+    children: [
+      {
+        path: "websockets/index",
+        component: () => import("@/views/websocket/Websocket.vue"),
+        name: "websockettest",
+        meta: {
+          title: "测试",
+          svgIcon: "link"
+        }
+      },
+    ]
+  },
+  {
     path: "/table",
     component: Layouts,
     redirect: "/table/element-plus",
