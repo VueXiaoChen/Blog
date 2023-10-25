@@ -141,15 +141,13 @@ public class BlogService {
     //点赞
     public void like(BlogReq blogReq) {
         Blog blog = CopyUtil.copy(blogReq, Blog.class);
-        String ip = RequestContext.getRemoteAddr();
-        LOG.info("ip地址为:{}",ip);
-        if(redisUtil.validateRepeat("LIKE_VOC"+blogReq.getBlogId() + blogReq.getUserid() + ip,3600*24)){
+        //String ip = RequestContext.getRemoteAddr();
+        if(redisUtil.validateRepeat("LIKE_VOC"+blogReq.getBlogId() + blogReq.getUserid(),3600*24)){
             //redis发布消息
             redisTemplate.convertAndSend(RedisCode.TOPIC_PRAISE,blogReq);
             //更新点赞
             blogMapper.updateByPrimaryKeySelective(blog);
         }else{
-            redisUtil.delete("LIKE_VOC"+blogReq.getBlogId() + blogReq.getUserid() + ip);
             redisTemplate.convertAndSend(RedisCode.TOPIC_PRAISE,blogReq);
             throw new BusinessException(BusinessExceptionCode.VOTE_PRAISE);
         }

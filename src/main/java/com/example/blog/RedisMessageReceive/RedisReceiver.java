@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import com.example.blog.util.RedisUtil;
 import org.springframework.stereotype.Controller;
@@ -23,23 +24,16 @@ public class RedisReceiver {
 
     @Resource
     public WebSocsService webSocsService;
-    @Resource
-    public RedisUtil redisUtil;
 
+
+    //重点:controller里面的值都不能带入到这个方法里来
     public void praiseReceive(String blog) {
         //将传过来的字符串转换成数组
         JSONArray arr = JSON.parseArray(blog);
         //将数组转换成对象
         BlogResp m = JSON.parseObject(JSON.toJSONString(arr.get(1)),BlogResp.class);
-        //获取日志流水号ID
-        String logId = MDC.get("LOG_ID");
-        String ip = RequestContext.getRemoteAddr();
         //webSock发送消息
-        if(redisUtil.validateRepeat("FOCUS_VOC"+m.getBlogId() + m.getUserid() + ip,3600*24)){
-            webSocsService.sendInfo("你点赞了《"+m.getBlogTitle()+"》文章",logId);
-        }else{
-            webSocsService.sendInfo("你取消了《"+m.getBlogTitle()+"》文章的点赞",logId);
-        }
+        webSocsService.sendInfo("你点赞了《"+m.getBlogTitle()+"》文章","");
         LOG.info("消费点赞数据:{}", m);
     }
 
@@ -48,10 +42,8 @@ public class RedisReceiver {
         JSONArray arr = JSON.parseArray(blog);
         //将数组转换成对象
         BlogResp m = JSON.parseObject(JSON.toJSONString(arr.get(1)),BlogResp.class);
-        //获取日志流水号ID
-        String logId = MDC.get("LOG_ID");
         //webSock发送消息
-        webSocsService.sendInfo("你收藏了《"+m.getBlogTitle()+"》文章",logId);
+        webSocsService.sendInfo("你收藏了《"+m.getBlogTitle()+"》文章","");
         LOG.info("消费收藏数据:[{}]", m);
     }
 
@@ -60,6 +52,7 @@ public class RedisReceiver {
         JSONArray arr = JSON.parseArray(blog);
         //将数组转换成对象
         BlogResp m = JSON.parseObject(JSON.toJSONString(arr.get(1)),BlogResp.class);
+        webSocsService.sendInfo("你评论了《"+m.getBlogTitle()+"》文章","");
         LOG.info("消费评论数据:[{}]", m);
     }
 
@@ -68,10 +61,8 @@ public class RedisReceiver {
         JSONArray arr = JSON.parseArray(blog);
         //将数组转换成对象
         BlogResp m = JSON.parseObject(JSON.toJSONString(arr.get(1)),BlogResp.class);
-        //获取日志流水号ID
-        String logId = MDC.get("LOG_ID");
         //webSock发送消息
-        webSocsService.sendInfo("你关注了《"+m.getBlogTitle()+"》文章",logId);
+        webSocsService.sendInfo("你关注了《"+m.getBlogTitle()+"》文章","");
         LOG.info("消费关注数据:[{}]", m);
     }
 
