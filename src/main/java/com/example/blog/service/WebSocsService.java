@@ -6,6 +6,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 
 
 @Service
@@ -19,5 +20,10 @@ public class WebSocsService {
     public void sendInfo(String message,String logId){
         MDC.put("LOG_ID",logId);
         webSocketServer.sendInfo(message);
+    }
+
+    @Async
+    public void sendtoUser(String message,String token) throws IOException {
+        webSocketServer.sendtoUser(message,token);
     }
 }
