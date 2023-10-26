@@ -15,8 +15,8 @@ const loginFormRef = ref<FormInstance | null>(null)
 const loading = ref(false)
 /** 登录表单数据 */
 const loginFormData: any = reactive({
-  username: "4",
-  password: "3",
+  username: "",
+  password: "",
 })
 /** 调用user */
 const user = useUserStore()

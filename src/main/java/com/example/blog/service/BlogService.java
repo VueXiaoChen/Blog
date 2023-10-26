@@ -148,7 +148,8 @@ public class BlogService {
             //更新点赞
             blogMapper.updateByPrimaryKeySelective(blog);
         }else{
-            redisTemplate.convertAndSend(RedisCode.TOPIC_PRAISE,blogReq);
+            redisUtil.delete("LIKE_VOC"+blogReq.getBlogId() + blogReq.getUserid());
+            redisTemplate.convertAndSend(RedisCode.TOPIC_NOPRAISE,blogReq);
             throw new BusinessException(BusinessExceptionCode.VOTE_PRAISE);
         }
     }
@@ -162,6 +163,7 @@ public class BlogService {
             //更新点赞
             blogMapper.updateByPrimaryKeySelective(blog);
         }else{
+            redisTemplate.convertAndSend(RedisCode.TOPIC_NOFOCUS,blogReq);
             throw new BusinessException(BusinessExceptionCode.VOTE_FOCUS);
         }
     }
@@ -175,6 +177,7 @@ public class BlogService {
             //更新收藏
             blogMapper.updateByPrimaryKeySelective(blog);
         }else{
+            redisTemplate.convertAndSend(RedisCode.TOPIC_NOCOLLECT,blogReq);
             throw new BusinessException(BusinessExceptionCode.VOTE_COLLECT);
         }
     }

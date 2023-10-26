@@ -33,7 +33,16 @@ public class RedisReceiver {
         //将数组转换成对象
         BlogResp m = JSON.parseObject(JSON.toJSONString(arr.get(1)),BlogResp.class);
         //webSock发送消息
-        webSocsService.sendInfo("你点赞了《"+m.getBlogTitle()+"》文章","");
+        webSocsService.sendInfo(m.getUserid()+"点赞了《"+m.getBlogTitle()+"》文章","");
+        LOG.info("消费点赞数据:{}", m);
+    }
+    public void nopraiseReceive(String blog) {
+        //将传过来的字符串转换成数组
+        JSONArray arr = JSON.parseArray(blog);
+        //将数组转换成对象
+        BlogResp m = JSON.parseObject(JSON.toJSONString(arr.get(1)),BlogResp.class);
+        //webSock发送消息
+        webSocsService.sendInfo(m.getUserid()+"取消了《"+m.getBlogTitle()+"》文章的点赞","");
         LOG.info("消费点赞数据:{}", m);
     }
 
@@ -43,7 +52,16 @@ public class RedisReceiver {
         //将数组转换成对象
         BlogResp m = JSON.parseObject(JSON.toJSONString(arr.get(1)),BlogResp.class);
         //webSock发送消息
-        webSocsService.sendInfo("你收藏了《"+m.getBlogTitle()+"》文章","");
+        webSocsService.sendInfo(m.getUserid()+"收藏了《"+m.getBlogTitle()+"》文章","");
+        LOG.info("消费收藏数据:[{}]", m);
+    }
+    public void nocollectReceive(String blog) {
+        //将传过来的字符串转换成数组
+        JSONArray arr = JSON.parseArray(blog);
+        //将数组转换成对象
+        BlogResp m = JSON.parseObject(JSON.toJSONString(arr.get(1)),BlogResp.class);
+        //webSock发送消息
+        webSocsService.sendInfo(m.getUserid()+"取消了《"+m.getBlogTitle()+"》文章的收藏","");
         LOG.info("消费收藏数据:[{}]", m);
     }
 
@@ -52,7 +70,15 @@ public class RedisReceiver {
         JSONArray arr = JSON.parseArray(blog);
         //将数组转换成对象
         BlogResp m = JSON.parseObject(JSON.toJSONString(arr.get(1)),BlogResp.class);
-        webSocsService.sendInfo("你评论了《"+m.getBlogTitle()+"》文章","");
+        webSocsService.sendInfo(m.getUserid()+"评论了《"+m.getBlogTitle()+"》文章","");
+        LOG.info("消费评论数据:[{}]", m);
+    }
+    public void nocommentReceive(String blog) {
+        //将传过来的字符串转换成数组
+        JSONArray arr = JSON.parseArray(blog);
+        //将数组转换成对象
+        BlogResp m = JSON.parseObject(JSON.toJSONString(arr.get(1)),BlogResp.class);
+        webSocsService.sendInfo(m.getUserid()+"取消了《"+m.getBlogTitle()+"》文章的评论","");
         LOG.info("消费评论数据:[{}]", m);
     }
 
@@ -62,7 +88,16 @@ public class RedisReceiver {
         //将数组转换成对象
         BlogResp m = JSON.parseObject(JSON.toJSONString(arr.get(1)),BlogResp.class);
         //webSock发送消息
-        webSocsService.sendInfo("你关注了《"+m.getBlogTitle()+"》文章","");
+        webSocsService.sendInfo(m.getUserid()+"关注了《"+m.getBlogTitle()+"》文章","");
+        LOG.info("消费关注数据:[{}]", m);
+    }
+    public void nofocusReceive(String blog) {
+        //将传过来的字符串转换成数组
+        JSONArray arr = JSON.parseArray(blog);
+        //将数组转换成对象
+        BlogResp m = JSON.parseObject(JSON.toJSONString(arr.get(1)),BlogResp.class);
+        //webSock发送消息
+        webSocsService.sendInfo(m.getUserid()+"取消了《"+m.getBlogTitle()+"》文章的关注","");
         LOG.info("消费关注数据:[{}]", m);
     }
 

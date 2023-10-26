@@ -37,7 +37,9 @@ public class RedisMessageListener {
     @Bean
     RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory,
                                             MessageListenerAdapter praiseListenerAdapter, MessageListenerAdapter collectListenerAdapter,
-                                            MessageListenerAdapter commentListenerAdapter, MessageListenerAdapter focusListenerAdapter) {
+                                            MessageListenerAdapter commentListenerAdapter, MessageListenerAdapter focusListenerAdapter,
+                                            MessageListenerAdapter nopraiseListenerAdapter, MessageListenerAdapter nocollectListenerAdapter,
+                                            MessageListenerAdapter nocommentListenerAdapter, MessageListenerAdapter nofocusListenerAdapter) {
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
 
@@ -49,6 +51,14 @@ public class RedisMessageListener {
         container.addMessageListener(commentListenerAdapter, new PatternTopic(RedisCode.TOPIC_COMMENT));
         // 关注主题并绑定消息订阅处理器
         container.addMessageListener(focusListenerAdapter, new PatternTopic(RedisCode.TOPIC_FOCUS));
+        // 取消点赞主题并绑定消息订阅处理器
+        container.addMessageListener(nopraiseListenerAdapter, new PatternTopic(RedisCode.TOPIC_NOPRAISE));
+        // 取消收藏主题并绑定消息订阅处理器
+        container.addMessageListener(nocollectListenerAdapter, new PatternTopic(RedisCode.TOPIC_NOCOLLECT));
+        // 取消评论主题并绑定消息订阅处理器
+        container.addMessageListener(nocommentListenerAdapter, new PatternTopic(RedisCode.TOPIC_NOCOMMENT));
+        // 取消关注主题并绑定消息订阅处理器
+        container.addMessageListener(nofocusListenerAdapter, new PatternTopic(RedisCode.TOPIC_NOFOCUS));
         return container;
     }
     /**redis 读取内容的template */
@@ -84,6 +94,11 @@ public class RedisMessageListener {
         MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(receiver, "praiseReceive");
         return messageListenerAdapter;
     }
+    @Bean
+    MessageListenerAdapter nopraiseListenerAdapter(RedisReceiver receiver) {
+        MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(receiver, "nopraiseReceive");
+        return messageListenerAdapter;
+    }
 
     /**
      * 收藏消息订阅处理器,并指定处理方法
@@ -94,6 +109,11 @@ public class RedisMessageListener {
     @Bean
     MessageListenerAdapter collectListenerAdapter(RedisReceiver receiver) {
         MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(receiver, "collectReceive");
+        return messageListenerAdapter;
+    }
+    @Bean
+    MessageListenerAdapter nocollectListenerAdapter(RedisReceiver receiver) {
+        MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(receiver, "nocollectReceive");
         return messageListenerAdapter;
     }
 
@@ -108,6 +128,11 @@ public class RedisMessageListener {
         MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(receiver, "commentReceive");
         return messageListenerAdapter;
     }
+    @Bean
+    MessageListenerAdapter nocommentListenerAdapter(RedisReceiver receiver) {
+        MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(receiver, "nocommentReceive");
+        return messageListenerAdapter;
+    }
 
     /**
      * 关注消息订阅处理器,并指定处理方法
@@ -118,6 +143,11 @@ public class RedisMessageListener {
     @Bean
     MessageListenerAdapter focusListenerAdapter(RedisReceiver receiver) {
         MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(receiver, "focusReceive");
+        return messageListenerAdapter;
+    }
+    @Bean
+    MessageListenerAdapter nofocusListenerAdapter(RedisReceiver receiver) {
+        MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(receiver, "nofocusReceive");
         return messageListenerAdapter;
     }
 
