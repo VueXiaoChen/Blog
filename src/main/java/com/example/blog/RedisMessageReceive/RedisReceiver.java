@@ -2,6 +2,7 @@ package com.example.blog.RedisMessageReceive;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.example.blog.resp.BlogResp;
 import com.example.blog.service.WebSocsService;
 import com.example.blog.util.RequestContext;
@@ -9,21 +10,33 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
+import org.springframework.data.redis.connection.Message;
+import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import com.example.blog.util.RedisUtil;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
+import javax.websocket.OnMessage;
+import javax.websocket.Session;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 
 @Component
-public class RedisReceiver {
+public class RedisReceiver{
 
     private static final Logger LOG = (Logger) LoggerFactory.getLogger(RedisReceiver.class);
 
     @Resource
     public WebSocsService webSocsService;
+
+    private Session session;
+    public Session getSession() {   return session;  }
+    public void setSession(Session session) {
+        this.session = session;
+    }
 
 
     //重点:controller里面的值都不能带入到这个方法里来
@@ -101,4 +114,16 @@ public class RedisReceiver {
         LOG.info("消费关注数据:[{}]", m);
     }
 
+//    @Override
+//    public void onMessage(Message message, byte[] bytes) {
+//        String msg = new String(message.getBody());
+//        System.out.println(new String(bytes) + "主题发布：" + msg);
+//        if (null != session && session.isOpen()) {
+//            try {
+//                session.getBasicRemote().sendText(msg);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 }
