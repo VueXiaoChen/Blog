@@ -2,6 +2,7 @@ package com.example.blog.websocket;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
 
 import javax.websocket.*;
@@ -41,7 +42,7 @@ public class WebSocketServer {
         addOnlineCount();           //在线数加1
         LOG.info("用户"+token+"加入！当前在线人数为" + getOnlineCount());
         try {
-            sendMessage("连接成功");
+            sendMessage("用户"+token+"连接成功");
         } catch (IOException e) {
             LOG.error("websocket IO异常");
         }

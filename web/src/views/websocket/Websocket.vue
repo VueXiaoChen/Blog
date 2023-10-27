@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { onBeforeUnmount, ref, shallowRef, onMounted } from 'vue'
+import { onBeforeUnmount, ref, shallowRef, onMounted ,reactive} from 'vue'
 import axios from "axios";
 import { Tool } from "../../utils/tool"
 import { ElMessage } from 'element-plus'
+import { useUserStore } from "@/store/modules/user"
 let websocket: any;
 let token: any;
-
+/** 调用user Pian */
+const user = reactive(JSON.parse(sessionStorage.getItem("user")))
 const onOpen = () => {
     console.log('WebSocket连接成功，状态码：', websocket.readyState)
 };
@@ -33,9 +35,11 @@ const initWebSocket = () => {
     websocket.onclose = onClose;
 };
 onMounted(async() => {
+    console.log(user.userid);
     // WebSocket
     if ('WebSocket' in window) {
-        token = Tool.uuid(10);
+        //token = Tool.uuid(10);
+        token = "userid"+user.userid
         // 连接地址：ws://127.0.0.1:8080/ws/xxx
         const url = "ws://127.0.0.1:8080/ws/" + token
         websocket = new WebSocket(url);

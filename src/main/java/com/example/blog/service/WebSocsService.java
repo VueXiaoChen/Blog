@@ -23,7 +23,11 @@ public class WebSocsService {
     }
 
     @Async
-    public void sendtoUser(String message,String token) throws IOException {
-        webSocketServer.sendtoUser(message,token);
+    public void sendtoUser(String message,String tokern){
+        try {
+            webSocketServer.sendtoUser(message,tokern);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
