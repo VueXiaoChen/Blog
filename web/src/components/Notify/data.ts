@@ -41,7 +41,13 @@ export const messageData: ListItem[] = [
     title: "来自龙猫",
     description: "心存善意，定能途遇天使",
     datetime: "1988-04-16"
-  }
+  },
+  {
+    avatar: "https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png",
+    title: "来自龙猫",
+    description: "心存善意，定能途遇天使",
+    datetime: "1988-04-16"
+  },
 ]
 
 export const todoData: ListItem[] = [

@@ -3,10 +3,12 @@ import { onBeforeUnmount, ref, shallowRef, onMounted ,reactive} from 'vue'
 import axios from "axios";
 import { Tool } from "../../utils/tool"
 import { ElMessage } from 'element-plus'
-import { useUserStore } from "@/store/modules/user"
+import { NotifyStore } from "../../store/modules/Notify"
 let websocket: any;
 let token: any;
-/** 调用user Pian */
+
+const Notifys:any = NotifyStore()
+
 const user = reactive(JSON.parse(sessionStorage.getItem("user")))
 const onOpen = () => {
     console.log('WebSocket连接成功，状态码：', websocket.readyState)
@@ -35,7 +37,6 @@ const initWebSocket = () => {
     websocket.onclose = onClose;
 };
 onMounted(async() => {
-    console.log(user.userid);
     // WebSocket
     if ('WebSocket' in window) {
         //token = Tool.uuid(10);
@@ -55,6 +56,65 @@ onMounted(async() => {
 
 </script>
 
-<template></template>
+<template>
+<div class="comment">
+    <div class="comment-btn">
+        <div class="btn">
+            <button v-onceClick @click="">点赞</button>
+            <button v-onceClick @click="">关注</button>
+            <button v-onceClick @click="">评论</button>
+            <button v-onceClick @click="">收藏</button>
+        </div>
+    </div>
+</div>
+</template>
 
-<style scoped></style>
+<style scoped>
+.comment {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.comment .comment-btn {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.comment .comment-btn .btn {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  /* background: rgba(255, 255, 255, 0.2); */
+}
+
+.comment .comment-btn .btn button {
+  position: relative;
+  /* top: 25px; */
+  padding: 8px 30px;
+  border: none;
+  outline: none;
+  background: #03a9f4;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 1rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  border: 5px solid #083d41;
+  box-shadow: 0 0 0 1px #fff;
+  transition: 0.5s;
+}
+
+.comment .comment-btn .btn button:hover {
+  letter-spacing: 0.5rem;
+  background: #ff3d7f;
+}
+</style>
