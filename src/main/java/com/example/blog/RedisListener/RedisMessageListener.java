@@ -39,7 +39,8 @@ public class RedisMessageListener {
                                             MessageListenerAdapter praiseListenerAdapter, MessageListenerAdapter collectListenerAdapter,
                                             MessageListenerAdapter commentListenerAdapter, MessageListenerAdapter focusListenerAdapter,
                                             MessageListenerAdapter nopraiseListenerAdapter, MessageListenerAdapter nocollectListenerAdapter,
-                                            MessageListenerAdapter nocommentListenerAdapter, MessageListenerAdapter nofocusListenerAdapter) {
+                                            MessageListenerAdapter nocommentListenerAdapter, MessageListenerAdapter nofocusListenerAdapter,
+                                            MessageListenerAdapter sendallListenerAdapter, MessageListenerAdapter sendListenerAdapter) {
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
 
@@ -59,6 +60,10 @@ public class RedisMessageListener {
         container.addMessageListener(nocommentListenerAdapter, new PatternTopic(RedisCode.TOPIC_NOCOMMENT));
         // 取消关注主题并绑定消息订阅处理器
         container.addMessageListener(nofocusListenerAdapter, new PatternTopic(RedisCode.TOPIC_NOFOCUS));
+
+        container.addMessageListener(sendallListenerAdapter, new PatternTopic(RedisCode.TOPIC_SENDALL));
+
+        container.addMessageListener(sendListenerAdapter, new PatternTopic(RedisCode.TOPIC_SEND));
         return container;
     }
     /**redis 读取内容的template */
@@ -148,6 +153,17 @@ public class RedisMessageListener {
     @Bean
     MessageListenerAdapter nofocusListenerAdapter(RedisReceiver receiver) {
         MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(receiver, "nofocusReceive");
+        return messageListenerAdapter;
+    }
+
+    @Bean
+    MessageListenerAdapter sendallListenerAdapter(RedisReceiver receiver) {
+        MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(receiver, "sendall");
+        return messageListenerAdapter;
+    }
+    @Bean
+    MessageListenerAdapter sendListenerAdapter(RedisReceiver receiver) {
+        MessageListenerAdapter messageListenerAdapter = new MessageListenerAdapter(receiver, "send");
         return messageListenerAdapter;
     }
 

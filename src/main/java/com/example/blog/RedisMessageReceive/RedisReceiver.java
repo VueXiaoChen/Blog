@@ -39,8 +39,6 @@ public class RedisReceiver{
         this.session = session;
     }
 
-    //private WebMessageReq webMessageReq;
-
     //重点:controller里面的值都不能带入到这个方法里来
     public void praiseReceive(String blog){
         //将传过来的字符串转换成数组
@@ -128,6 +126,26 @@ public class RedisReceiver{
         //webSock发送消息
         //webSocsService.sendInfo(m.getUserid()+"取消了《"+m.getBlogTitle()+"》文章的关注","");
         webSocsService.sendtoUser(m.getUserid()+"取消了《"+m.getBlogTitle()+"》文章的关注","userid"+m.getUserid());
+        LOG.info("消费关注数据:[{}]", m);
+    }
+
+    public void sendall(String message) {
+        //将传过来的字符串转换成数组
+//        JSONArray arr = JSON.parseArray(message);
+//        //将数组转换成对象
+//        WebMessageReq m = JSON.parseObject(JSON.toJSONString(arr.get(1)),WebMessageReq.class);
+        //webSock发送消息
+        webSocsService.sendInfo("3543453453453534","");
+        //LOG.info("消费关注数据:[{}]", m);
+    }
+
+    public void send(String message) {
+        //将传过来的字符串转换成数组
+        JSONArray arr = JSON.parseArray(message);
+        //将数组转换成对象
+        WebMessageReq m = JSON.parseObject(JSON.toJSONString(arr.get(1)),WebMessageReq.class);
+        //webSock发送消息
+        webSocsService.sendInfo(m.getUserid()+"123456","");
         LOG.info("消费关注数据:[{}]", m);
     }
 

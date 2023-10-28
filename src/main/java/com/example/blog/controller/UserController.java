@@ -1,12 +1,16 @@
 package com.example.blog.controller;
 
 import cn.hutool.core.codec.Base64;
+import com.example.blog.exception.BusinessException;
+import com.example.blog.exception.BusinessExceptionCode;
+import com.example.blog.exception.RedisCode;
 import com.example.blog.req.UserLoadingReq;
 import com.example.blog.req.UserReq;
 import com.example.blog.req.UserSaveReq;
 import com.example.blog.resp.*;
 import com.example.blog.service.UserService;
 import com.example.blog.util.Mylog;
+import com.example.blog.util.RedisUtil;
 import com.example.blog.util.SnowFlake;
 import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
@@ -36,6 +40,9 @@ public class UserController {
 
     @Resource
     private SnowFlake snowFlake;
+
+    @Resource
+    public RedisUtil redisUtil;
 
     /*@GetMapping("/list")
     public List<User> list(){
@@ -97,6 +104,11 @@ public class UserController {
         //雪花算法生成token
         Long token = snowFlake.nextId();
         LOG.info("生成单点登录的token:{},并放入redis中",token);
+        if(redisUtil.validateRepeat("LONG_DING"+userLoadingReq.getUsername(),3600*24)){
+            //redis发布消息
+            redisTemplate.convertAndSend(RedisCode.TOPIC_SENDALL,userLoadingReq);
+            redisTemplate.convertAndSend(RedisCode.TOPIC_SEND,userLoadingReq);
+        }
         //token设置
         userLoadingResp.setToken(token.toString());
         //redisTemplate.opsForValue().set(token.toString(),userLoadingResp,3600*24*30, TimeUnit.SECONDS);

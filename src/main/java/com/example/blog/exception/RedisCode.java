@@ -33,5 +33,13 @@ public class RedisCode {
      * 取消消息订阅关注主题
      */
     public static final String TOPIC_NOFOCUS = "TOPIC_NOFOCUS";
+    /**
+     * 所有人发送消息
+     */
+    public static final String TOPIC_SENDALL = "TOPIC_SENDALL";
+    /**
+     * 单个发送消息
+     */
+    public static final String TOPIC_SEND = "TOPIC_SEND";
 
 }

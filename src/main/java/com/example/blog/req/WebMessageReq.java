@@ -5,6 +5,16 @@ public class WebMessageReq {
 
     private String comment;
 
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    private String userid;
     public String getType() {
         return type;
     }
@@ -26,6 +36,7 @@ public class WebMessageReq {
         return "WebMessageReq{" +
                 "type='" + type + '\'' +
                 ", comment='" + comment + '\'' +
+                ", userid='" + userid + '\'' +
                 '}';
     }
 }
