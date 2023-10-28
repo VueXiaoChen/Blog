@@ -1,5 +1,7 @@
 package com.example.blog.websocket;
 
+import com.alibaba.fastjson.JSON;
+import com.example.blog.req.WebMessageReq;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -42,7 +44,10 @@ public class WebSocketServer {
         addOnlineCount();           //在线数加1
         LOG.info("用户"+token+"加入！当前在线人数为" + getOnlineCount());
         try {
-            sendMessage("用户"+token+"连接成功");
+            WebMessageReq webMessageReq = new WebMessageReq();
+            webMessageReq.setType("1");
+            webMessageReq.setComment("用户"+token+"连接成功");
+            sendMessage(JSON.toJSONString(webMessageReq));
         } catch (IOException e) {
             LOG.error("websocket IO异常");
         }

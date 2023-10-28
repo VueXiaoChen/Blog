@@ -3,6 +3,7 @@ package com.example.blog.RedisMessageReceive;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.example.blog.req.WebMessageReq;
 import com.example.blog.resp.BlogResp;
 import com.example.blog.service.WebSocsService;
 import com.example.blog.util.RequestContext;
@@ -38,6 +39,7 @@ public class RedisReceiver{
         this.session = session;
     }
 
+    //private WebMessageReq webMessageReq;
 
     //重点:controller里面的值都不能带入到这个方法里来
     public void praiseReceive(String blog){
@@ -47,7 +49,10 @@ public class RedisReceiver{
         BlogResp m = JSON.parseObject(JSON.toJSONString(arr.get(1)),BlogResp.class);
         //webSock发送消息
         //webSocsService.sendInfo(m.getUserid()+"点赞了《"+m.getBlogTitle()+"》文章","");
-        webSocsService.sendtoUser(m.getUserid()+"点赞了《"+m.getBlogTitle()+"》文章","userid"+m.getUserid());
+        WebMessageReq webMessageReq =new WebMessageReq();
+        webMessageReq.setType("2");
+        webMessageReq.setComment(m.getUserid()+"关注了《"+m.getBlogTitle()+"》文章");
+        webSocsService.sendtoUser(JSON.toJSONString(webMessageReq),"userid"+m.getUserid());
         LOG.info("消费点赞数据:{}", m);
     }
     public void nopraiseReceive(String blog) throws IOException {
@@ -57,7 +62,10 @@ public class RedisReceiver{
         BlogResp m = JSON.parseObject(JSON.toJSONString(arr.get(1)),BlogResp.class);
         //webSock发送消息
         //webSocsService.sendInfo(m.getUserid()+"取消了《"+m.getBlogTitle()+"》文章的点赞","");
-        webSocsService.sendtoUser(m.getUserid()+"取消了《"+m.getBlogTitle()+"》文章的点赞","userid"+m.getUserid());
+        WebMessageReq webMessageReq =new WebMessageReq();
+        webMessageReq.setType("2");
+        webMessageReq.setComment(m.getUserid()+"取消了《"+m.getBlogTitle()+"》文章的点赞");
+        webSocsService.sendtoUser(JSON.toJSONString(webMessageReq),"userid"+m.getUserid());
         LOG.info("消费点赞数据:{}", m);
     }
 
@@ -108,6 +116,7 @@ public class RedisReceiver{
         BlogResp m = JSON.parseObject(JSON.toJSONString(arr.get(1)),BlogResp.class);
         //webSock发送消息
         //webSocsService.sendInfo(m.getUserid()+"关注了《"+m.getBlogTitle()+"》文章","");
+
         webSocsService.sendtoUser(m.getUserid()+"关注了《"+m.getBlogTitle()+"》文章","userid"+m.getUserid());
         LOG.info("消费关注数据:[{}]", m);
     }
