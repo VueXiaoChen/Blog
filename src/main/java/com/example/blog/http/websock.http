@@ -1,0 +1,25 @@
+
+
+###
+POST http://localhost:8080/webmessage/sendall
+Content-Type: application/json
+
+{
+  "type": "1",
+  "comment": "请问",
+  "userid": "1"
+}
+
+###
+
+###
+POST http://localhost:8080/webmessage/send
+Content-Type: application/json
+
+{
+  "type": "1",
+  "comment": "请问11111111111",
+  "userid": "2"
+}
+
+###

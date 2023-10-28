@@ -131,12 +131,15 @@ public class RedisReceiver{
 
     public void sendall(String message) {
         //将传过来的字符串转换成数组
-//        JSONArray arr = JSON.parseArray(message);
-//        //将数组转换成对象
-//        WebMessageReq m = JSON.parseObject(JSON.toJSONString(arr.get(1)),WebMessageReq.class);
+        JSONArray arr = JSON.parseArray(message);
+        //将数组转换成对象
+        WebMessageReq m = JSON.parseObject(JSON.toJSONString(arr.get(1)),WebMessageReq.class);
+        WebMessageReq webMessageReq =new WebMessageReq();
+        webMessageReq.setType("2");
+        webMessageReq.setComment(m.getComment());
         //webSock发送消息
-        webSocsService.sendInfo("3543453453453534","");
-        //LOG.info("消费关注数据:[{}]", m);
+        webSocsService.sendInfo(JSON.toJSONString(webMessageReq),"");
+        LOG.info("消费关注数据:[{}]", m);
     }
 
     public void send(String message) {

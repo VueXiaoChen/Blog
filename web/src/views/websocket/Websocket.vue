@@ -28,6 +28,9 @@ const options = {
         description: data.comment,
         datetime: "2000-06-05"
         })
+    }else{
+        console.log(res.data);
+        
     }
   },
   // 保活周期 10s
