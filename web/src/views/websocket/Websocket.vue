@@ -20,6 +20,7 @@ const options = {
     //     message:res.data,
     //     type: 'success',
     // })
+
     const data = JSON.parse(res.data)
     if(data.type==="2"){
         Notifys.messageData.push({
@@ -28,8 +29,13 @@ const options = {
         description: data.comment,
         datetime: "2000-06-05"
         })
-    }else{
-        console.log(res.data);
+    }else if(data.type==="1"){
+        Notifys.notifyData.push({
+        avatar: "https://gw.alipayobjects.com/zos/rmsportal/OKJXDXrmkNshAMvwtvhu.png",
+        title: "通知",
+        datetime: "现在",
+        description:data.comment
+        })
         
     }
   },

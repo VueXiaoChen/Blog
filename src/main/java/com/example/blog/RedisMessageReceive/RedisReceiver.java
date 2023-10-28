@@ -134,11 +134,11 @@ public class RedisReceiver{
         JSONArray arr = JSON.parseArray(message);
         //将数组转换成对象
         WebMessageReq m = JSON.parseObject(JSON.toJSONString(arr.get(1)),WebMessageReq.class);
-        WebMessageReq webMessageReq =new WebMessageReq();
-        webMessageReq.setType("2");
-        webMessageReq.setComment(m.getComment());
+        //WebMessageReq webMessageReq =new WebMessageReq();
+        m.setType("2");
+        m.setComment(m.getComment());
         //webSock发送消息
-        webSocsService.sendInfo(JSON.toJSONString(webMessageReq),"");
+        webSocsService.sendInfo(JSON.toJSONString(m),"");
         LOG.info("消费关注数据:[{}]", m);
     }
 
@@ -147,8 +147,10 @@ public class RedisReceiver{
         JSONArray arr = JSON.parseArray(message);
         //将数组转换成对象
         WebMessageReq m = JSON.parseObject(JSON.toJSONString(arr.get(1)),WebMessageReq.class);
+        m.setType("2");
+        m.setComment(m.getComment());
         //webSock发送消息
-        webSocsService.sendInfo(m.getUserid()+"123456","");
+        webSocsService.sendtoUser(JSON.toJSONString(m),"userid"+m.getUserid());
         LOG.info("消费关注数据:[{}]", m);
     }
 

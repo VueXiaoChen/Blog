@@ -60,9 +60,9 @@ public class RedisMessageListener {
         container.addMessageListener(nocommentListenerAdapter, new PatternTopic(RedisCode.TOPIC_NOCOMMENT));
         // 取消关注主题并绑定消息订阅处理器
         container.addMessageListener(nofocusListenerAdapter, new PatternTopic(RedisCode.TOPIC_NOFOCUS));
-
+        //发送所有消息
         container.addMessageListener(sendallListenerAdapter, new PatternTopic(RedisCode.TOPIC_SENDALL));
-
+        //发送单人消息
         container.addMessageListener(sendListenerAdapter, new PatternTopic(RedisCode.TOPIC_SEND));
         return container;
     }
