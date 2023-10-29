@@ -70,6 +70,7 @@ const tableData= ref([
     videostate:"未存盘",
     currencyone:"",
     currencytwo:'',
+    currencythree:"",
   },
   {
     videotag: "4",
@@ -79,6 +80,7 @@ const tableData= ref([
     videostate:"未存盘",
     currencyone:"",
     currencytwo:'',
+    currencythree:"",
   },
 ])
 //查询参数
@@ -88,7 +90,8 @@ const searchData = reactive({
   videoaddress:"",
   videotype:'',
   videostate:"无条件",
-  currencyone:""
+  currencyone:"",
+  currencythree:"",
 })
 //查询功能
 const SearchAll = () => {
@@ -261,7 +264,8 @@ const headerexecl = ref({
   videotype:"视频类型",
   videostate:"视频存盘",
   currencyone:"文件位置",
-  currencytwo:'文件名'
+  currencytwo:'文件名',
+  currencythree:"文件大小",
   
 })
 //导出Execl文件函数
@@ -415,6 +419,7 @@ onMounted(() => {
           <el-table-column prop="videotype" label="视频类型"  align="center" />
           <el-table-column prop="currencyone" label="文件位置"  align="center" />
           <el-table-column prop="currencytwo" label="文件名"  align="center" />
+          <el-table-column prop="currencythree" label="文件大小"  align="center" />
           <el-table-column prop="videostate" label="视频存盘" width="100" align="center">
             <template #default="scope:any">
               <el-tag v-if="scope.row.videostate==='已存盘'" type="success" effect="plain">已存盘</el-tag>
@@ -465,6 +470,9 @@ onMounted(() => {
             <el-radio label="已存盘" />
           </el-radio-group>
         </el-form-item>
+        <el-form-item label="视频大小：" :label-width="formLabelWidth">
+        <el-input v-model="oldupdatedata.currencythree" autocomplete="off" />
+      </el-form-item>
     </el-form>
     <template #footer>
       <span class="dialog-footer">

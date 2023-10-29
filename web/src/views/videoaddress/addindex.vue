@@ -12,23 +12,25 @@ const formSize = ref('default')
 const uploadRef =ref(null)
 let ruleForm = reactive<any>({
   videotag: '',
-  videosource: '比斯',
+  videosource: '电报',
   videoaddress: '',
   videotype:'其他',
   videostate:"未存盘",
   videofile:'',
   currencyone:'',
-  currencytwo:""
+  currencytwo:"磁力资源连接集合",
+  currencythree:"",
 })
 let oldruleForm=reactive<any>({
   videotag: '',
-  videosource: '比斯',
+  videosource: '电报',
   videoaddress: '',
   videotype:'其他',
   videostate:"未存盘",
   videofile:'',
   currencyone:'',
-  currencytwo:'',
+  currencytwo:'磁力资源连接集合',
+  currencythree:"",
 })
 const ruleFormatag = ref([])
 //使用递归的方式实现数组、对象的深拷贝
@@ -72,13 +74,14 @@ const GetvideoaddressUpdateOrAdd = (ruleForm: any) => {
       if(res){  
         ruleFormatag.value.push(ruleForm.currencytwo)
         ruleForm.videotag= '',
-        ruleForm.videosource= '比斯',
+        ruleForm.videosource= '电报',
         ruleForm.videoaddress= '',
         ruleForm.videotype= '其他',
         ruleForm.videostate= "未存盘",
         ruleForm.videofile= '',
         ruleForm.currencyone= '',
-        ruleForm.currencytwo= ""
+        ruleForm.currencytwo= "磁力资源连接集合",
+        ruleForm.currencythree= ""
         ElMessage({
           message: res.message,
           type: 'success',
@@ -147,13 +150,16 @@ onMounted(() => {
         <el-form-item label="视频标签：" prop="videotag" required>
           <el-input v-model="ruleForm.videotag" />
         </el-form-item>
-        <el-form-item label="视频来源：" prop="videosource" required>
-          <el-input v-model="ruleForm.videosource" />
+        <el-form-item label="视频大小：" prop="videosource" required>
+          <el-input v-model="ruleForm.currencythree" />
         </el-form-item>
         <el-form-item label="视频地址：" prop="videoaddress" required>
           <el-input v-model="ruleForm.videoaddress" />
         </el-form-item>
-        <el-form-item label="地址文件：" prop="currencytwo" required>
+        <el-form-item label="视频来源：" prop="videosource" required>
+          <el-input v-model="ruleForm.videosource" />
+        </el-form-item>
+        <el-form-item label="地址文件：" prop="currencytwo">
           <el-input v-model="ruleForm.currencytwo" />
         </el-form-item>
         <el-form-item label="视频类别：" prop="videotype">
