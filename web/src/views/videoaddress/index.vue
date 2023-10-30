@@ -168,8 +168,10 @@ const Getvideoaddress = (currentPage,pagesize) => {
   return new Promise((resolve,reject)=>{
     GetvideoaddressApi(currentPage,pagesize).then((res:any)=>{
       if(res){   
-        tableData.value = res.data.list        
-        oldtableData.value = res.data.list      
+        tableData.value = res.data.list 
+        tableData.value=tableData.value.reverse()  
+        oldtableData.value = res.data.list 
+        oldtableData.value=oldtableData.value.reverse()    
         paginationData.total = res.data.total
         pagetotal.value = res.data.total
         ElMessage({
@@ -307,6 +309,7 @@ const s2ab = s => {
 async function GetAllVideoAdder(){
   await GetAllvideoaddressApi().then((res:any)=>{
     oldtableData.value = res.data.list
+    oldtableData.value=oldtableData.value.reverse()
     paginationData.total = res.data.total
     tableData.value=[]
     //防止第一页数据不够每页的最低数据进行处理
@@ -314,10 +317,12 @@ async function GetAllVideoAdder(){
       for(let i=0;i<paginationData.total;i++){
         tableData.value.push(oldtableData.value[i])
       }
+      tableData.value=tableData.value.reverse()
     }else{
       for(let i=0;i<paginationData.pageSize;i++){
         tableData.value.push(oldtableData.value[i])
       }
+      tableData.value=tableData.value.reverse()
     }
   })
 }
@@ -418,15 +423,15 @@ onMounted(() => {
           <el-table-column prop="videoaddress" label="视频地址"  align="center"  :show-overflow-tooltip="true"/>
           <el-table-column prop="videotype" label="视频类型"  align="center" />
           <el-table-column prop="currencyone" label="文件位置"  align="center" />
-          <el-table-column prop="currencytwo" label="文件名"  align="center" />
+          <el-table-column prop="currencytwo" label="文件名"  width="160" align="center" />
           <el-table-column prop="currencythree" label="文件大小"  align="center" />
           <el-table-column prop="videostate" label="视频存盘" width="100" align="center">
             <template #default="scope:any">
-              <el-tag v-if="scope.row.videostate==='已存盘'" type="success" effect="plain">已存盘</el-tag>
+              <el-tag v-if="scope.row.videostate==='已存盘'" type="success" effect="plain" width="50">已存盘</el-tag>
               <el-tag v-else type="danger" effect="plain">未存盘</el-tag>
             </template>
           </el-table-column>
-          <el-table-column fixed="right" label="操作" width="250" align="center">
+          <el-table-column fixed="right" label="操作" width="200" align="center">
             <template #default="scope">
               <el-button type="primary"  @click="GetUpdatadata(scope.$index,scope.row)">修改</el-button>
               <el-button type="danger"  @click="Deletedata(scope.$index,scope.row)">删除</el-button>

@@ -32,6 +32,9 @@ let oldruleForm=reactive<any>({
   currencytwo:'磁力资源连接集合',
   currencythree:"",
 })
+
+const timestamp=ref([])
+
 const ruleFormatag = ref([])
 //使用递归的方式实现数组、对象的深拷贝
 function deepClone (obj) {
@@ -51,6 +54,21 @@ function deepClone (obj) {
     }
     return objClone;
 };
+//new Date转化成时间格式
+function dateToFormat(value) {
+    const dateTme = new Date(value)
+    const Y = dateTme.getFullYear()
+    const M = dateTme.getMonth() + 1 < 10 ? "0" + (dateTme.getMonth() + 1) : dateTme.getMonth() + 1
+    const D = dateTme.getDate() < 10 ? "0" + dateTme.getDate() : dateTme.getDate()
+    const h = dateTme.getHours() < 10 ? "0" + dateTme.getHours() : dateTme.getHours()
+    const m = dateTme.getMinutes() < 10 ? "0" + dateTme.getMinutes() : dateTme.getMinutes()
+    const s = dateTme.getSeconds() < 10 ? "0" + dateTme.getSeconds() : dateTme.getSeconds()
+    return Y + "-" + M + "-" + D + " " + h + ":" + m + ":" + s
+}
+function dateFormats(dataStr) {
+    var dateee = new Date(dataStr).toJSON();
+    return new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+}
 const rules = reactive<FormRules>({
   videotag: [
     { required: true, message: '视频标题不能为空', trigger: 'blur' },
@@ -72,7 +90,12 @@ const GetvideoaddressUpdateOrAdd = (ruleForm: any) => {
   return new Promise((resolve,reject)=>{
     GetvideoaddressUpdateOrAddApi(ruleForm).then((res:any)=>{
       if(res){  
-        ruleFormatag.value.push(ruleForm.currencytwo)
+        ruleFormatag.value.push(deepClone(ruleForm))
+        ruleFormatag.value.reverse()
+        timestamp.value.push({
+          time:dateToFormat(new Date())
+        })
+        timestamp.value.reverse()
         ruleForm.videotag= '',
         ruleForm.videosource= '电报',
         ruleForm.videoaddress= '',
@@ -198,9 +221,15 @@ onMounted(() => {
       </el-form>
     </el-card>
     <el-card v-loading="loading" shadow="never" class="search-wrapper">
-      <ul v-infinite-scroll="load" class="infinite-list" style="overflow: auto">
-        <li v-for="i in ruleFormatag" :key="i" class="infinite-list-item">{{ i }}</li>
-      </ul>
+      <el-timeline>
+        <el-timeline-item :timestamp="timestamp[index].time" placement="top" v-for="(item,index) in ruleFormatag" :key="index" type="primary">
+          <el-card>
+            <h3>{{ item.videotag }}</h3>
+            <p>大小:{{item.currencythree}}</p>
+            <p>下载地址:{{item.videoaddress}}</p>
+          </el-card>
+        </el-timeline-item>
+      </el-timeline>
     </el-card>
   </div>
 </template>
