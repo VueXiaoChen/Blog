@@ -18,7 +18,7 @@ let ruleForm = reactive<any>({
   videostate:"未存盘",
   videofile:'',
   currencyone:'',
-  currencytwo:"磁力资源连接集合",
+  currencytwo:"",
   currencythree:"",
 })
 let oldruleForm=reactive<any>({
@@ -89,7 +89,7 @@ const resetForm = (formEl: FormInstance | undefined) => {
 const GetvideoaddressUpdateOrAdd = (ruleForm: any) => {
   return new Promise((resolve,reject)=>{
     GetvideoaddressUpdateOrAddApi(ruleForm).then((res:any)=>{
-      if(res){  
+      if(res){
         ruleFormatag.value.push(deepClone(ruleForm))
         ruleFormatag.value.reverse()
         timestamp.value.push({
@@ -119,7 +119,7 @@ const GetvideoaddressUpdateOrAdd = (ruleForm: any) => {
 
 const handleVideoSuccess = () => {
   return new Promise((resolve,reject)=>{
-    
+
   })
 }
 
@@ -139,7 +139,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
       ruleForm.currencyone = getData(new Date()).substring(0,10)
       GetvideoaddressUpdateOrAdd(ruleForm)
       //uploadRef.value.submit()
-      
+
     } else {
       console.log('error submit!', fields)
     }
@@ -151,7 +151,7 @@ const load = () => {
 }
 
 onMounted(() => {
-  
+
 
 });
 
@@ -168,7 +168,7 @@ onMounted(() => {
         class="demo-ruleForm"
         :size="formSize"
         status-icon
-        
+
       >
         <el-form-item label="视频标签：" prop="videotag" required>
           <el-input v-model="ruleForm.videotag" />
